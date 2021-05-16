@@ -195,10 +195,6 @@ in
     breeze-qt5
     breeze-icons
   ] ++ kdepim;
-  services.dunst = {
-    enable = true;
-    settings = import ./dunstconf.nix;
-  };
   programs.autorandr = {
     enable = true;
     profiles = {

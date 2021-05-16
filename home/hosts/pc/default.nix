@@ -4,6 +4,7 @@
 {
   imports = [
     ./kitty.nix
+    ./dunst
   ];
 
   # Let Home Manager install and manage itself.
