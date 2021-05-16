@@ -6,6 +6,7 @@
     ./kitty.nix
     ./dunst
     ./packages
+    ./ssh
   ];
 
   # Let Home Manager install and manage itself.
