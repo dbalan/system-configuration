@@ -6,7 +6,7 @@ let
   # and returns a complete module to be imported in configuration.nix
   makeHost = 
     hostPath:
-    { config, pkgs, lib, ... }:
+    { config, pkgs, lib, options, ... }:
 
     {
       imports = [
@@ -14,12 +14,12 @@ let
         hostPath
       ]; # ...and all the extra modules.
 
-      nix.nixPath = [
+      #nix.nixPath = options.nix.nixPath.default ++ [
         # Where to get the top-level nix file, i.e. this one
-        "nixos-config=/etc/nixos/configuration.nix"
+       # "nixos-config=/etc/nixos/configuration.nix"
         # The channel to be subscribed on
-        "nixpkgs=/home/gpyh/nixpkgs"
-      ];
+        
+      #];
     };
   hostModules =
     builtins.listToAttrs (map (hostName: {
