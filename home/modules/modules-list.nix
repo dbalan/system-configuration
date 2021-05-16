@@ -1,0 +1,3 @@
+lib:
+[ ./copyq.nix
+]
