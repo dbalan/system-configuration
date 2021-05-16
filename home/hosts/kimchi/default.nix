@@ -56,102 +56,12 @@ in
   require = [
     ../pc
   ];
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "dj";
-  home.homeDirectory = "/home/dj";
-  # overlays we would need
-  # nixpkgs.overlays = [(self: super: { discord = super.discord.overrideAttrs (_: { version = "0.0.14"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/0.0.14/discord-0.0.14.tar.gz"; }); })];
-
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      e = "emacsclient -t";
-      ec = "emacsclient -c";
-      mirc = "mosh -p 61000 irc";
-      ns = "nix-shell";
-      nsp = "nix-shell -p";
-      cat = "bat";
-      scp = "rsync -Pv";
-      ls = "exa";
-    };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "sudo" ];
-      theme = "agnoster";
-    };
-  };
 
   programs.command-not-found.enable = true;
   programs.direnv = {
       enableZshIntegration = true;
       enable = true;
-  };
-
-  programs.kitty = {
-     enable = true;
-     font.name = "Fira Code";
-     extraConfig =
-      ''
-      font_size 12
-      enable_audio_bell no
-      # theme monokai
-      background #403e41
-      foreground #fcfcfa
-
-      cursor #fcfcfa
-      cursor_text_color #000000
-      selection_foreground #403e41
-      selection_background #fcfcfa
-
-      # dull black
-      color0 #403e41
-      # light black
-      color8 #727072
-
-      # dull red
-      color1 #ff6188
-      # light red
-      color9 #ff6188
-
-      # dull green
-      color2 #a9dc76
-      # light green
-      color10 #a9dc76
-
-      # yellow
-      color3 #ffd866
-      # light yellow
-      color11 #ffd866
-
-      # blue
-      color4 #fc9867
-      # light blue
-      color12 #fc9867
-
-      # magenta
-      color5 #ab9df2
-      # light magenta
-      color13 #ab9df2
-
-      # cyan
-      color6 #78dce8
-      # light cyan
-      color14 #78dce8
-
-      # dull white
-      color7 #fcfcfa
-      # bright white
-      color15 #fcfcfa
-      '';
-  };
-
-  home.sessionVariables = {
-    EDITOR = "mg";
-    ANSIBLE_STDOUT_CALLBACK = "debug";
   };
 
   programs.ssh = {
@@ -285,15 +195,6 @@ in
     breeze-qt5
     breeze-icons
   ] ++ kdepim;
-
-  services.redshift = {
-    enable = false;
-    longitude = "13.404954";
-    latitude = "52.520008";
-  };
-  services.status-notifier-watcher.enable = true;
-  services.taffybar.enable = true;
-  services.copyq.enable = true;
   services.dunst = {
     enable = true;
     settings = import ./dunstconf.nix;
@@ -373,50 +274,6 @@ in
       };
     };
   };
-
-
-  services.syncthing.enable = true;
-
-  # set HiDPI hints -- run xrdb -merge ~/.Xresources if changes.
-  home.file.".Xresources".source = "/home/dj/.config/nixpkgs/hidpi-xresources";
-  home.file.".Xresources".onChange = ''
-    echo "Re-merging xresources"
-    $DRY_RUN_CMD xrdb -merge ~/.Xresources
-  '';
-
-  # configure alacritty
-  home.file.".config/alacritty/alacritty.yml".source = "/home/dj/.config/nixpkgs/alacritty.yml";
-
-  # configure stylish-haskell
-  home.file.".stylish-haskell.yml".source = "/home/dj/.config/nixpkgs/stylish-haskell.yml";
-
-  home.file.".arbtt/categorize.cfg".source = "/home/dj/.config/nixpkgs/arbtt-config.cfg";
-
-  gtk.enable = true;
-  gtk.iconTheme.name = "Adwaita";
-
-  xsession.enable = true;
-  xsession.windowManager.xmonad = {
-    enable = true;
-    enableContribAndExtras = true;
-    extraPackages = self: [ self.taffybar ];
-    config = pkgs.writeText "xmonad.hs" (builtins.readFile "/home/dj/.config/nixpkgs/xmonad.hs");
-  };
-
-  home.file.".config/taffybar/taffybar.hs" = {
-    source = "/home/dj/.config/nixpkgs/taffybar.hs";
-    onChange = ''
-        rm /home/dj/.cache/taffybar/taffybar-linux-x86_64
-        systemctl --user restart taffybar
-    '';
-  };
-     
-  # configure xmobar
-  #home.file.".xmonad/xmobar.config".source = "/home/dj/.config/nixpkgs/xmobar.config";
-  #home.file.".xmonad/xmobar.config".onChange = ''
-  #echo "restart xmonad"
-  #xmonad --restart
-  #'';
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
