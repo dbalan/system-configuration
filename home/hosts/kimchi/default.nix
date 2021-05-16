@@ -1,68 +1,13 @@
 { config, pkgs, ... }:
 
 let
-  browsercat = import ./browsercat.nix {};
   unstable = import <unstable> {};
 
-  kdepim = with pkgs; with kdeApplications; [ # KDE Apps
-      akonadi
-      akonadi-calendar
-      akonadi-contacts
-      akonadi-import-wizard
-      akonadi-mime
-      akonadi-notes
-      akonadi-search
-      akonadiconsole
-      akregator
-      ark
-      gwenview
-      kaddressbook
-      kalarm
-      kalarmcal
-      kate
-      kcalutils
-      kdepim-addons
-      kdepim-apps-libs
-      kdepim-runtime
-      kdialog
-      kidentitymanagement
-      kldap
-      kmail
-      kmailtransport
-      kmbox
-      kmime
-      kmix
-      kontact
-      kontactinterface
-      korganizer
-      konversation
-      kpimtextedit
-      libkdepim
-      libksieve
-      mailcommon
-      messagelib
-      pimcommon
-      pim-sieve-editor
-      okular
-      oxygen
-      oxygen-icons5
-      oxygenfonts
-      redshift-plasma-applet
-      spectacle
-      # End of KDE Apps
-  ];
 in
 {
   require = [
     ../pc
   ];
-
-
-  programs.command-not-found.enable = true;
-  programs.direnv = {
-      enableZshIntegration = true;
-      enable = true;
-  };
 
   programs.ssh = {
     enable = true;
@@ -101,100 +46,6 @@ in
          User root
      '';
   };
-
-  home.packages = with pkgs; [
-    anki
-    pcmanfm
-    openldap
-    ansible
-    jq
-    dunst
-    unstable.cabal-install
-    llvmPackages.bintools
-    gcc
-    gnumake
-    unstable.ghc
-    unstable.ghcid
-    telnet
-    htop
-    discord
-    brave
-    nload
-    ldns
-    mpv
-    zeal
-    bat
-    go_1_15
-    godef
-    okular
-    libqalculate
-    steam
-    isync
-    neomutt
-    gnome3.seahorse
-    gnome3.meld
-    libsecret
-    msmtp
-    gopass
-    rambox
-    thunderbird
-    restic
-    rsync
-    sublime-music
-    evince
-    python38Full
-    python38Packages.ipython
-    python38Packages.poetry
-    exa
-    docker-compose
-    zathura
-    ag
-    xmobar
-    pandoc
-    notmuch
-    ripgrep
-    alot
-    fzf
-    #haskellPackages.arbtt
-    # (pkgs.callPackage ./pipet.nix {})
-    browsercat.packages."browser-cat"
-    gnome3.adwaita-icon-theme
-    tmux-cssh
-    tcpdump
-    tmux
-    httpie
-    tree
-    file
-    #(haskell.lib.justStaticExecutables (haskellPackages.callPackage ./idid.nix {}))
-    nmap_graphical
-    skypeforlinux
-    stylish-haskell
-    zoom-us
-    firefox
-    freerdp
-    wineWowPackages.full
-    unstable.haskell-language-server
-    shutter
-    imagemagick
-    git
-    rdesktop
-    manpages
-    arandr
-    beancount
-    unstable.signal-desktop
-    vulkan-tools
-    lutris
-    fava
-    unstable.xow
-    unzip
-    xorg.xhost
-    handbrake
-    git-secret
-
-    taffybar 
-    breeze-qt5
-    breeze-icons
-  ] ++ kdepim;
   programs.autorandr = {
     enable = true;
     profiles = {

@@ -1,0 +1,149 @@
+{ config, pkgs, ... }:
+
+let
+  unstable = import <unstable> {};
+  browsercat = import ./browsercat.nix {};
+  kdepim = with pkgs; with kdeApplications; [ # KDE Apps
+    akonadi
+    akonadi-calendar
+    akonadi-contacts
+    akonadi-import-wizard
+    akonadi-mime
+    akonadi-notes
+    akonadi-search
+    akonadiconsole
+    akregator
+    ark
+    gwenview
+    kaddressbook
+    kalarm
+    kalarmcal
+    kate
+    kcalutils
+    kdepim-addons
+    kdepim-apps-libs
+    kdepim-runtime
+    kdialog
+    kidentitymanagement
+    kldap
+    kmail
+    kmailtransport
+    kmbox
+    kmime
+    kmix
+    kontact
+    kontactinterface
+    korganizer
+    konversation
+    kpimtextedit
+    libkdepim
+    libksieve
+    mailcommon
+    messagelib
+    pimcommon
+    pim-sieve-editor
+    okular
+    oxygen
+    oxygen-icons5
+    oxygenfonts
+    redshift-plasma-applet
+    spectacle
+    # End of KDE Apps
+  ];
+  unstablePackages = with unstable; [
+    cabal-install
+    ghcid
+    ghc
+    signal-desktop
+    xow
+  ];
+  commonPackages = with pkgs; [
+    anki
+    pcmanfm
+    openldap
+    ansible
+    jq
+    dunst
+    llvmPackages.bintools
+    gcc
+    gnumake
+    telnet
+    htop
+    discord
+    brave
+    nload
+    ldns
+    mpv
+    zeal
+    bat
+    go
+    godef
+    okular
+    libqalculate
+    steam
+    isync
+    neomutt
+    gnome3.seahorse
+    gnome3.meld
+    libsecret
+    msmtp
+    gopass
+    rambox
+    thunderbird
+    restic
+    rsync
+    sublime-music
+    evince
+    python38Full
+    python38Packages.ipython
+    python38Packages.poetry
+    exa
+    docker-compose
+    zathura
+    ag
+    xmobar
+    pandoc
+    notmuch
+    ripgrep
+    alot
+    fzf
+    #haskellPackages.arbtt
+    # (pkgs.callPackage ./pipet.nix {})
+    browsercat.packages."browser-cat"
+    gnome3.adwaita-icon-theme
+    tmux-cssh
+    tcpdump
+    tmux
+    httpie
+    tree
+    file
+    #(haskell.lib.justStaticExecutables (haskellPackages.callPackage ./idid.nix {}))
+    nmap_graphical
+    skypeforlinux
+    stylish-haskell
+    zoom-us
+    firefox
+    freerdp
+    wineWowPackages.full
+    shutter
+    imagemagick
+    rdesktop
+    manpages
+    arandr
+    beancount
+    vulkan-tools
+    lutris
+    fava
+    unzip
+    xorg.xhost
+    handbrake
+    git-secret
+    taffybar 
+    breeze-qt5
+    breeze-icons
+  ];
+in
+{
+  home.packages = commonPackages ++ unstablePackages ++ kdepim;
+}
+    

@@ -5,6 +5,7 @@
   imports = [
     ./kitty.nix
     ./dunst
+    ./packages
   ];
 
   # Let Home Manager install and manage itself.
@@ -50,13 +51,16 @@
   gtk.enable = true;
   gtk.iconTheme.name = "Adwaita";
 
-  
+  programs.command-not-found.enable = true;
+  programs.direnv = {
+      enableZshIntegration = true;
+      enable = true;
+  };
   programs.git = {
     enable = true;
     userName = "Dhananjay Balan";
     userEmail = "mail@dbalan.in";
   };
-
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -93,4 +97,6 @@
   services.taffybar.enable = true;
   services.copyq.enable = true;
   services.syncthing.enable = true;
+
+  
 }
