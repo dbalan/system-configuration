@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 
+# FIXME: Make a system specific pkg list.
+
 let
   unstable = import <unstable> {};
   browsercat = import ./browsercat.nix {};
@@ -14,6 +16,8 @@ let
     akonadiconsole
     akregator
     ark
+    breeze-icons
+    breeze-qt5
     gwenview
     kaddressbook
     kalarm
@@ -33,114 +37,117 @@ let
     kmix
     kontact
     kontactinterface
-    korganizer
     konversation
+    korganizer
     kpimtextedit
     libkdepim
     libksieve
     mailcommon
     messagelib
-    pimcommon
-    pim-sieve-editor
     okular
     oxygen
     oxygen-icons5
     oxygenfonts
+    pim-sieve-editor
+    pimcommon
     redshift-plasma-applet
     spectacle
     # End of KDE Apps
   ];
   unstablePackages = with unstable; [
     cabal-install
-    ghcid
     ghc
+    ghcid
     signal-desktop
     xow
-  ];
+    awscli2
+    chrysalis
+    signal-desktop
+  ];  
   commonPackages = with pkgs; [
+    # (pkgs.callPackage ./pipet.nix {})
+    #(haskell.lib.justStaticExecutables (haskellPackages.callPackage ./idid.nix {}))
+    #haskellPackages.arbtt
+    ag
+    alot
     anki
-    pcmanfm
-    openldap
     ansible
-    jq
-    dunst
-    llvmPackages.bintools
-    gcc
-    gnumake
-    telnet
-    htop
-    discord
-    brave
-    nload
-    ldns
-    mpv
-    zeal
+    arandr
     bat
+    beancount
+    brave
+    browsercat.packages."browser-cat"
+    discord
+    docker-compose
+    dunst
+    evince
+    exa
+    fava
+    file
+    firefox
+    freerdp
+    fzf
+    gcc
+    git-secret
+    gitAndTools.hub
+    gnome3.adwaita-icon-theme
+    gnome3.meld
+    gnome3.seahorse
+    gnumake
     go
     godef
-    okular
-    libqalculate
-    steam
-    isync
-    neomutt
-    gnome3.seahorse
-    gnome3.meld
-    libsecret
-    msmtp
     gopass
-    rambox
-    thunderbird
-    restic
-    rsync
-    sublime-music
-    evince
+    handbrake
+    htop
+    httpie
+    imagemagick
+    isync
+    jq
+    ldns
+    libqalculate
+    libsecret
+    llvmPackages.bintools
+    manpages
+    mpv
+    msmtp
+    neomutt
+    nload
+    nmap_graphical
+    notmuch
+    okular
+    p7zip
+    pandoc
+    pcmanfm
     python38Full
     python38Packages.ipython
     python38Packages.poetry
-    exa
-    docker-compose
-    zathura
-    ag
-    xmobar
-    pandoc
-    notmuch
-    ripgrep
-    alot
-    fzf
-    #haskellPackages.arbtt
-    # (pkgs.callPackage ./pipet.nix {})
-    browsercat.packages."browser-cat"
-    gnome3.adwaita-icon-theme
-    tmux-cssh
-    tcpdump
-    tmux
-    httpie
-    tree
-    file
-    #(haskell.lib.justStaticExecutables (haskellPackages.callPackage ./idid.nix {}))
-    nmap_graphical
-    skypeforlinux
-    stylish-haskell
-    zoom-us
-    firefox
-    freerdp
-    wineWowPackages.full
-    shutter
-    imagemagick
+    python38Packages.qrcode
+    python38Packages.virtualenv
+    rambox
     rdesktop
-    manpages
-    arandr
-    beancount
-    vulkan-tools
-    lutris
-    fava
-    unzip
-    xorg.xhost
-    handbrake
-    git-secret
+    restic
+    ripgrep
+    rsync
+    shutter
+    skypeforlinux
+    steam
+    stylish-haskell
+    sublime-music
     taffybar 
-    breeze-qt5
-    breeze-icons
+    tcpdump
+    telnet
+    thunderbird
+    tmux
+    tmux-cssh
+    tree
+    unzip
+    vulkan-tools
+    wineWowPackages.full
+    xmobar
+    xorg.xhost
+    zathura
+    zeal
+    zoom-us
   ];
 in
 {

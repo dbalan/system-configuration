@@ -1,1 +1,1 @@
-[ "kimchi" ]
+[ "kimchi" "meenavial" ]
