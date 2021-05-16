@@ -14,12 +14,6 @@ let
         hostPath
       ]; # ...and all the extra modules.
 
-      #nix.nixPath = options.nix.nixPath.default ++ [
-        # Where to get the top-level nix file, i.e. this one
-       # "nixos-config=/etc/nixos/configuration.nix"
-        # The channel to be subscribed on
-        
-      #];
     };
   hostModules =
     builtins.listToAttrs (map (hostName: {

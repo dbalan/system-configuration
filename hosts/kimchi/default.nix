@@ -138,7 +138,7 @@
   networking.wireguard.interfaces = {
     wg0 = {
        ips = ["192.168.40.6/24"];
-       privateKeyFile = "/etc/nixos/kimchi.ber.dbalan.in-privkey";
+       privateKeyFile = "/home/dj/code/private/system-configuration/common-data/kimchi.ber.dbalan.in-privkey";
        peers = [
           {
              publicKey = "a2cwNbB9hrcjWlLE+iSrywrcQfgX53Nlt/kuAokqChU=";
