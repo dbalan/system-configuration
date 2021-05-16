@@ -26,3 +26,5 @@ cabal.project.local~
 .gitsecret/keys/random_seed
 !*.secret
 common-data/kimchi.ber.dbalan.in-privkey
+hosts/meenavial/wlan-list.nix
+common-data/ares.dbalan.in-privkey
