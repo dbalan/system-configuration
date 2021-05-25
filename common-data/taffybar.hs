@@ -3,6 +3,7 @@ import System.Taffybar
 import System.Taffybar.Information.CPU
 import System.Taffybar.SimpleConfig
 import System.Taffybar.Widget
+import System.Taffybar.Widget.Battery
 import System.Taffybar.Widget.Generic.Graph
 import System.Taffybar.Widget.Generic.PollingGraph
 
@@ -21,7 +22,7 @@ main = do
                      }
       simpleConfig = defaultSimpleTaffyConfig
                        { startWidgets = [ workspaces ]
-                       , endWidgets = [ sniTrayNew, clock, cpu ]
+                       , endWidgets = [ sniTrayNew, clock, cpu, batteryIconNew ]
                        }
   simpleTaffybar simpleConfig
 

@@ -36,6 +36,12 @@
       Host artsoft-vb2-lab
          HostName 168.119.56.212
          User root
+  
+      Host mmbotserver 
+         HostName 188.34.204.201
+         User root
+         RemoteForward 0.0.0.0:7357 127.0.0.1:7357
+
      '';
   };
 

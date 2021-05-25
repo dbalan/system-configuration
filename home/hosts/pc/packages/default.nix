@@ -73,6 +73,7 @@ let
     anki
     ansible
     arandr
+    awslogs
     bat
     beancount
     brave
