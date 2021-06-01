@@ -20,7 +20,7 @@ initProgs = [ ("feh", ["--bg-fill", "/home/dj/Pictures/desk"])
             , ("arbtt-capture", [])]
 
 
-customLayout = avoidStruts ( tiled ||| Mirror tiled ||| Full ||| mouseResizableTile ||| simpleTabbed) ||| Full
+customLayout = smartBorders $ avoidStruts ( tiled ||| Mirror tiled ||| Full ||| mouseResizableTile ) ||| Full
             where
                 tiled = Tall nmaster delta ratio
                 nmaster = 1
@@ -34,7 +34,7 @@ main = do
        , modMask     = mod4Mask
        , focusFollowsMouse = True
        , borderWidth = 1
-       , layoutHook = smartBorders $ customLayout
+       , layoutHook = customLayout
        {-, logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "green" "" . shorten 50
