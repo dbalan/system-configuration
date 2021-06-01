@@ -98,6 +98,5 @@
   services.taffybar.enable = true;
   services.copyq.enable = true;
   services.syncthing.enable = true;
-
   
 }

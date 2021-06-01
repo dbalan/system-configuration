@@ -149,9 +149,10 @@ let
     zathura
     zeal
     zoom-us
+    obsidian
   ];
 in
 {
   home.packages = commonPackages ++ unstablePackages ++ kdepim;
 }
-    
+
