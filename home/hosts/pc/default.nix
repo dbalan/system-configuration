@@ -19,7 +19,7 @@
   # overlays we would need
   # nixpkgs.overlays = [(self: super: { discord = super.discord.overrideAttrs (_: { version = "0.0.14"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/0.0.14/discord-0.0.14.tar.gz"; }); })];
 
-  
+
   home.sessionVariables = {
     EDITOR = "mg";
     ANSIBLE_STDOUT_CALLBACK = "debug";
@@ -81,6 +81,11 @@
     };
   };
 
+  programs.autojump = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   xsession.enable = true;
   xsession.windowManager.xmonad = {
     enable = true;
@@ -98,5 +103,5 @@
   services.taffybar.enable = true;
   services.copyq.enable = true;
   services.syncthing.enable = true;
-  
+
 }
