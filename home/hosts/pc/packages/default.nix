@@ -4,8 +4,7 @@
 
 let
   unstable = import <unstable> {};
-  browsercat = import ./browsercat.nix {};
-  kdepim = with pkgs; with kdeApplications; [ # KDE Apps
+  kdepim = with pkgs; with plasma5Packages; [ # KDE Apps
     akonadi
     akonadi-calendar
     akonadi-contacts
@@ -25,7 +24,6 @@ let
     kate
     kcalutils
     kdepim-addons
-    kdepim-apps-libs
     kdepim-runtime
     kdialog
     kidentitymanagement
@@ -63,6 +61,7 @@ let
     awscli2
     chrysalis
     signal-desktop
+    droidcam
   ];  
   commonPackages = with pkgs; [
     # (pkgs.callPackage ./pipet.nix {})
@@ -77,13 +76,13 @@ let
     bat
     beancount
     brave
-    browsercat.packages."browser-cat"
     discord
     docker-compose
     dunst
     evince
     exa
     fava
+    ferdi
     file
     firefox
     freerdp
@@ -99,6 +98,7 @@ let
     godef
     gopass
     handbrake
+    home-assistant-cli
     htop
     httpie
     imagemagick
@@ -107,7 +107,6 @@ let
     ldns
     libqalculate
     libsecret
-    llvmPackages.bintools
     manpages
     mpv
     msmtp
@@ -115,6 +114,7 @@ let
     nload
     nmap_graphical
     notmuch
+    obsidian
     okular
     p7zip
     pandoc
@@ -124,7 +124,6 @@ let
     python38Packages.poetry
     python38Packages.qrcode
     python38Packages.virtualenv
-    rambox
     rdesktop
     restic
     ripgrep
@@ -149,7 +148,6 @@ let
     zathura
     zeal
     zoom-us
-    obsidian
   ];
 in
 {

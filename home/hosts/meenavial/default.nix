@@ -11,7 +11,7 @@ in
 
   programs.autorandr.enable = true;
 
-  nixpkgs.overlays = [(self: super: { discord = super.discord.overrideAttrs (_: { src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/0.0.14/discord-0.0.14.tar.gz"; });})];
+  # nixpkgs.overlays = [(self: super: { discord = super.discord.overrideAttrs (_: { src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/0.0.14/discord-0.0.14.tar.gz"; });})];
   
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

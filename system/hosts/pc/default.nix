@@ -31,21 +31,21 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-     curl
-     mg
-     gitAndTools.gitFull
-     git-lfs
-     kitty
-     dmenu
-     feh
-     chromium
-     gnupg
-     fd
-     tig
-     mosh
-     vpnc
-     virtmanager
-     nfs-utils
+    chromium
+    curl
+    dmenu
+    fd
+    feh
+    git-lfs
+    gitAndTools.gitFull
+    gnupg
+    kitty
+    mg
+    mosh
+    nfs-utils
+    tig
+    virtmanager
+    vpnc
   ];
 
   
@@ -102,6 +102,9 @@
 
   services.printing.enable = true;
   services.upower.enable = true;
+
+  # ios usb access
+  services.usbmuxd.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

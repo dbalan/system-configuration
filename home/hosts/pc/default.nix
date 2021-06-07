@@ -1,6 +1,9 @@
 # common for pc
 { config, lib, pkgs, ... }:
 
+let
+  unstable = import <unstable> {};
+in
 {
   imports = [
     ./kitty.nix
@@ -23,6 +26,8 @@
   home.sessionVariables = {
     EDITOR = "mg";
     ANSIBLE_STDOUT_CALLBACK = "debug";
+    HASS_SERVER = "http://192.168.20.57:8123";
+    HASS_TOKEN = builtins.readFile ../../../common-data/home-assistant.key;
   };
 
 
@@ -62,6 +67,7 @@
     userName = "Dhananjay Balan";
     userEmail = "mail@dbalan.in";
   };
+
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -73,6 +79,10 @@
       cat = "bat";
       scp = "rsync -Pv";
       ls = "exa";
+      ha-bookshelf = "hass-cli state toggle switch.0x7cb03eaa0a087273";
+      ha-tv = "hass-cli state toggle switch.0x7cb03eaa0a08a1e7";
+      ha-led =  "hass-cli state toggle switch.0x7cb03eaa0a08a806";
+      ha-off = "hass-cli state turn_off switch.0x7cb03eaa0a08a806 switch.0x7cb03eaa0a087273 switch.0x7cb03eaa0a08a1e7";
     };
     oh-my-zsh = {
       enable = true;
@@ -90,6 +100,7 @@
   xsession.windowManager.xmonad = {
     enable = true;
     enableContribAndExtras = true;
+    haskellPackages = unstable.haskellPackages;
     extraPackages = self: [ self.taffybar ];
     config = pkgs.writeText "xmonad.hs" (builtins.readFile ../../../common-data/xmonad.hs);
   };
@@ -100,7 +111,11 @@
     latitude = "52.520008";
   };
   services.status-notifier-watcher.enable = true;
-  services.taffybar.enable = true;
+  services.taffybar = {
+    enable = true;
+    package = unstable.taffybar;
+  };
+
   services.copyq.enable = true;
   services.syncthing.enable = true;
 
