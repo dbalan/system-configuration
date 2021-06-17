@@ -4,6 +4,8 @@
 
 let
   unstable = import <unstable> {};
+  rtm = import ./rtm-cli { inherit pkgs; };
+
   kdepim = with pkgs; with plasma5Packages; [ # KDE Apps
     akonadi
     akonadi-calendar
@@ -145,6 +147,7 @@ let
     zeal
     zoom-us
     zathura
+    rtm.rtm-cli
   ];
 in
 {
