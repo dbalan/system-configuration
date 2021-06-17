@@ -59,8 +59,7 @@ let
     signal-desktop
     xow
     awscli2
-    chrysalis
-    signal-desktop
+    ssm-session-manager-plugin
     droidcam
   ];  
   commonPackages = with pkgs; [
@@ -78,11 +77,11 @@ let
     brave
     discord
     docker-compose
+    dolphin
     dunst
     evince
     exa
     fava
-    ferdi
     file
     firefox
     freerdp
@@ -115,10 +114,8 @@ let
     nmap_graphical
     notmuch
     obsidian
-    okular
     p7zip
     pandoc
-    pcmanfm
     python38Full
     python38Packages.ipython
     python38Packages.poetry
@@ -133,7 +130,6 @@ let
     steam
     stylish-haskell
     sublime-music
-    taffybar 
     tcpdump
     telnet
     thunderbird
@@ -141,13 +137,14 @@ let
     tmux-cssh
     tree
     unzip
+    vivaldi
     vulkan-tools
     wineWowPackages.full
     xmobar
     xorg.xhost
-    zathura
     zeal
     zoom-us
+    zathura
   ];
 in
 {
