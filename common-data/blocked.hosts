@@ -30,6 +30,7 @@ ff02::3 ip6-allhosts
 # Custom host records are listed here.
 0.0.0.0 maps.google.com
 127.0.0.1 sourcegraph.meenavial.ber.dbalan.in
+192.168.3.48 vcenter
 
 # End of custom host records.
 # Start StevenBlack

@@ -79,6 +79,9 @@ in
       cat = "bat";
       scp = "rsync -Pv";
       ls = "exa";
+      today = "rtm lsd dueBefore:tomorrow NOT status:complete";
+      planner = "rtm lsd NOT due:never NOT status:complete";
+      week = "rtm planner NOT due:never NOT status:complete";
       ha-bookshelf = "hass-cli state toggle switch.0x7cb03eaa0a087273";
       ha-tv = "hass-cli state toggle switch.0x7cb03eaa0a08a1e7";
       ha-led =  "hass-cli state toggle switch.0x7cb03eaa0a08a806";

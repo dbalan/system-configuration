@@ -111,6 +111,7 @@ let
     manpages
     mpv
     msmtp
+    morph
     neomutt
     nload
     nmap_graphical
@@ -123,6 +124,7 @@ let
     python38Packages.poetry
     python38Packages.qrcode
     python38Packages.virtualenv
+    python38Packages.cfn-lint
     rdesktop
     restic
     ripgrep
