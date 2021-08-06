@@ -66,6 +66,9 @@ in
     enable = true;
     userName = "Dhananjay Balan";
     userEmail = "mail@dbalan.in";
+    extraConfig = {
+      init = { defaultBranch = "trunk"; };
+    };
   };
 
   programs.zsh = {

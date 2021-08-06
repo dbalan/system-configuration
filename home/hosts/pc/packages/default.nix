@@ -114,6 +114,7 @@ let
     morph
     neomutt
     nload
+    niv
     nmap_graphical
     notmuch
     obsidian
@@ -150,6 +151,9 @@ let
     zoom-us
     zathura
     rtm.rtm-cli
+
+    gopls
+    haskellPackages.haskell-language-server
   ];
 in
 {
