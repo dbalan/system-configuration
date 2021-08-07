@@ -77,6 +77,7 @@
      fira-code-symbols
      proggyfonts
      ibm-plex
+     vollkorn
   ];
 
   # for steam
