@@ -6,6 +6,12 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+    }))
+  ];
+
   hardware.enableRedistributableFirmware = true;
 
   networking.extraHosts = builtins.readFile ../../../common-data/blocked.hosts;
@@ -48,7 +54,7 @@
     vpnc
   ];
 
-  
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio = {
@@ -78,6 +84,8 @@
      proggyfonts
      ibm-plex
      vollkorn
+     merriweather
+     noto-fonts-extra
   ];
 
   # for steam
@@ -99,7 +107,10 @@
   services.physlock.enable = true;
 
   services.rpcbind.enable = true;
-  services.emacs.enable = true;
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacsUnstable;
+  };
 
   services.printing.enable = true;
   services.upower.enable = true;
@@ -137,6 +148,7 @@
               ProxyJump dj@ares.dbalan.in
              '';
            light.enable = true;
+           adb.enable = true;
   };
 
     services.xserver = {
