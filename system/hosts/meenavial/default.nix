@@ -11,6 +11,7 @@
       # ./static-wlan.nix
       ./wlan-list.nix
       # ./open-wlan.nix
+
     ];
 
   require = [

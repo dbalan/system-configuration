@@ -126,6 +126,7 @@ let
     python38Packages.qrcode
     python38Packages.virtualenv
     python38Packages.cfn-lint
+    python-language-server
     rdesktop
     restic
     ripgrep
@@ -140,7 +141,6 @@ let
     thunderbird
     tmux
     tmux-cssh
-    tree
     unzip
     vivaldi
     vulkan-tools
@@ -151,7 +151,8 @@ let
     zoom-us
     zathura
     rtm.rtm-cli
-
+    libreoffice
+    wmname
     gopls
     haskellPackages.haskell-language-server
   ];

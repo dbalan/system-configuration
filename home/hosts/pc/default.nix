@@ -20,7 +20,10 @@ in
   home.username = "dj";
   home.homeDirectory = "/home/dj";
   # overlays we would need
-  # nixpkgs.overlays = [(self: super: { discord = super.discord.overrideAttrs (_: { version = "0.0.14"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/0.0.14/discord-0.0.14.tar.gz"; }); })];
+  nixpkgs.overlays = [
+    (self: super: { discord = super.discord.overrideAttrs (_: { version = "0.0.14"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/0.0.16/discord-0.0.16.tar.gz"; }); })
+
+  ];
 
 
   home.sessionVariables = {
@@ -82,6 +85,7 @@ in
       cat = "bat";
       scp = "rsync -Pv";
       ls = "exa";
+      tree = "exa --tree";
       today = "rtm lsd dueBefore:tomorrow NOT status:complete";
       planner = "rtm lsd NOT due:never NOT status:complete";
       week = "rtm planner NOT due:never NOT status:complete";
