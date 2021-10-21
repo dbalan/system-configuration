@@ -68,6 +68,7 @@
     "Waschis Fritz!Box" = {
       psk = "97508780456076267487";
     };
-    
+
+    "c-base-public" = {};
   };
 }

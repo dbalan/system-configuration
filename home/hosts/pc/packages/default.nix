@@ -60,9 +60,10 @@ let
     ghcid
     signal-desktop
     xow
-    awscli2
     ssm-session-manager-plugin
     droidcam
+    foliate
+    calibre
   ];  
   commonPackages = with pkgs; [
     # (pkgs.callPackage ./pipet.nix {})
@@ -74,6 +75,7 @@ let
     ansible
     arandr
     awslogs
+    awscli2
     bat
     beancount
     brave

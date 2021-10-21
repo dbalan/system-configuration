@@ -91,6 +91,9 @@
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
 
+  # tb3 acl
+  services.hardware.bolt.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dj = {
      isNormalUser = true;

@@ -97,6 +97,11 @@
   hardware.nitrokey.enable = true;
   services.pcscd.enable = true;
 
+  # logitech
+  hardware.logitech.wireless = {
+    enable = true;
+  };
+
   # update manager for fw
   services.fwupd.enable = true;
   services.dbus.packages = with pkgs; [ gnome3.dconf pkgs.blueman ];
