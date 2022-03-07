@@ -42,6 +42,20 @@
          User root
          RemoteForward 0.0.0.0:7357 127.0.0.1:7357
 
+      Host verdi-monitor-controller
+         User ansible
+         HostName 188.34.178.163
+
+      Host verdi-nextcloud-prod
+         User ansible
+         HostName 10.0.0.2
+         ProxyJump verdi-monitor-controller
+ 
+      Host verdi-bigbluebutton
+         User ansible
+         Hostname 10.0.0.4
+         ProxyJump verdi-monitor-controller
+
      '';
   };
 

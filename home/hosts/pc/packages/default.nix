@@ -4,6 +4,7 @@
 
 let
   unstable = import <unstable> {};
+  threema-desktop = pkgs.callPackage ./threema-desktop.nix { };
   rtm = import ./rtm-cli { inherit pkgs; };
 
   kdepim = with pkgs; with plasma5Packages; [ # KDE Apps
@@ -64,6 +65,7 @@ let
     droidcam
     foliate
     calibre
+    spotify
   ];  
   commonPackages = with pkgs; [
     # (pkgs.callPackage ./pipet.nix {})
@@ -76,6 +78,7 @@ let
     arandr
     awslogs
     awscli2
+    aws-sam-cli
     bat
     beancount
     brave
@@ -115,6 +118,7 @@ let
     msmtp
     morph
     neomutt
+    w3m
     nload
     niv
     nmap_graphical
@@ -157,6 +161,8 @@ let
     wmname
     gopls
     haskellPackages.haskell-language-server
+    threema-desktop
+    terraform_0_14
   ];
 in
 {

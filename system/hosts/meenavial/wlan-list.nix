@@ -70,5 +70,35 @@
     };
 
     "c-base-public" = {};
+    "bib-gast" = {
+      psk = "29.10.2021Yw";
+    };
+    "humarawifi" = {
+      psk = "bharatmatakijai";
+    };
+    "Kappa Meen 5G" = {
+      psk = "de_dust2";
+    };
+    "GATE-Berlin" = {
+      psk = "11371180455161287255";
+    };
+
+    "Chemical Toilet" = {
+      psk = "planetpiss";
+    };
+
+    "PeppermintPatty" = {
+      psk = "medimixherbalsoap";
+
+    };
+
+    "FlugiPeepsCheers" = {
+      psk = "str0mk45t3ng4ng";
+    };
+
+    "Cnet,.. " = {
+      psk = "mercusys";
+    };
+
   };
 }

@@ -71,7 +71,7 @@
 
   services.openvpn.servers = {
     #pia = { config = '' config /home/dj/Documents/keys/de_berlin-aes-128-cbc-udp-dns.ovpn ''; };
-    p0  = { config = '' config /home/dj/Documents/keys/p0/PortZero_DhananjayBalan_Port-Zero-prd.ovpn ''; };
+   p0  = { config = '' config /home/dj/Documents/keys/p0/PortZero_DhananjayBalan_Port-Zero-prd.ovpn ''; };
   };
 
   networking.wireguard.interfaces = {
@@ -103,7 +103,6 @@
      packages = [
 	     pkgs.pavucontrol
 	     pkgs.steam
-       pkgs.spotify
      ];
      shell = pkgs.zsh;
   };

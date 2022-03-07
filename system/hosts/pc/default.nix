@@ -6,11 +6,11 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-    }))
-  ];
+  # nixpkgs.overlays = [
+  #   (import (builtins.fetchTarball {
+  #     url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+  #   }))
+  # ];
 
   hardware.enableRedistributableFirmware = true;
 
@@ -114,7 +114,7 @@
   services.rpcbind.enable = true;
   services.emacs = {
     enable = true;
-    package = pkgs.emacsUnstable;
+    #package = pkgs.emacsUnstable;
   };
 
   services.printing.enable = true;
@@ -123,6 +123,7 @@
   # ios usb access
   services.usbmuxd.enable = true;
 
+  services.mullvad-vpn.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
