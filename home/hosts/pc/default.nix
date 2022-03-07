@@ -89,23 +89,32 @@ in
       today = "rtm lsd dueBefore:tomorrow NOT status:complete";
       planner = "rtm lsd NOT due:never NOT status:complete";
       week = "rtm planner NOT due:never NOT status:complete";
-      ha-bookshelf = "hass-cli state toggle switch.0x7cb03eaa0a087273";
-      ha-tv = "hass-cli state toggle switch.0x7cb03eaa0a08a1e7";
-      ha-led =  "hass-cli state toggle switch.0x7cb03eaa0a08a806";
-      ha-off = "hass-cli state turn_off switch.0x7cb03eaa0a08a806 switch.0x7cb03eaa0a087273 switch.0x7cb03eaa0a08a1e7";
+      ha-bookshelf = "hass-cli state toggle switch.bookshelf";
+      ha-tv = "hass-cli state toggle switch.media_center";
+      ha-led =  "hass-cli state toggle switch.led_strip";
+      ha-off = "hass-cli state turn_off switch.bookshelf switch.led_strip switch.media_center";
     };
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "sudo" ];
-      theme = "agnoster";
     };
   };
 
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+  
   programs.autojump = {
     enable = true;
     enableZshIntegration = true;
   };
 
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
+  };
+  
   xsession.enable = true;
   xsession.windowManager.xmonad = {
     enable = true;
