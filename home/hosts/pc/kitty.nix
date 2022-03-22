@@ -6,7 +6,7 @@
      font.name = "Fira Code";
      extraConfig =
       ''
-      font_size 12
+      font_size 10
       enable_audio_bell no
       # theme monokai
       background #403e41
