@@ -39,7 +39,6 @@
   environment.systemPackages = with pkgs; [
     chromium
     curl
-    dmenu
     fd
     feh
     git-lfs

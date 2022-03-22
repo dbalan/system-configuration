@@ -100,5 +100,9 @@
       psk = "mercusys";
     };
 
+    "o2-WLAN66" = {
+      psk = "PK3468KV488T934U";
+    };
+
   };
 }

@@ -6,10 +6,8 @@ import XMonad.Util.Run
 import XMonad.Util.Run (spawnPipe)
 
 import System.Taffybar.Support.PagerHints (pagerHints)
--- import XMonad.Actions.WindowBringer
 import XMonad.Config.Desktop
 import XMonad.Hooks.ManageDocks
--- import qualified XMonad.Layout.LayoutCombinators as LC
 import XMonad.Layout.MouseResizableTile (mouseResizableTile)
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Tabbed (simpleTabbed)
@@ -18,7 +16,8 @@ import XMonad.Layout.Tabbed (simpleTabbed)
 startProgs prgs = mapM_ (\(cmd,args) -> safeSpawn cmd args) prgs
 
 initProgs = [ ("feh", ["--bg-fill", "/home/dj/Pictures/desk"])
-            , ("arbtt-capture", [])]
+            --, ("arbtt-capture", [])
+            ]
 
 
 customLayout = smartBorders $ avoidStruts ( tiled ||| Mirror tiled ||| Full ||| mouseResizableTile ||| simpleTabbed ) ||| Full

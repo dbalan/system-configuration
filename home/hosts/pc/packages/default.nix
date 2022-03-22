@@ -66,6 +66,7 @@ let
     foliate
     calibre
     spotify
+    _1password-gui
   ];  
   commonPackages = with pkgs; [
     # (pkgs.callPackage ./pipet.nix {})
