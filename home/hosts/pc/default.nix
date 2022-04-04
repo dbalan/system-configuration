@@ -1,6 +1,8 @@
 # common for pc
 { config, lib, pkgs, ... }:
 
+with lib;
+
 let
   unstable = import <unstable> {};
 in
@@ -103,6 +105,41 @@ in
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
+    settings = mkMerge [
+        {
+          add_newline = false;
+          format = concatStrings [
+            "$line_break"
+            "$package"
+            "$line_break"
+            "$character"
+          ];
+          scan_timeout = 10;
+          character = {
+            success_symbol = "➜";
+            error_symbol = "➜";
+          };
+          package.disabled = true;
+          memory_usage.threshold = -1;
+          aws.style = "bold blue";
+          battery = {
+            charging_symbol = "⚡️";
+            display = [{
+              threshold = 10;
+              style = "bold red";
+            }];
+          };
+        }
+
+        {
+          aws.disabled = true;
+
+          battery.display = [{
+            threshold = 30;
+            style = "bold yellow";
+          }];
+        }
+      ];
   };
   
   programs.autojump = {
@@ -135,7 +172,6 @@ in
     package = unstable.taffybar;
   };
 
-  services.copyq.enable = true;
   services.syncthing.enable = true;
 
 }

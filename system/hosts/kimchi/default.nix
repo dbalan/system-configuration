@@ -25,7 +25,7 @@
   };
 
   networking.hostName = "kimchi";
-  networking.interfaces.enp2s0f0u6u3.useDHCP = true;
+  networking.interfaces.eno1.useDHCP = true;
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 22 22000 ];

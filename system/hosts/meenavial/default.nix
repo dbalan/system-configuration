@@ -17,7 +17,7 @@
   require = [
     ../pc
   ];
-  
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -40,7 +40,11 @@
   networking.interfaces.enp0s31f6.tempAddress = "disabled";
   #services.rdnssd.enable = true;
   #services.flatpak.enable = true;
-  xdg.portal.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde ];
+  };
+
   # nameservers
   #services.nscd.enable = true;
   #networking.nameservers = ["1.1.1.1" "2001:4860:4860::8888"];
@@ -106,6 +110,8 @@
      ];
      shell = pkgs.zsh;
   };
+
+  home-manager.users.dj = ../../../home/hosts/meenavial/default.nix;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
