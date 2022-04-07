@@ -64,7 +64,6 @@ let
     ssm-session-manager-plugin
     droidcam
     foliate
-    calibre
     spotify
     _1password-gui
   ];  
@@ -83,6 +82,7 @@ let
     bat
     beancount
     brave
+    calibre
     discord
     docker-compose
     dolphin

@@ -54,6 +54,8 @@
                 xkbOptions = "ctrl:nocaps";
                 windowManager.xmonad.enable = true;
   };
+
+  home-manager.users.dj = ../../../home/hosts/kimchi/default.nix;
   services.hardware.xow.enable = true;
 
   # fixme

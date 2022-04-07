@@ -119,7 +119,6 @@ in
   xsession.windowManager.xmonad = {
     enable = true;
     enableContribAndExtras = true;
-    haskellPackages = unstable.haskellPackages;
     extraPackages = self: [ self.taffybar ];
     config = pkgs.writeText "xmonad.hs" (builtins.readFile ../../../common-data/xmonad.hs);
   };
