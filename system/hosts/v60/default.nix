@@ -136,6 +136,12 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  environment.loginShellInit = ''
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+      exec sway
+    fi
+  '';
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 44721 ];
   # networking.firewall.allowedUDPPorts = [ ... ];

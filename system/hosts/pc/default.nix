@@ -52,6 +52,7 @@
     tig
     virtmanager
     vpnc
+    pavucontrol
   ];
 
 

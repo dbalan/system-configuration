@@ -23,7 +23,6 @@ let
     gwenview
     kaddressbook
     kalarm
-    kalarmcal
     kate
     kcalutils
     kdepim-addons
