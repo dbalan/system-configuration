@@ -29,6 +29,7 @@ in
 
 
   home.sessionVariables = {
+    VOLTUS = "/home/dj/code/work/voltus";
     EDITOR = "mg";
     ANSIBLE_STDOUT_CALLBACK = "debug";
     HASS_SERVER = "http://192.168.20.57:8123";
@@ -119,8 +120,8 @@ in
   xsession.windowManager.xmonad = {
     enable = true;
     enableContribAndExtras = true;
-    haskellPackages = unstable.haskellPackages;
-    extraPackages = self: [ self.taffybar ];
+    #haskellPackages = unstable.haskellPackages;
+    extraPackages = self: [];
     config = pkgs.writeText "xmonad.hs" (builtins.readFile ../../../common-data/xmonad.hs);
   };
 
@@ -131,7 +132,7 @@ in
   };
   services.status-notifier-watcher.enable = true;
   services.taffybar = {
-    enable = true;
+    enable = false;
     package = unstable.taffybar;
   };
 

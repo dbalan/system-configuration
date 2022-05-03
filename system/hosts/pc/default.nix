@@ -7,7 +7,7 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-  # nixpkgs.overlays = [
+  # nixpkgs.overlaysb = [
   #   (import (builtins.fetchTarball {
   #     url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
   #   }))
@@ -104,7 +104,7 @@
 
   # update manager for fw
   services.fwupd.enable = true;
-  services.dbus.packages = with pkgs; [ gnome3.dconf pkgs.blueman ];
+  services.dbus.packages = with pkgs; [ pkgs.dconf pkgs.blueman ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

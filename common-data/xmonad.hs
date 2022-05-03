@@ -5,7 +5,7 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Run
 import XMonad.Util.Run (spawnPipe)
 
-import System.Taffybar.Support.PagerHints (pagerHints)
+-- import System.Taffybar.Support.PagerHints (pagerHints)
 import XMonad.Config.Desktop
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.MouseResizableTile (mouseResizableTile)
@@ -16,6 +16,7 @@ import XMonad.Layout.Tabbed (simpleTabbed)
 startProgs prgs = mapM_ (\(cmd,args) -> safeSpawn cmd args) prgs
 
 initProgs = [ ("feh", ["--bg-fill", "/home/dj/Pictures/desk"])
+            , ("setxkbmap", ["-option", "\"ctrl:nocaps\""])
             --, ("arbtt-capture", [])
             ]
 
@@ -29,7 +30,7 @@ customLayout = smartBorders $ avoidStruts ( tiled ||| Mirror tiled ||| Full ||| 
 
 main = do
      -- xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.config"
-     xmonad $ docks $ ewmh $ pagerHints $ desktopConfig
+     xmonad $ docks $ ewmh $ desktopConfig
        { terminal    = "kitty"
        , modMask     = mod4Mask
        , focusFollowsMouse = True

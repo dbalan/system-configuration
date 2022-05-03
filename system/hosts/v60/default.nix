@@ -10,7 +10,20 @@
       ./hardware-configuration.nix
     ];
 
+  require = [
+    ../pc
+  ];
 
+# nixpkgs.overlays = [(self: super: {
+# libinput = super.libinput.overrideAttrs (_:  rec { version = "1.20.1";
+#                                                name = "libinput-${version}";
+#            				      	src = pkgs.fetchurl {
+#          					      url = "https://gitlab.freedesktop.org/libinput/libinput/-/archive/${version}/${name}.tar.gz";
+#                                                      sha256 = "0r40lpl1i5apm3r1a2q49b01227zhvdh7dvpq281f2pjbiffkgzv";
+#                                                      };
+# 	                                       });
+# 	                                  
+# 	                             })];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
@@ -21,7 +34,7 @@
     # Grub menu is painted really slowly on HiDPI, so we lower the
     # resolution. Unfortunately, scaling to 1280x720 (keeping aspect
     # ratio) doesn't seem to work, so we just pick another low one.
-    gfxmodeEfi = "1024x768";
+    gfxmodeEfi = "1024x768"; 
   };
  
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
@@ -69,7 +82,7 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
+  services.tailscale.enable = true;
   # Enable the Plasma 5 Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
@@ -87,7 +100,7 @@
   # hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.jane = {
@@ -97,9 +110,13 @@
 
   users.users.dj = {
      isNormalUser = true;
-     extraGroups = [ "wheel" ];
+     extraGroups = [ "wheel" "network" "wireshark"];
+     description = "Dhananjay Balan";
+     shell = pkgs.zsh;
   };
 
+  home-manager.users.dj = ../../../home/hosts/v60/default.nix;
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -120,7 +137,7 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [ 22 44721 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

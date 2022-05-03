@@ -60,11 +60,7 @@ let
     ghc
     ghcid
     signal-desktop
-    xow
-    ssm-session-manager-plugin
-    droidcam
     foliate
-    calibre
     spotify
     _1password-gui
   ];  
@@ -72,17 +68,14 @@ let
     # (pkgs.callPackage ./pipet.nix {})
     #(haskell.lib.justStaticExecutables (haskellPackages.callPackage ./idid.nix {}))
     #haskellPackages.arbtt
-    ag
+    silver-searcher
     alot
-    anki
-    ansible
     arandr
-    awslogs
     awscli2
-    aws-sam-cli
     bat
     beancount
     brave
+    calibre
     discord
     docker-compose
     dolphin
@@ -92,13 +85,12 @@ let
     fava
     file
     firefox
-    freerdp
     fzf
     gcc
     git-secret
     gitAndTools.hub
     gnome3.adwaita-icon-theme
-    gnome3.meld
+    meld
     gnome3.seahorse
     gnumake
     go
@@ -114,15 +106,14 @@ let
     ldns
     libqalculate
     libsecret
-    manpages
+    man-pages
     mpv
     msmtp
     morph
     neomutt
     w3m
     nload
-    niv
-    nmap_graphical
+    nmap-graphical
     notmuch
     obsidian
     p7zip
@@ -144,7 +135,7 @@ let
     stylish-haskell
     sublime-music
     tcpdump
-    telnet
+    inetutils
     thunderbird
     tmux
     tmux-cssh
@@ -152,7 +143,6 @@ let
     vivaldi
     vulkan-tools
     wineWowPackages.full
-    xmobar
     xorg.xhost
     zeal
     zoom-us
@@ -164,6 +154,7 @@ let
     haskellPackages.haskell-language-server
     threema-desktop
     terraform_0_14
+    slack
   ];
 in
 {
