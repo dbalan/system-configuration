@@ -154,6 +154,7 @@ let
     threema-desktop
     terraform_0_14
     slack
+    gh
   ];
 in
 {
