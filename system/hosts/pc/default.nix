@@ -113,6 +113,8 @@
   hardware.nitrokey.enable = true;
   services.pcscd.enable = true;
 
+  # opengl
+  hardware.opengl.enable = true;
   # logitech
   hardware.logitech.wireless = {
     enable = true;
@@ -122,10 +124,13 @@
   services.fwupd.enable = true;
   services.dbus.packages = with pkgs; [ pkgs.dconf pkgs.blueman ];
 
+  # enable mullvad
+  services.mullvad-vpn.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.smartd.enable = true;
-  services.physlock.enable = true;
+  # services.physlock.enable = true;
 
   services.rpcbind.enable = true;
   services.emacs = {
@@ -137,7 +142,7 @@
   services.upower.enable = true;
 
   # ios usb access
-  services.usbmuxd.enable = true;
+  # services.usbmuxd.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -173,10 +178,10 @@
   };
 
     services.xserver = {
-                enable = true;
+                enable = false;
                 layout = "us";
                 xkbOptions = "ctrl:nocaps";
-                windowManager.xmonad.enable = true;
+                windowManager.xmonad.enable = false;
   };
 
 

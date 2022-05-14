@@ -126,6 +126,7 @@
   programs.gnupg.agent = {
      enable = true;
      enableSSHSupport = true;
+     pinentryFlavor = "gtk2";
   };
 
   # List services that you want to enable:

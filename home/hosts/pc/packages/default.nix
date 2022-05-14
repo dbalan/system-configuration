@@ -155,6 +155,8 @@ let
     terraform_0_14
     slack
     gh
+    pinentry-gtk2
+    ponymix
   ];
 in
 {
