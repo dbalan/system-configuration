@@ -96,7 +96,18 @@ in
     };
   };
 
-  services.swayidle.enable = true;
+  services.swayidle = {
+    enable = true;
+    events =
+      [
+        { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF -i /home/dj/Pictures/cern-lock.jpg"; }
+        { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -fF -i /home/dj/Pictures/cern-lock.jpg"; }
+      ];
+    timeouts = [
+      { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -fF -i /home/dj/Pictures/cern-lock.jpg"; }
+    ];
+  };
+
 
   home.packages = with pkgs; [
   	swaylock

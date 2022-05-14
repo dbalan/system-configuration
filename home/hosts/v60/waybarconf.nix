@@ -95,7 +95,7 @@
         "activated"= "";
         "deactivated"= "";
       };
-      "on-click-right"= "swaylock -eFfki ~/.config/lockscreen-origin.png";
+      "on-click-right"= "swaylock -eFfki /home/dj/Pictures/cern-lock.jpg";
     };
 
     "tray"= {

@@ -134,6 +134,8 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  security.pam.services.swaylock = {};
+
   environment.loginShellInit = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
       exec sway
