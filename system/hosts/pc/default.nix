@@ -18,7 +18,7 @@
   networking.extraHosts = builtins.readFile ../../../common-data/blocked.hosts;
 
   # Set your time zone.
-  time.timeZone = "America/Monterrey";
+  time.timeZone = "Europe/Berlin";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -154,6 +154,7 @@
            wireshark.package = pkgs.wireshark;
            ssh.extraConfig =
              ''
+             PubkeyAcceptedKeyTypes +ssh-rsa
              Host irc
               Hostname ares.dbalan.in
               User root

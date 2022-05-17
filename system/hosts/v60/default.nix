@@ -142,6 +142,8 @@
     fi
   '';
 
+  environment.sessionVariables.NIXOS_OZONE_WL= "1";
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 44721 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
