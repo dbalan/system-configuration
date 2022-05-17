@@ -11,6 +11,7 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
+    xwayland = true;
     config = {
       terminal = "${pkgs.kitty}/bin/kitty";
       modifier = "Mod4";
@@ -24,6 +25,7 @@ in
 	      "DP-5" = { bg = "~/Pictures/desk-ber.jpg fill"; };
 	      "DP-6" = { bg = "~/Pictures/desk-ber.jpg fill"; };
 	    };
+
       bars = [];
 	    keybindings = let
 	      cfg = config.wayland.windowManager.sway.config;
@@ -31,8 +33,8 @@ in
       in lib.mkOptionDefault {
         "${modifier}+Shift+Return" = "exec ${cfg.terminal}";
         "${modifier}+Shift+c" = "kill";
-        "${modifier}+o" = "exec ${pkgs.rofi}/bin/rofi -show run | ${pkgs.dmenu}/bin/dmenu | ${pkgs.findutils}/bin/xargs swaymsg exec --";
-        "${modifier}+p" = "exec ${pkgs.rofi}/bin/rofi -show run | ${pkgs.dmenu}/bin/dmenu | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+        "${modifier}+o" = "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+        "${modifier}+p" = "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
         "${modifier}+x" = "exec ${pkgs.emacs}/bin/emacsclient -c";
 
