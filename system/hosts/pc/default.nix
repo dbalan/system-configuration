@@ -94,6 +94,7 @@
      noto-fonts
      emojione
      fira-code
+     hack-font
      fira
      fira-code-symbols
      proggyfonts
