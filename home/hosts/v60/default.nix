@@ -26,6 +26,10 @@ in
 	      "DP-6" = { bg = "~/Pictures/desk-ber.jpg fill"; };
 	    };
 
+      startup = [
+        { command = "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store"; }
+      ];
+
       bars = [];
 	    keybindings = let
 	      cfg = config.wayland.windowManager.sway.config;
@@ -33,6 +37,12 @@ in
       in lib.mkOptionDefault {
         "${modifier}+Shift+Return" = "exec ${cfg.terminal}";
         "${modifier}+Shift+c" = "kill";
+
+        "${modifier}+Shift+v" = "exec ${pkgs.clipman}/bin/clipman pick -t rofi";
+
+        "${modifier}+Shift+w" = "move workspace to output left";
+        "${modifier}+Shift+e" = "move workspace to output right";
+
         "${modifier}+o" = "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons | ${pkgs.findutils}/bin/xargs swaymsg exec --";
         "${modifier}+p" = "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 

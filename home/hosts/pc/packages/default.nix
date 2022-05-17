@@ -157,6 +157,7 @@ let
     gh
     pinentry-gtk2
     ponymix
+    xdg-utils
   ];
 in
 {

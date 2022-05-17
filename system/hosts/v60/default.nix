@@ -107,7 +107,7 @@
 
   users.users.dj = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "network" "wireshark"];
+     extraGroups = [ "wheel" "network" "wireshark" "docker" ];
      description = "Dhananjay Balan";
      shell = pkgs.zsh;
   };
@@ -142,7 +142,7 @@
     fi
   '';
 
-  environment.sessionVariables.NIXOS_OZONE_WL= "1";
+  #environment.sessionVariables.NIXOS_OZONE_WL= "1";
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 44721 ];

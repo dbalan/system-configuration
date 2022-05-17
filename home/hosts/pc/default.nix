@@ -60,6 +60,8 @@ in
     '';
   };
 
+  home.sessionPath = [ "$HOME/go/bin" ];
+
   gtk.enable = true;
   gtk.iconTheme.name = "Adwaita";
 
