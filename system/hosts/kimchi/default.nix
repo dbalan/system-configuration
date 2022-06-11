@@ -56,7 +56,7 @@
   };
 
   home-manager.users.dj = ../../../home/hosts/kimchi/default.nix;
-  services.hardware.xow.enable = true;
+  #services.hardware.xow.enable = true;
 
   # fixme
   networking.wireguard.interfaces = {

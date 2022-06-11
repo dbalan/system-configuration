@@ -6,6 +6,7 @@ let
   unstable = import <unstable> {};
   threema-desktop = pkgs.callPackage ./threema-desktop.nix { };
   rtm = import ./rtm-cli { inherit pkgs; };
+  dsb = pkgs.callPackage ./darktable-fixed.nix {};
 
   kdepim = with pkgs; with plasma5Packages; [ # KDE Apps
     akonadi
@@ -53,6 +54,7 @@ let
     pimcommon
     redshift-plasma-applet
     spectacle
+    digikam
     # End of KDE Apps
   ];
   unstablePackages = with unstable; [
@@ -60,7 +62,6 @@ let
     ghc
     ghcid
     signal-desktop
-    xow
     ssm-session-manager-plugin
     droidcam
     foliate
@@ -83,6 +84,7 @@ let
     beancount
     brave
     calibre
+    dsb
     discord
     docker-compose
     dolphin
@@ -139,7 +141,6 @@ let
     ripgrep
     rsync
     shutter
-    skypeforlinux
     steam
     stylish-haskell
     sublime-music
@@ -149,7 +150,6 @@ let
     tmux
     tmux-cssh
     unzip
-    vivaldi
     vulkan-tools
     wineWowPackages.full
     xmobar
@@ -162,7 +162,6 @@ let
     wmname
     gopls
     haskellPackages.haskell-language-server
-    threema-desktop
     terraform_0_14
   ];
 in

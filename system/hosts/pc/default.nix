@@ -118,6 +118,9 @@
   };
 
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.brlaser pkgs.mfcl2700dnlpr ];
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
   services.upower.enable = true;
 
   # ios usb access
