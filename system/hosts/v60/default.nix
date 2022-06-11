@@ -52,7 +52,7 @@
   ];
   
   # enable deep sleep
-  boot.kernelParams = [ "mem_sleep_default=deep" ];
+  #boot.kernelParams = [ "mem_sleep_default=deep" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
@@ -79,6 +79,7 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
+  services.fprintd.enable = false;
   services.tailscale.enable = true;
   # Enable the Plasma 5 Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
@@ -90,12 +91,14 @@
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.brlaser ];
 
   # Enable sound.
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
 
+  hardware.bluetooth.enable = true;
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 

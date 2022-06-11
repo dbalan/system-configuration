@@ -5,6 +5,14 @@
     enable = true;
     extraConfig =
       ''
+      Host 10.0.*.*
+        Port 8658
+        user ubuntu
+
+      Host 172.30.*.*
+	      Port 8658
+        user ubuntu
+
        Host jmph
          Hostname 192.168.122.153
          User root

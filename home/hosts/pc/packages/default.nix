@@ -158,6 +158,9 @@ let
     pinentry-gtk2
     ponymix
     xdg-utils
+    flameshot
+    mdcat
+    pcmanfm
   ];
 in
 {
