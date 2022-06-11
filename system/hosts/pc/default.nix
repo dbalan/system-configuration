@@ -91,20 +91,26 @@
   };
 
   fonts.fonts = with pkgs; [
+    #(nerdfonts.override { fonts = [ "FiraCode" "Hack" "DroidSansMono" ]; })
+    (nerdfonts.override {
+      fonts = [ 
+        "FiraCode"
+      ];
+    })
+    fira-code
+    fira
+    hack-font
      noto-fonts
      emojione
-     fira-code
-     hack-font
-     fira
-     fira-code-symbols
      proggyfonts
      ibm-plex
      vollkorn
      merriweather
-     noto-fonts-extra
-     font-awesome
+    noto-fonts-extra
+     #font-awesome
   ];
 
+  fonts.fontconfig.defaultFonts.monospace = [ "Fira Code" "Hack" ];
   # for steam
   hardware.opengl.driSupport32Bit = true;
   # hardware.pulseaudio.support32Bit = true;
@@ -139,9 +145,16 @@
     #package = pkgs.emacsUnstable;
   };
 
+
+  # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.brlaser ];
+
   services.upower.enable = true;
 
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.xserver.libinput.enable = true;
+  
   # ios usb access
   # services.usbmuxd.enable = true;
 

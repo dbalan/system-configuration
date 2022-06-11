@@ -32,8 +32,7 @@
     allowPing = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+ 
   # Define a user account. Don't forget to set a password .
   users.users.dj = {
      isNormalUser = true;
@@ -48,14 +47,16 @@
      shell = pkgs.zsh;
   };
 
-  services.xserver = {
-                enable = true;
-                layout = "us";
-                xkbOptions = "ctrl:nocaps";
-                windowManager.xmonad.enable = true;
-  };
-  services.hardware.xow.enable = true;
+  security.pam.services.swaylock = {};
 
+  environment.loginShellInit = ''
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+      exec sway
+    fi
+  '';
+
+  home-manager.users.dj = ../../../home/hosts/kimchi/default.nix;
+  
   # fixme
   networking.wireguard.interfaces = {
     wg0 = {

@@ -5,7 +5,6 @@
 let
   unstable = import <unstable> {};
   threema-desktop = pkgs.callPackage ./threema-desktop.nix { };
-  rtm = import ./rtm-cli { inherit pkgs; };
 
   kdepim = with pkgs; with plasma5Packages; [ # KDE Apps
     akonadi
@@ -112,17 +111,15 @@ let
     neomutt
     w3m
     nload
-    nmap-graphical
     notmuch
     obsidian
     p7zip
     pandoc
-    python38Full
-    python38Packages.ipython
-    python38Packages.poetry
-    python38Packages.qrcode
-    python38Packages.virtualenv
-    python38Packages.cfn-lint
+    python39Full
+    python39Packages.ipython
+    python39Packages.poetry
+    python39Packages.qrcode
+    python39Packages.virtualenv
     python-language-server
     rdesktop
     restic
@@ -146,7 +143,6 @@ let
     zeal
     zoom-us
     zathura
-    rtm.rtm-cli
     libreoffice
     wmname
     gopls

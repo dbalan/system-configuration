@@ -1,15 +1,16 @@
 { config, pkgs, ... }:
 
-let
-  unstable = import <unstable> {};
-
-in
 {
   require = [
     ../pc
+    ../wayland
     ./autorandr.nix
   ];
 
+  wayland.windowManager.sway.config.output =  {
+    "DP-1" = { bg = "~/Pictures/desk fill"; position = "0,0"; };
+    "DP-2" = { bg = "~/Pictures/desk fill"; position = "2560,0"; transform = "270"; };
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

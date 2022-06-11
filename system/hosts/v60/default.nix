@@ -14,16 +14,6 @@
     ../pc
   ];
 
-# nixpkgs.overlays = [(self: super: {
-# libinput = super.libinput.overrideAttrs (_:  rec { version = "1.20.1";
-#                                                name = "libinput-${version}";
-#            				      	src = pkgs.fetchurl {
-#          					      url = "https://gitlab.freedesktop.org/libinput/libinput/-/archive/${version}/${name}.tar.gz";
-#                                                      sha256 = "0r40lpl1i5apm3r1a2q49b01227zhvdh7dvpq281f2pjbiffkgzv";
-#                                                      };
-# 	                                       });
-# 	                                  
-# 	                             })];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
@@ -90,17 +80,11 @@
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = [ pkgs.brlaser ];
-
   # Enable sound.
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
 
   hardware.bluetooth.enable = true;
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.jane = {
@@ -135,7 +119,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh.enable = false;
 
   security.pam.services.swaylock = {};
 
@@ -148,7 +132,10 @@
   #environment.sessionVariables.NIXOS_OZONE_WL= "1";
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 44721 ];
+  networking.firewall = {
+    allowedTCPPorts = [ 44721 ];
+    allowPing = true;
+  }
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
