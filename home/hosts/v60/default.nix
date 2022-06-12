@@ -1,15 +1,17 @@
 { config, pkgs, lib, ... }:
 
-let
-  unstable = import <unstable> {};
-in
 {
 
   require = [
     ../pc
+    ../wayland
   ];
 
-  
+  wayland.windowManager.sway.config.output = {
+    "eDP-1" = { bg = "~/Pictures/desk-ber.jpg fill"; scale = "1.4"; };
+    "DP-5" = { bg = "~/Pictures/desk-ber.jpg fill"; };
+    "DP-6" = { bg = "~/Pictures/desk-ber.jpg fill"; };
+  };
 
   services.kanshi = {
     enable = true;
@@ -43,7 +45,4 @@ in
     };
   };
 
-
-
-  
 }

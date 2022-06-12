@@ -49,6 +49,7 @@
 
   security.pam.services.swaylock = {};
 
+  services.openssh.enable = true;
   environment.loginShellInit = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
       exec sway

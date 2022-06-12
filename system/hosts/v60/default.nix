@@ -135,7 +135,7 @@
   networking.firewall = {
     allowedTCPPorts = [ 44721 ];
     allowPing = true;
-  }
+  };
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

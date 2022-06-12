@@ -135,7 +135,7 @@
   services.mullvad-vpn.enable = true;
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh.enable = false;
   services.smartd.enable = true;
   # services.physlock.enable = true;
 

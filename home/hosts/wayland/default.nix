@@ -60,6 +60,7 @@
     systemd.target = "sway-session.target";
     systemd.enable = true;
     style = builtins.readFile ./waybar.css;
+    settings = import ./waybarconf.nix;
   };
 
   services.swayidle = {
