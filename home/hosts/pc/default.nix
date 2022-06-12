@@ -23,11 +23,12 @@ in
   home.homeDirectory = "/home/dj";
   # overlays we would need
   nixpkgs.overlays = [
-    (self: super: { discord = super.discord.overrideAttrs (_: { version = "0.0.17"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/0.0.18/discord-0.0.18.tar.gz"; }); })
+    (self: super: { discord = super.discord.overrideAttrs (_: rec { version = "0.0.18"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz"; }); })
 
   ];
 
   home.sessionVariables = {
+    VOLTUS = "/home/dj/code/work/voltus";
     EDITOR = "mg";
     ANSIBLE_STDOUT_CALLBACK = "debug";
     HASS_SERVER = "http://192.168.20.57:8123";
@@ -35,14 +36,6 @@ in
   };
 
 
-  # set HiDPI hints -- run xrdb -merge ~/.Xresources if changes.
-  home.file.".Xresources" = {
-    source = ../../../common-data/hidpi-xresources;
-    onChange = ''
-             echo "Re-merging xresources"
-             $DRY_RUN_CMD xrdb -merge ~/.Xresources
-             '';
-  };
 
   # configure stylish-haskell
   home.file.".stylish-haskell.yml".source = ../../../common-data/stylish-haskell.yml;
@@ -50,16 +43,12 @@ in
   # fixme arbtt
   home.file.".arbtt/categorize.cfg".source = ../../../common-data/arbtt-config.cfg;
 
-  home.file.".config/taffybar/taffybar.hs" = {
-    source = ../../../common-data/taffybar.hs;
-    onChange = ''
-        rm /home/dj/.cache/taffybar/taffybar-linux-x86_64
-        systemctl --user restart taffybar
-    '';
-  };
+  home.sessionPath = [ "$HOME/go/bin" ];
 
   gtk.enable = true;
   gtk.iconTheme.name = "Adwaita";
+
+  xdg.enable = true;
 
   programs.command-not-found.enable = true;
   programs.direnv = {
@@ -95,6 +84,7 @@ in
       ha-tv = "hass-cli state toggle switch.media_center";
       ha-led =  "hass-cli state toggle switch.led_strip";
       ha-off = "hass-cli state turn_off switch.bookshelf switch.led_strip switch.media_center";
+      infrissue = "gh issue create --label \"infra,priority-2\" --project \"Infrastructure Issues\" --web";
     };
     oh-my-zsh = {
       enable = true;
@@ -103,7 +93,12 @@ in
     };
   };
 
-  
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.autojump = {
     enable = true;
     enableZshIntegration = true;
@@ -111,27 +106,11 @@ in
 
   programs.rofi = {
     enable = true;
+    theme = "Monokai";
     package = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
   };
-  
-  xsession.enable = true;
-  xsession.windowManager.xmonad = {
-    enable = true;
-    enableContribAndExtras = true;
-    extraPackages = self: [ self.taffybar ];
-    config = pkgs.writeText "xmonad.hs" (builtins.readFile ../../../common-data/xmonad.hs);
-  };
 
-  services.redshift = {
-    enable = true;
-    longitude = "13.404954";
-    latitude = "52.520008";
-  };
   services.status-notifier-watcher.enable = true;
-  services.taffybar = {
-    enable = true;
-    package = unstable.taffybar;
-  };
 
   services.syncthing.enable = true;
 

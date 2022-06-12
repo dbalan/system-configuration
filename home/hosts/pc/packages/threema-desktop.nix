@@ -8,8 +8,8 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     # As Threema only offers a Latest Release url, the plan is to upload each
     # new release url to web.archive.org until their Github releases page gets populated.
-    url = "https://web.archive.org/web/20211215165211/https://releases.threema.ch/web-electron/v1/release/Threema-Latest.deb";
-    sha256 = "18wcjyy6miq3cxfnj9r1dm0r6aadvn6p16lgk6nbsixgy84wn0xn";
+    url = "https://releases.threema.ch/web-electron/v1/release/Threema-Latest.deb";
+    sha256 = "sha256-X16GMxUIKUloj0FxhzWQKUBf4zwfSBVg0cwLgGxHPHE=";
   };
 
   nativeBuildInputs = [

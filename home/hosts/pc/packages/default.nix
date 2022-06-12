@@ -5,8 +5,6 @@
 let
   unstable = import <unstable> {};
   threema-desktop = pkgs.callPackage ./threema-desktop.nix { };
-  rtm = import ./rtm-cli { inherit pkgs; };
-  dsb = pkgs.callPackage ./darktable-fixed.nix {};
 
   kdepim = with pkgs; with plasma5Packages; [ # KDE Apps
     akonadi
@@ -24,7 +22,6 @@ let
     gwenview
     kaddressbook
     kalarm
-    kalarmcal
     kate
     kcalutils
     kdepim-addons
@@ -62,8 +59,6 @@ let
     ghc
     ghcid
     signal-desktop
-    ssm-session-manager-plugin
-    droidcam
     foliate
     spotify
     _1password-gui
@@ -72,19 +67,14 @@ let
     # (pkgs.callPackage ./pipet.nix {})
     #(haskell.lib.justStaticExecutables (haskellPackages.callPackage ./idid.nix {}))
     #haskellPackages.arbtt
-    ag
+    silver-searcher
     alot
-    anki
-    ansible
     arandr
-    awslogs
     awscli2
-    aws-sam-cli
     bat
     beancount
     brave
     calibre
-    dsb
     discord
     docker-compose
     dolphin
@@ -94,13 +84,12 @@ let
     fava
     file
     firefox
-    freerdp
     fzf
     gcc
     git-secret
     gitAndTools.hub
     gnome3.adwaita-icon-theme
-    gnome3.meld
+    meld
     gnome3.seahorse
     gnumake
     go
@@ -116,25 +105,22 @@ let
     ldns
     libqalculate
     libsecret
-    manpages
+    man-pages
     mpv
     msmtp
     morph
     neomutt
     w3m
     nload
-    niv
-    nmap_graphical
     notmuch
     obsidian
     p7zip
     pandoc
-    python38Full
-    python38Packages.ipython
-    python38Packages.poetry
-    python38Packages.qrcode
-    python38Packages.virtualenv
-    python38Packages.cfn-lint
+    python39Full
+    python39Packages.ipython
+    python39Packages.poetry
+    python39Packages.qrcode
+    python39Packages.virtualenv
     python-language-server
     rdesktop
     restic
@@ -145,24 +131,30 @@ let
     stylish-haskell
     sublime-music
     tcpdump
-    telnet
+    inetutils
     thunderbird
     tmux
     tmux-cssh
     unzip
     vulkan-tools
     wineWowPackages.full
-    xmobar
     xorg.xhost
     zeal
     zoom-us
     zathura
-    rtm.rtm-cli
     libreoffice
     wmname
     gopls
     haskellPackages.haskell-language-server
     terraform_0_14
+    slack
+    gh
+    pinentry-gtk2
+    ponymix
+    xdg-utils
+    flameshot
+    mdcat
+    pcmanfm
   ];
 in
 {
