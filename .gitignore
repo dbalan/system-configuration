@@ -30,5 +30,7 @@ hosts/meenavial/wlan-list.nix
 common-data/ares.dbalan.in-privkey
 
 *~
+**/result
+**/result/*
 
 common-data/home-assistant.key
