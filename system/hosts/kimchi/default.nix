@@ -56,7 +56,7 @@
     fi
   '';
 
-  home-manager.users.dj = ../../../home/hosts/kimchi/default.nix;
+  home-manager.users.dj = ./home-config/default.nix;
   
   # fixme
   networking.wireguard.interfaces = {

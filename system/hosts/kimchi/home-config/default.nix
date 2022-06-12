@@ -2,9 +2,8 @@
 
 {
   require = [
-    ../pc
-    ../wayland
-    ./autorandr.nix
+    ../../../modules/pc
+    ../../../modules/wayland
   ];
 
   wayland.windowManager.sway.config.output =  {
