@@ -3,8 +3,8 @@
 {
 
   require = [
-    ../pc
-    ../wayland
+    ../../../modules/pc
+    ../../../modules/wayland
   ];
 
   wayland.windowManager.sway.config.output = {

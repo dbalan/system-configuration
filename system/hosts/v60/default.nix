@@ -86,12 +86,6 @@
 
   hardware.bluetooth.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.jane = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  # };
-
   users.users.dj = {
      isNormalUser = true;
      extraGroups = [ "wheel" "network" "wireshark" "docker" ];
@@ -99,17 +93,12 @@
      shell = pkgs.zsh;
   };
 
-  home-manager.users.dj = ../../../home/hosts/v60/default.nix;
+  home-manager.users.dj = ./home-config/default.nix;
   
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
      mg # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
   programs.gnupg.agent = {
      enable = true;
      enableSSHSupport = true;
@@ -136,9 +125,6 @@
     allowedTCPPorts = [ 44721 ];
     allowPing = true;
   };
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
