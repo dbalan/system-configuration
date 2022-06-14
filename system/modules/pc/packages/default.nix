@@ -68,6 +68,7 @@ let
     #(haskell.lib.justStaticExecutables (haskellPackages.callPackage ./idid.nix {}))
     #haskellPackages.arbtt
     silver-searcher
+    simple-scan
     alot
     arandr
     awscli2

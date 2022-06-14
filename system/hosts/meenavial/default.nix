@@ -103,7 +103,7 @@
      isNormalUser = true;
      home = "/home/dj";
      description = "Dhananjay Balan";
-     extraGroups = ["wheel" "network" "audio" "wireshark" "adbusers" "libvirtd"];
+     extraGroups = ["wheel" "network" "audio" "wireshark" "adbusers" "libvirtd" "scanner" "lp"];
      packages = [
 	     pkgs.pavucontrol
 	     pkgs.steam

@@ -127,6 +127,12 @@
     enable = true;
   };
 
+  # enable brother scanner
+  hardware.sane = {
+    enable = true;
+    brscan4.enable = true;
+  };
+
   # update manager for fw
   services.fwupd.enable = true;
   services.dbus.packages = with pkgs; [ pkgs.dconf pkgs.blueman ];
