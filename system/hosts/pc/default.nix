@@ -164,7 +164,11 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
-           gnupg.agent = { enable = true; enableSSHSupport = true; };
+           gnupg.agent = {
+             enable = true;
+             enableSSHSupport = true;
+             pinentryFlavor = "gtk2";
+           };
            wireshark.enable = true;
            slock.enable = true;
            dconf.enable = true;
@@ -194,13 +198,5 @@
            light.enable = true;
            adb.enable = true;
   };
-
-    services.xserver = {
-                enable = false;
-                layout = "us";
-                xkbOptions = "ctrl:nocaps";
-                windowManager.xmonad.enable = false;
-  };
-
 
 }
