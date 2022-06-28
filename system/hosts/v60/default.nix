@@ -126,6 +126,17 @@
     allowPing = true;
   };
 
+  # backup - voltus device, data in voltus
+  services.restic.backups = {
+    backup = {
+      user = "dj";
+      repository = "s3://s3.amazonaws.com/dbalan-backups/v60";
+      passwordFile = "/home/dj/code/private/system-configuration/common-data/v60.secret";
+      paths = [ "/home/dj" ];
+      extraBackupArgs = [ "--exclude-file=/home/dj/code/private/system-configuration/common-data/v60.exclude" "--exclude-caches"];
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

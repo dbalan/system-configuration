@@ -50,6 +50,7 @@
         "XF86AudioRaiseVolume" = "exec ${pkgs.pavucontrol}/bin/pactl set-sink-volume @DEFAULT_SINK@ +1%";
         "XF86AudioLowerVolume" = "exec ${pkgs.pavucontrol}/bin/pactl set-sink-volume @DEFAULT_SINK@ -1%";
         "XF86AudioMute" = "exec ${pkgs.pavucontrol}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
 
       };
     };
@@ -81,5 +82,6 @@
     wl-clipboard
     mako # notification daemon
     clipman
+    playerctl
 	];
 }
