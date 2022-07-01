@@ -128,6 +128,7 @@ let
     ripgrep
     rsync
     shutter
+    sops
     steam
     stylish-haskell
     sublime-music

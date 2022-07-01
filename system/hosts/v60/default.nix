@@ -87,13 +87,6 @@
 
   hardware.bluetooth.enable = true;
 
-  # connect to krebs vpn
-  networking.retiolum.ipv4 = "10.243.42.12";
-  networking.retiolum.ipv6 = "42:0:3c46:a24:a2de:502c:b037:79ab";
-  services.tinc.networks.retiolum = {
-    rsaPrivateKeyFile = "/home/dj/code/private/system-configuration/common-data/retiolum/rsa_key.priv";
-    ed25519PrivateKeyFile = "/home/dj/code/private/system-configuration/common-data/retiolum/ed25519_key.priv";
-  };
 
   users.users.dj = {
      isNormalUser = true;
@@ -116,6 +109,23 @@
 
   # List services that you want to enable:
 
+  # setup secrets
+  sops.defaultSopsFile = ../../../secrets/v60/secrets.yaml;
+  sops.age.keyFile = "/home/dj/.config/sops/age/keys.txt";
+  sops.secrets = let
+    defopt = {
+      mode = "0600";
+      owner = config.users.users.dj.name;
+      group = config.users.users.dj.group;
+    }; in
+    {
+      backup = {} // defopt;
+      "retiolum/ed25519_key.priv" = {} // defopt;
+      "retiolum/rsa_key.priv" = {} // defopt;
+
+    };
+
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
 
@@ -135,13 +145,12 @@
     allowPing = true;
   };
 
-  # setup secrets for backup
-  sops.defaultSopsFile = ../../../secrets/v60/secrets.yaml;
-  sops.age.keyFile = "/home/dj/.config/sops/age/keys.txt";
-  sops.secrets.backup = {
-    mode = "0440";
-    owner = config.users.users.dj.name;
-    group = config.users.users.dj.group;
+    # connect to krebs vpn
+  networking.retiolum.ipv4 = "10.243.42.12";
+  networking.retiolum.ipv6 = "42:0:3c46:a24:a2de:502c:b037:79ab";
+  services.tinc.networks.retiolum = {
+    rsaPrivateKeyFile = config.sops.secrets."retiolum/rsa_key.priv".path;
+    ed25519PrivateKeyFile = config.sops.secrets."retiolum/ed25519_key.priv".path;
   };
 
   # backup - voltus device, data in voltus
@@ -154,6 +163,7 @@
       extraBackupArgs = [ "--exclude-file=/home/dj/code/private/system-configuration/common-data/v60.exclude" "--exclude-caches"];
     };
   };
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
