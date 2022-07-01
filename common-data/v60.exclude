@@ -1,0 +1,7 @@
+.npm
+go/pkg
+.config
+.cache
+code/public
+.thunderbird
+Downloads
