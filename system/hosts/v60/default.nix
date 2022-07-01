@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../modules/retiolum/default.nix
     ];
 
   require = [
@@ -85,6 +86,14 @@
   # hardware.pulseaudio.enable = true;
 
   hardware.bluetooth.enable = true;
+
+  # connect to krebs vpn
+  networking.retiolum.ipv4 = "10.243.42.12";
+  networking.retiolum.ipv6 = "42:0:3c46:a24:a2de:502c:b037:79ab";
+  services.tinc.networks.retiolum = {
+    rsaPrivateKeyFile = "/home/dj/code/private/system-configuration/common-data/retiolum/rsa_key.priv";
+    ed25519PrivateKeyFile = "/home/dj/code/private/system-configuration/common-data/retiolum/ed25519_key.priv";
+  };
 
   users.users.dj = {
      isNormalUser = true;

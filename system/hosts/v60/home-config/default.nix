@@ -8,7 +8,7 @@
   ];
 
   wayland.windowManager.sway.config.output = {
-    "eDP-1" = { bg = "~/Pictures/desk-ber.jpg fill"; scale = "1.4"; };
+    "eDP-1" = { bg = "~/Pictures/desk-ber.jpg fill"; scale = "1.2"; };
     "DP-5" = { bg = "~/Pictures/desk-ber.jpg fill"; };
     "DP-6" = { bg = "~/Pictures/desk-ber.jpg fill"; };
   };

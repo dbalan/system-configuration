@@ -158,8 +158,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
   
-  # ios usb access
-  # services.usbmuxd.enable = true;
+  # ios usb multiplexing, needed for tethering etc.
+  services.usbmuxd.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
