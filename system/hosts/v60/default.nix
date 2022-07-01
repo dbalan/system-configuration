@@ -156,7 +156,6 @@
   # connect to my overlay
   networking.wireguard.interfaces = {
     wg0 = {
-       mtu = 1248;
        ips = ["192.168.40.2/24"];
        privateKeyFile = config.sops.secrets."wireguard/ares_dbalan_in".path;
        peers = [

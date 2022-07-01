@@ -69,8 +69,6 @@ let
     #haskellPackages.arbtt
     silver-searcher
     simple-scan
-    alot
-    arandr
     awscli2
     bat
     beancount
@@ -87,7 +85,6 @@ let
     firefox
     fzf
     gcc
-    git-secret
     gitAndTools.hub
     gnome3.adwaita-icon-theme
     meld
@@ -96,12 +93,10 @@ let
     go
     godef
     gopass
-    handbrake
     home-assistant-cli
     htop
     httpie
     imagemagick
-    isync
     jq
     ldns
     libqalculate
@@ -109,12 +104,8 @@ let
     man-pages
     mpv
     msmtp
-    morph
-    neomutt
     w3m
     nload
-    notmuch
-    obsidian
     p7zip
     pandoc
     python39Full
@@ -127,7 +118,6 @@ let
     restic
     ripgrep
     rsync
-    shutter
     sops
     steam
     stylish-haskell
@@ -136,10 +126,8 @@ let
     inetutils
     thunderbird
     tmux
-    tmux-cssh
     unzip
     vulkan-tools
-    wineWowPackages.full
     xorg.xhost
     zeal
     zoom-us
@@ -148,7 +136,6 @@ let
     wmname
     gopls
     haskellPackages.haskell-language-server
-    terraform_0_14
     slack
     gh
     pinentry-gtk2

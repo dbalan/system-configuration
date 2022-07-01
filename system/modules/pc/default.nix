@@ -32,7 +32,7 @@ in
     EDITOR = "mg";
     ANSIBLE_STDOUT_CALLBACK = "debug";
     HASS_SERVER = "http://192.168.20.57:8123";
-    HASS_TOKEN = builtins.readFile ../../../common-data/home-assistant.key;
+    #HASS_TOKEN = "foo";
   };
 
 
