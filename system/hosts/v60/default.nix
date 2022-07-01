@@ -120,9 +120,9 @@
     }; in
     {
       backup = {} // defopt;
+      "wireguard/ares_dbalan_in" = {} // defopt;
       "retiolum/ed25519_key.priv" = {} // defopt;
       "retiolum/rsa_key.priv" = {} // defopt;
-
     };
 
 
@@ -151,6 +151,28 @@
   services.tinc.networks.retiolum = {
     rsaPrivateKeyFile = config.sops.secrets."retiolum/rsa_key.priv".path;
     ed25519PrivateKeyFile = config.sops.secrets."retiolum/ed25519_key.priv".path;
+  };
+
+  # connect to my overlay
+  networking.wireguard.interfaces = {
+    wg0 = {
+       mtu = 1248;
+       ips = ["192.168.40.2/24"];
+       privateKeyFile = config.sops.secrets."wireguard/ares_dbalan_in".path;
+       peers = [
+          {
+             publicKey = "a2cwNbB9hrcjWlLE+iSrywrcQfgX53Nlt/kuAokqChU=";
+             allowedIPs = [ "192.168.40.1/32"
+                            "192.168.40.0/24"
+                            "192.168.31.0/24"
+                            "10.11.11.0/24"
+                            "10.1.10.0/24"
+                            "10.2.10.0/24"];
+             endpoint = "ares.dbalan.in:51820";
+             persistentKeepalive = 25;
+          }
+       ];
+     };
   };
 
   # backup - voltus device, data in voltus
