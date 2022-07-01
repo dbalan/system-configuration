@@ -135,12 +135,21 @@
     allowPing = true;
   };
 
+  # setup secrets for backup
+  sops.defaultSopsFile = ../../../secrets/v60/secrets.yaml;
+  sops.age.keyFile = "/home/dj/.config/sops/age/keys.txt";
+  sops.secrets.backup = {
+    mode = "0440";
+    owner = config.users.users.dj.name;
+    group = config.users.users.dj.group;
+  };
+
   # backup - voltus device, data in voltus
   services.restic.backups = {
     backup = {
       user = "dj";
       repository = "s3://s3.amazonaws.com/dbalan-backups/v60";
-      passwordFile = "/home/dj/code/private/system-configuration/common-data/v60.secret";
+      passwordFile = config.sops.secrets.backup.path;
       paths = [ "/home/dj" ];
       extraBackupArgs = [ "--exclude-file=/home/dj/code/private/system-configuration/common-data/v60.exclude" "--exclude-caches"];
     };

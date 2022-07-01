@@ -4,6 +4,7 @@
 {
   imports = [
     <home-manager/nixos>
+    "${(import ../../../nix/sources.nix).sops-nix}/modules/sops"
   ];
 
   nixpkgs.config.allowUnfree = true;
