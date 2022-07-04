@@ -20,7 +20,7 @@
         outputs = [
 	        {
 	          criteria = "eDP-1";
-            scale = 1.5;
+            scale = 1.2;
 	        }
 	      ];
       };

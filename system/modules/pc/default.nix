@@ -85,6 +85,8 @@ in
       ha-tv = "hass-cli state toggle switch.media_center";
       ha-led =  "hass-cli state toggle switch.led_strip";
       ha-off = "hass-cli state turn_off switch.bookshelf switch.led_strip switch.media_center";
+      headphone = "bluetoothctl connect 4C:87:5D:81:EB:2D";
+      headphone-disc = "bluetoothctl disconnect 4C:87:5D:81:EB:2D";
       infrissue = "gh issue create --label \"infra,priority-2\" --project \"Infrastructure Issues\" --web";
     };
     oh-my-zsh = {

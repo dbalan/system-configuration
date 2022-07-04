@@ -96,11 +96,15 @@
     (nerdfonts.override {
       fonts = [ 
         "FiraCode"
+        "SourceCodePro"
+        "Hack"
       ];
     })
     fira-code
     fira
+    source-code-pro
     hack-font
+
      noto-fonts
      emojione
      proggyfonts
