@@ -148,7 +148,7 @@
   services.smartd.enable = true;
   # services.physlock.enable = true;
 
-  services.rpcbind.enable = true;
+  services.rpcbind.enable = false;
   services.emacs = {
     enable = true;
     #package = pkgs.emacsUnstable;

@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #../../modules/retiolum/default.nix
+      ../../modules/retiolum/default.nix
     ];
 
   require = [
@@ -145,34 +145,40 @@
     allowPing = true;
   };
 
-    # connect to krebs vpn
-  # networking.retiolum.ipv4 = "10.243.42.12";
-  # networking.retiolum.ipv6 = "42:0:3c46:a24:a2de:502c:b037:79ab";
-  # services.tinc.networks.retiolum = {
-  #   rsaPrivateKeyFile = config.sops.secrets."retiolum/rsa_key.priv".path;
-  #   ed25519PrivateKeyFile = config.sops.secrets."retiolum/ed25519_key.priv".path;
-  # };
+  # connect to krebs vpn
+  networking.retiolum.ipv4 = "10.243.42.12";
+  networking.retiolum.ipv6 = "42:0:3c46:a24:a2de:502c:b037:79ab";
+  services.tinc.networks.retiolum = {
+    rsaPrivateKeyFile = config.sops.secrets."retiolum/rsa_key.priv".path;
+    ed25519PrivateKeyFile = config.sops.secrets."retiolum/ed25519_key.priv".path;
+  };
 
   # connect to my overlay
-  # networking.wireguard.interfaces = {
-  #   wg0 = {
-  #      ips = ["192.168.40.2/24"];
-  #      privateKeyFile = config.sops.secrets."wireguard/ares_dbalan_in".path;
-  #      peers = [
-  #         {
-  #            publicKey = "a2cwNbB9hrcjWlLE+iSrywrcQfgX53Nlt/kuAokqChU=";
-  #            allowedIPs = [ "192.168.40.1/32"
-  #                           "192.168.40.0/24"
-  #                           "192.168.31.0/24"
-  #                           "10.11.11.0/24"
-  #                           "10.1.10.0/24"
-  #                           "10.2.10.0/24"];
-  #            endpoint = "ares.dbalan.in:51820";
-  #            persistentKeepalive = 25;
-  #         }
-  #      ];
-  #    };
-  # };
+  networking.wireguard.interfaces = {
+    wg0 = {
+       ips = ["192.168.40.2/24"];
+       privateKeyFile = config.sops.secrets."wireguard/ares_dbalan_in".path;
+       peers = [
+          {
+             publicKey = "a2cwNbB9hrcjWlLE+iSrywrcQfgX53Nlt/kuAokqChU=";
+             allowedIPs = [ "192.168.40.1/32"
+                            "192.168.40.0/24"
+                            "192.168.31.0/24"
+                            "10.11.11.0/24"
+                            "10.1.10.0/24"
+                            "10.2.10.0/24"];
+             endpoint = "ares.dbalan.in:51820";
+             persistentKeepalive = 25;
+          }
+       ];
+     };
+  };
+
+  # wg overlay hosts
+  networking.extraHosts =
+    ''
+    192.168.40.4 jellyfin.nas home.nas
+    '';
 
   # backup - voltus device, data in voltus
   services.restic.backups = {

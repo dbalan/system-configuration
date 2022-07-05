@@ -29,7 +29,6 @@ in
 
   home.sessionVariables = {
     VOLTUS = "/home/dj/code/work/voltus";
-    EDITOR = "emacsclient -t";
     ANSIBLE_STDOUT_CALLBACK = "debug";
     HASS_SERVER = "http://192.168.20.57:8123";
     #HASS_TOKEN = "foo";
