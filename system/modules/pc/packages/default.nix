@@ -114,7 +114,6 @@ let
     python39Packages.qrcode
     python39Packages.virtualenv
     python-language-server
-    rdesktop
     restic
     ripgrep
     rsync
@@ -126,6 +125,7 @@ let
     inetutils
     thunderbird
     tmux
+    threema-desktop
     unzip
     vulkan-tools
     xorg.xhost

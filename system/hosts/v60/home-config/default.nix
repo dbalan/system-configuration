@@ -29,8 +29,9 @@
         outputs = [
           {
             criteria = "Dell Inc. DELL UP2516D 3JV4059IA31L";
-            transform = "90";
+            transform = "normal";
             position = "2560,0";
+            scale = 1.0;
           }
           { criteria = "eDP-1";
             status = "disable";
@@ -39,6 +40,7 @@
             criteria = "Dell Inc. DELL UP2516D 3JV4059I688L";
             position = "0,0";
             transform = "normal";
+            scale = 1.0;
           }
         ];
       };

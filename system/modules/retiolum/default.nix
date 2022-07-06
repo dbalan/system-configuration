@@ -37,7 +37,6 @@ in {
   };
 
   config = {
-
     services.tinc.networks.${netname} = {
       name = cfg.nodename;
       extraConfig = ''
