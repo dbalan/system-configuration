@@ -66,7 +66,7 @@
        peers = [
           {
              publicKey = "a2cwNbB9hrcjWlLE+iSrywrcQfgX53Nlt/kuAokqChU=";
-             allowedIPs = [ "192.168.40.1/32" "192.168.40.0/24" "10.11.11.0/24" "10.1.10.0/24" "10.2.10.0/24"];
+             allowedIPs = [ "192.168.40.1/32" "192.168.40.0/24" "10.11.11.0/24" "10.1.10.0/24" "10.2.10.0/24" "10.3.10.0/24"];
              endpoint = "ares.dbalan.in:51820";
              persistentKeepalive = 25;
           }

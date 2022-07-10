@@ -8,7 +8,7 @@
       terminal = "${pkgs.kitty}/bin/kitty";
       modifier = "Mod4";
       input = {
-        "*" = { xkb_variant = "us"; xkb_options = "ctrl:nocaps"; tap = "enabled"; };
+        "*" = { xkb_variant = "us"; xkb_layout = "us,de"; xkb_options = "ctrl:nocaps,grp:win_space_toggle"; tap = "enabled"; };
 	      "touchpad" = { tap  = "enabled"; click_method = "clickfinger"; dwt = "enabled"; scroll_method = "two_finger"; };
       };
 	    floating.criteria = [ { title = "Steam - Update News"; } { class = "Pavucontrol"; } ];

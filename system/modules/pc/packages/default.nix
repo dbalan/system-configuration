@@ -78,6 +78,7 @@ let
     docker-compose
     dolphin
     dunst
+    darktable
     evince
     exa
     fava
