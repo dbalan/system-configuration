@@ -73,7 +73,6 @@ in
       nsp = "nix-shell -p";
       cat = "bat";
       scp = "rsync -Pv";
-      ssh = "kitty +kitten ssh";
       ls = "exa";
       nrb = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild";
       tree = "exa --tree";
