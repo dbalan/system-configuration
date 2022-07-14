@@ -166,6 +166,18 @@
   # ios usb multiplexing, needed for tethering etc.
   services.usbmuxd.enable = true;
 
+  sops.age.keyFile = "/home/dj/.config/sops/age/keys.txt";
+  sops.secrets = let
+    defopt = {
+      mode = "0600";
+      owner = config.users.users.dj.name;
+      group = config.users.users.dj.group;
+      sopsFile = ../../../secrets/common/common-secret.yaml;
+    }; in
+    {
+      "home-assistant-api" = {} // defopt;
+    };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {

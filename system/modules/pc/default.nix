@@ -31,10 +31,7 @@ in
     VOLTUS = "/home/dj/code/work/voltus";
     ANSIBLE_STDOUT_CALLBACK = "debug";
     HASS_SERVER = "http://192.168.20.57:8123";
-    #HASS_TOKEN = "foo";
   };
-
-
 
   # configure stylish-haskell
   home.file.".stylish-haskell.yml".source = ../../../common-data/stylish-haskell.yml;
@@ -80,9 +77,9 @@ in
       planner = "rtm lsd NOT due:never NOT status:complete";
       week = "rtm planner NOT due:never NOT status:complete";
       ha-bookshelf = "hass-cli state toggle switch.bookshelf";
-      ha-tv = "hass-cli state toggle switch.media_center";
-      ha-led =  "hass-cli state toggle switch.led_strip";
-      ha-off = "hass-cli state turn_off switch.bookshelf switch.led_strip switch.media_center";
+      ha-tv = "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.media_center";
+      ha-led =  "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.led_strip";
+      ha-off = "hass-cli --token $(cat /run/secrets/home-assistant-api) state turn_off switch.bookshelf switch.led_strip switch.media_center";
       headphone = "bluetoothctl connect 4C:87:5D:81:EB:2D";
       headphone-disc = "bluetoothctl disconnect 4C:87:5D:81:EB:2D";
       infrissue = "gh issue create --label \"infra,priority-2\" --project \"Infrastructure Issues\" --web";

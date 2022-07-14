@@ -59,7 +59,7 @@
   hardware.xone.enable = true;
 
   home-manager.users.dj = ./home-config/default.nix;
-  
+
   # fixme
   networking.wireguard.interfaces = {
     wg0 = {
