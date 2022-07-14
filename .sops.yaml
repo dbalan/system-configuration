@@ -10,7 +10,12 @@ creation_rules:
     key_groups:
     - age:
       - *v60
+      - *kimchi
   - path_regex: secrets/v60/[^/]+\.yaml$
     key_groups:
     - age:
       - *v60
+  - path_regex: secrets/kmichi/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *kimchi
