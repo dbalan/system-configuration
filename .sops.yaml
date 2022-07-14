@@ -4,6 +4,7 @@
 # for a more complex example.
 keys:
   - &v60 age1g0epgg0ansvh7u58yurwa4845dwu34g6xeelfgstkjr87vjazdfqm0xqh0
+  - &kimchi age1dunj43quggcyhr8vn5djntk4wyzqhppk7cq5elnflpjgxm2y94mqz6qpd7
 creation_rules:
   - path_regex: secrets/common/[^/]+\.yaml$
     key_groups:
