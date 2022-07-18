@@ -68,11 +68,11 @@
     enable = true;
     events =
       [
-        { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF -i /home/dj/Pictures/cern-lock.jpg"; }
-        { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -fF -i /home/dj/Pictures/cern-lock.jpg"; }
+        { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF -i /home/dj/Pictures/lock"; }
+        { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -fF -i /home/dj/Pictures/lock"; }
       ];
     timeouts = [
-     { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -fF -i /home/dj/Pictures/cern-lock.jpg"; }
+     { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -fF -i /home/dj/Pictures/lock"; }
     ];
   };
 

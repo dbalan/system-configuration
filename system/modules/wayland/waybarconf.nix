@@ -95,7 +95,7 @@
         "activated"= "";
         "deactivated"= "";
       };
-      "on-click-right"= "swaylock -eFfki /home/dj/Pictures/lock";
+      "on-click-right"= "swaylock -eFfki /home/dj/Pictures/green-chilli.png";
     };
 
     "tray"= {
