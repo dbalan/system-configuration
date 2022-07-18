@@ -60,11 +60,22 @@
 
   home-manager.users.dj = ./home-config/default.nix;
 
+  sops.secrets = let
+    defopt = {
+      mode = "0600";
+      owner = config.users.users.dj.name;
+      group = config.users.users.dj.group;
+      sopsFile = ../../../secrets/kimchi/secrets.yaml;
+    }; in
+    {
+      "wg_kimchi_dbalan_in" = {} // defopt;
+    };
+
   # fixme
   networking.wireguard.interfaces = {
     wg0 = {
        ips = ["192.168.40.6/24"];
-       privateKeyFile = "/home/dj/code/private/system-configuration/common-data/kimchi.ber.dbalan.in-privkey";
+       privateKeyFile = config.sops.secrets."wg_kimchi_dbalan_in".path;
        peers = [
           {
              publicKey = "a2cwNbB9hrcjWlLE+iSrywrcQfgX53Nlt/kuAokqChU=";
