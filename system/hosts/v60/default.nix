@@ -179,7 +179,7 @@
   # wg overlay hosts
   networking.extraHosts =
     ''
-    192.168.40.4 jellyfin.nas home.nas
+    192.168.40.4 vault.ber.dbalan.in jellyfin.ber.dbalan.in home.ber.dbalan.in svc.ber.dbalan.in
     '';
 
   # backup - voltus device, data in voltus
