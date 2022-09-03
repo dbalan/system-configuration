@@ -8,11 +8,15 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/retiolum/default.nix
+      #../../modules/retiolum/default.nix
     ];
 
   require = [
     ../pc
+  ];
+
+  nixpkgs.config.allowUnFreePredicate = p: builtins.elem (builtins.getName p) [
+      "discord"
   ];
 
   boot.loader.efi.canTouchEfiVariables = true;
@@ -76,7 +80,10 @@
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
   
-
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = ["233ccaac2757a496"];
+  };
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
@@ -90,7 +97,7 @@
 
   users.users.dj = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "network" "wireshark" "docker" ];
+     extraGroups = [ "wheel" "network" "wireshark" "docker" "libvirtd" ];
      description = "Dhananjay Balan";
      shell = pkgs.zsh;
   };
@@ -147,13 +154,13 @@
     allowPing = true;
   };
 
-  # connect to krebs vpn
-  networking.retiolum.ipv4 = "10.243.42.12";
-  networking.retiolum.ipv6 = "42:0:3c46:a24:a2de:502c:b037:79ab";
-  services.tinc.networks.retiolum = {
-    rsaPrivateKeyFile = config.sops.secrets."retiolum/rsa_key.priv".path;
-    ed25519PrivateKeyFile = config.sops.secrets."retiolum/ed25519_key.priv".path;
-  };
+# connect to krebs vpn
+# networking.retiolum.ipv4 = "10.243.42.12";
+# networking.retiolum.ipv6 = "42:0:3c46:a24:a2de:502c:b037:79ab";
+# services.tinc.networks.retiolum = {
+#     rsaPrivateKeyFile = config.sops.secrets."retiolum/rsa_key.priv".path;
+#     ed25519PrivateKeyFile = config.sops.secrets."retiolum/ed25519_key.priv".path;
+# };
 
   # connect to my overlay
   networking.wireguard.interfaces = {

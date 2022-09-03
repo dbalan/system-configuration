@@ -70,6 +70,7 @@ let
     silver-searcher
     simple-scan
     awscli2
+    aws-sam-cli
     bat
     beancount
     brave
@@ -83,12 +84,12 @@ let
     exa
     fava
     file
-    firefox
     fzf
     gcc
     gitAndTools.hub
     gnome3.adwaita-icon-theme
     meld
+    mullvad-vpn
     gnome3.seahorse
     gnumake
     go
@@ -109,12 +110,14 @@ let
     nload
     p7zip
     pandoc
+    passage
+    tree
     python39Full
     python39Packages.ipython
     python39Packages.poetry
     python39Packages.qrcode
     python39Packages.virtualenv
-    python-language-server
+    #python-language-server
     restic
     ripgrep
     rsync

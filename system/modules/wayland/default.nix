@@ -14,7 +14,8 @@
 	    floating.criteria = [ { title = "Steam - Update News"; } { class = "Pavucontrol"; } ];
 
       startup = [
-        { command = "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store"; }
+        { command = "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store --no-persist";
+        }
       ];
 
       bars = [];

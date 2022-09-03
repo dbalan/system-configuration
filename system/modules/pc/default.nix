@@ -23,14 +23,13 @@ in
   home.homeDirectory = "/home/dj";
   # overlays we would need
   nixpkgs.overlays = [
-    (self: super: { discord = super.discord.overrideAttrs (_: rec { version = "0.0.18"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz"; }); })
+    (self: super: { discord = super.discord.overrideAttrs (_: rec { version = "0.0.19"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz"; }); })
 
   ];
 
   home.sessionVariables = {
     VOLTUS = "/home/dj/code/work/voltus";
     ANSIBLE_STDOUT_CALLBACK = "debug";
-    HASS_SERVER = "http://192.168.20.57:8123";
   };
 
   # configure stylish-haskell
@@ -106,6 +105,10 @@ in
     enable = true;
     theme = "Monokai";
     package = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
+  };
+
+  programs.firefox = {
+    enable = true;
   };
 
   services.status-notifier-watcher.enable = true;

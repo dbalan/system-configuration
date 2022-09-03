@@ -7,12 +7,9 @@
     "${(import ../../../nix/sources.nix).sops-nix}/modules/sops"
   ];
 
-  nixpkgs.config.allowUnfree = true;
-  # nixpkgs.overlaysb = [
-  #   (import (builtins.fetchTarball {
-  #     url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-  #   }))
-  # ];
+  nixpkgs.config.allowUnFreePredicate = p: builtins.elem (builtins.getName p) [
+      "discord"
+  ];
 
   hardware.enableRedistributableFirmware = true;
 
@@ -72,19 +69,6 @@
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
   };
-  # hardware.pulseaudio = {
-	#   enable = true;
-	#   package = pkgs.pulseaudioFull;
-  #       #configFile = pkgs.writeText "default.pa" ''
-	#   #  load-module module-bluetooth-policy
-  # 	#  load-module module-bluetooth-discover
-  #       #  ## module fails to load with
-  #       #  ##   module-bluez5-device.c: Failed to get device path from module arguments
-  #       #  ##   module.c: Failed to load module "module-bluez5-device" (argument: ""): initialization failed.
-  #       #  # load-module module-bluez5-device
-  #       #  # load-module module-bluez5-discover
-  #       #'';
-  # };
 
   virtualisation =  {
       libvirtd.enable = true;
@@ -92,7 +76,6 @@
   };
 
   fonts.fonts = with pkgs; [
-    #(nerdfonts.override { fonts = [ "FiraCode" "Hack" "DroidSansMono" ]; })
     (nerdfonts.override {
       fonts = [ 
         "FiraCode"
@@ -112,7 +95,6 @@
      vollkorn
      merriweather
     noto-fonts-extra
-     #font-awesome
   ];
 
   fonts.fontconfig.defaultFonts.monospace = [ "Fira Code" "Hack" ];
