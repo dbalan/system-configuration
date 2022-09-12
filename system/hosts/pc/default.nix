@@ -188,11 +188,13 @@
               Hostname ares.dbalan.in
               User root
               Port 3022
-             Host photoprism
+             Host oldphotoprism
               Hostname 10.2.10.50
               User dj
               Port 22
               ProxyJump dj@ares.dbalan.in
+             Host photoprism
+              Hostname photoprism.pvt.dbalan.in
              '';
            light.enable = true;
            adb.enable = true;
