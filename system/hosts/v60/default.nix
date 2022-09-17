@@ -79,11 +79,6 @@
   # Enable the Plasma 5 Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-  
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = ["233ccaac2757a496" "632ea29085fa00a5"];
-  };
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
@@ -182,13 +177,6 @@
        ];
      };
   };
-
-  # wg overlay hosts
-  networking.extraHosts =
-    ''
-    192.168.196.120 vault.ber.dbalan.in jellyfin.ber.dbalan.in home.ber.dbalan.in svc.ber.dbalan.in
-    192.168.196.70 photoprism.pvt.dbalan.in
-    '';
 
   # backup - voltus device, data in voltus
   services.restic.backups = {

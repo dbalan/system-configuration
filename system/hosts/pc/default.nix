@@ -13,7 +13,11 @@
 
   hardware.enableRedistributableFirmware = true;
 
-  networking.extraHosts = builtins.readFile ../../../common-data/blocked.hosts;
+  networking.extraHosts =
+    ''
+    192.168.196.120 vault.ber.dbalan.in jellyfin.ber.dbalan.in home.ber.dbalan.in svc.ber.dbalan.in
+    192.168.196.70 photoprism.pvt.dbalan.in
+    '' + builtins.readFile ../../../common-data/blocked.hosts;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -134,6 +138,11 @@
   services.emacs = {
     enable = true;
     #package = pkgs.emacsUnstable;
+  };
+
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = ["233ccaac2757a496" "632ea29085fa00a5"];
   };
 
 
