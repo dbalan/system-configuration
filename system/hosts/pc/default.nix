@@ -15,7 +15,7 @@
 
   networking.extraHosts =
     ''
-    192.168.196.120 vault.ber.dbalan.in jellyfin.ber.dbalan.in home.ber.dbalan.in svc.ber.dbalan.in
+    192.168.196.120 vault.ber.dbalan.in jellyfin.ber.dbalan.in home.ber.dbalan.in svc.ber.dbalan.in books.ber.dbalan.in
     192.168.196.70 photoprism.pvt.dbalan.in
     '' + builtins.readFile ../../../common-data/blocked.hosts;
 
