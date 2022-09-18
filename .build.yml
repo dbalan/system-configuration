@@ -1,0 +1,20 @@
+image: nixos/unstable
+secrets:
+  - 2b4ba51d-1195-420f-a561-002b6640b9fb
+sources:
+  - git@git.sr.ht:~dbalan/system-configuration
+tasks:
+  - setup: |
+      sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+      sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable
+      sudo nix-channel --update
+
+  - build: |
+      for sys in "kimchi" "v60"; do
+         echo "(import /home/build/system-configuration/system).${sys}" | tee ${sys}.nix
+         sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild dry-build -I nixos-config=${sys}.nix
+      done
+triggers:
+  - action: email
+    condition: failure
+    to: 'Build Logs <build@dbalan.in>'
