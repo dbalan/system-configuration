@@ -23,8 +23,7 @@ in
   home.homeDirectory = "/home/dj";
   # overlays we would need
   nixpkgs.overlays = [
-    (self: super: { discord = super.discord.overrideAttrs (_: rec { version = "0.0.19"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz"; }); })
-
+    (self: super: { discord = super.discord.overrideAttrs (_: rec { version = "0.0.20"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz"; }); })
   ];
 
   home.sessionVariables = {
@@ -72,9 +71,6 @@ in
       ls = "exa";
       nrb = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild";
       tree = "exa --tree";
-      today = "rtm lsd dueBefore:tomorrow NOT status:complete";
-      planner = "rtm lsd NOT due:never NOT status:complete";
-      week = "rtm planner NOT due:never NOT status:complete";
       ha-bookshelf = "hass-cli state toggle switch.bookshelf";
       ha-tv = "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.media_center";
       ha-led =  "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.led_strip";
@@ -82,6 +78,7 @@ in
       headphone = "bluetoothctl connect 4C:87:5D:81:EB:2D";
       headphone-disc = "bluetoothctl disconnect 4C:87:5D:81:EB:2D";
       infrissue = "gh issue create --label \"infra,priority-2\" --project \"Infrastructure Issues\" --web";
+      review-pr = "gh pr list -S 'review:required review-requested:@me' -s open --web";
     };
     oh-my-zsh = {
       enable = true;

@@ -133,8 +133,6 @@
 
   security.pam.services.swaylock = {};
 
-  services.syncthing.enable = true;
-
   environment.loginShellInit = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
       exec sway
