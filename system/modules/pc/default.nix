@@ -29,6 +29,7 @@ in
   home.sessionVariables = {
     VOLTUS = "/home/dj/code/work/voltus";
     ANSIBLE_STDOUT_CALLBACK = "debug";
+    VAULT_GITHUB_TOKEN = "$(cat /run/secrets/github_token)";
   };
 
   # configure stylish-haskell
@@ -79,6 +80,7 @@ in
       headphone-disc = "bluetoothctl disconnect 4C:87:5D:81:EB:2D";
       infrissue = "gh issue create --label \"infra,priority-2\" --project \"Infrastructure Issues\" --web";
       review-pr = "gh pr list -S 'review:required review-requested:@me' -s open --web";
+      screenshot= "grimshot save area /home/dj/Pictures/screenshot-$(date +%Y-%m-%d-%H%M).png";
     };
     oh-my-zsh = {
       enable = true;

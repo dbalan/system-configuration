@@ -80,6 +80,7 @@
   home.packages = with pkgs; [
     swaylock
     swayidle
+    sway-contrib.grimshot
     wl-clipboard
     mako # notification daemon
     clipman

@@ -82,6 +82,7 @@ let
     darktable
     evince
     exa
+    easyeffects
     fava
     file
     fzf

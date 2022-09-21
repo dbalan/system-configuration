@@ -140,6 +140,7 @@
     #package = pkgs.emacsUnstable;
   };
 
+  services.tailscale.enable = true;
   services.zerotierone = {
     enable = true;
     joinNetworks = ["233ccaac2757a496" "632ea29085fa00a5"];
@@ -167,6 +168,7 @@
     }; in
     {
       "home-assistant-api" = {} // defopt;
+      "github_token" = {} // defopt;
     };
 
   # Some programs need SUID wrappers, can be configured further or are
