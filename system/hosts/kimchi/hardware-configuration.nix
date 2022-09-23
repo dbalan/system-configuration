@@ -9,9 +9,10 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.kernelPackages = pkgs.linuxPackages_5_10;
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = [];
   boot.blacklistedKernelModules = [ "mt76x2u" ];
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/42e36b90-e5fe-4fe8-b1e3-dfc0185e2da9";

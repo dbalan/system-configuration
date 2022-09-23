@@ -28,7 +28,7 @@
   networking.interfaces.eno1.useDHCP = true;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 22000 ];
+    allowedTCPPorts = [ 22 22000 9090 ];
     allowPing = true;
   };
 
