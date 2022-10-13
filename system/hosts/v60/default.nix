@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #../../modules/retiolum/default.nix
+      ../../modules/retiolum/default.nix
     ];
 
   require = [
@@ -20,6 +20,7 @@
   ];
 
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "ntfs" ];
   boot.loader.grub = {
     enable = true;
     version = 2;
@@ -47,8 +48,8 @@
   ];
   
   # enable deep sleep
-  #boot.kernelParams = [ "mem_sleep_default=deep" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
+  #boot.kernelPackages = pkgs.linuxPackages_5_13;
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
   
@@ -146,13 +147,13 @@
     allowPing = true;
   };
 
-# connect to krebs vpn
-# networking.retiolum.ipv4 = "10.243.42.12";
-# networking.retiolum.ipv6 = "42:0:3c46:a24:a2de:502c:b037:79ab";
-# services.tinc.networks.retiolum = {
-#     rsaPrivateKeyFile = config.sops.secrets."retiolum/rsa_key.priv".path;
-#     ed25519PrivateKeyFile = config.sops.secrets."retiolum/ed25519_key.priv".path;
-# };
+  # connect to krebs vpn
+  networking.retiolum.ipv4 = "10.243.42.12";
+  networking.retiolum.ipv6 = "42:0:3c46:a24:a2de:502c:b037:79ab";
+  services.tinc.networks.retiolum = {
+      rsaPrivateKeyFile = config.sops.secrets."retiolum/rsa_key.priv".path;
+      ed25519PrivateKeyFile = config.sops.secrets."retiolum/ed25519_key.priv".path;
+  };
 
   # connect to my overlay
   networking.wireguard.interfaces = {

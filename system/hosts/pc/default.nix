@@ -53,7 +53,7 @@
     mosh
     nfs-utils
     tig
-    virtmanager
+    virt-manager
     vpnc
     pavucontrol
   ];

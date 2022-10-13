@@ -88,10 +88,10 @@ let
     fzf
     gcc
     gitAndTools.hub
-    gnome3.adwaita-icon-theme
+    gnome.adwaita-icon-theme
     meld
     mullvad-vpn
-    gnome3.seahorse
+    gnome.seahorse
     gnumake
     go
     godef
@@ -118,6 +118,7 @@ let
     python39Packages.poetry
     python39Packages.qrcode
     python39Packages.virtualenv
+    amazon-ecr-credential-helper
     #python-language-server
     restic
     ripgrep
