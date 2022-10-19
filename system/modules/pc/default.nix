@@ -50,12 +50,14 @@ in
       enableZshIntegration = true;
       enable = true;
   };
+
   programs.git = {
     enable = true;
     userName = "Dhananjay Balan";
     userEmail = "mail@dbalan.in";
     extraConfig = {
       init = { defaultBranch = "trunk"; };
+      diff = { external = "${pkgs.difftastic}/bin/difft"; };
     };
   };
 
@@ -87,6 +89,16 @@ in
       plugins = [ "git" "sudo" ];
       theme = "agnoster";
     };
+    plugins = [{
+       name = "zlong_alert";
+       src = pkgs.fetchFromGitHub {
+                 owner = "dbalan";
+                 repo = "zlong_alert.zsh";
+                 rev = "d4635c099e158bb134f266d1b6e36c726586bfbd";
+                 sha256 = "sha256-m0UJjSKtOC7LzQH9M2JmyVT5XkWMNvoZzrDW6LOvvFg=";
+               };
+      }
+    ];
   };
 
 
