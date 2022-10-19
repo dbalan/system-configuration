@@ -104,6 +104,7 @@ let
     ldns
     libqalculate
     libsecret
+    libnotify
     man-pages
     mpv
     msmtp
