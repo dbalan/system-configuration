@@ -62,15 +62,17 @@ let
     foliate
     spotify
     _1password-gui
+    passage
+    aws-sam-cli
   ];  
   commonPackages = with pkgs; [
     # (pkgs.callPackage ./pipet.nix {})
     #(haskell.lib.justStaticExecutables (haskellPackages.callPackage ./idid.nix {}))
     #haskellPackages.arbtt
+    amazon-ecr-credential-helper
     silver-searcher
     simple-scan
     awscli2
-    aws-sam-cli
     bat
     beancount
     brave
@@ -112,7 +114,6 @@ let
     nload
     p7zip
     pandoc
-    passage
     tree
     python39Full
     python39Packages.ipython
@@ -140,6 +141,7 @@ let
     zoom-us
     zathura
     libreoffice
+    libimobiledevice
     wmname
     gopls
     haskellPackages.haskell-language-server

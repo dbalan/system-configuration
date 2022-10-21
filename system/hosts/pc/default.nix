@@ -147,7 +147,7 @@
     joinNetworks = ["233ccaac2757a496" "632ea29085fa00a5"];
   };
 
-
+  services.avahi.enable = true;
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.brlaser ];

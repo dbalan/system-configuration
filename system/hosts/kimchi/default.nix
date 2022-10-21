@@ -15,7 +15,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # fixme
+  boot.supportedFilesystems = [ "ntfs" ];
   boot.initrd.luks.devices = {
     root = {
        device = "/dev/disk/by-uuid/465f5302-3abb-465c-8806-79747691e37e";
@@ -37,7 +37,7 @@
      isNormalUser = true;
      home = "/home/dj";
      description = "Dhananjay Balan";
-     extraGroups = ["wheel" "network" "audio" "libvirtd" "adbusers" ];
+     extraGroups = ["wheel" "network" "audio" "libvirtd" "adbusers" "docker" ];
      packages = [
         pkgs.pavucontrol
         pkgs.steam
