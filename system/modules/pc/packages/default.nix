@@ -64,6 +64,7 @@ let
     _1password-gui
     passage
     aws-sam-cli
+    darktable
   ];  
   commonPackages = with pkgs; [
     # (pkgs.callPackage ./pipet.nix {})
@@ -81,7 +82,6 @@ let
     docker-compose
     dolphin
     dunst
-    darktable
     evince
     exa
     easyeffects
