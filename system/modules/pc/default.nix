@@ -30,6 +30,7 @@ in
     VOLTUS = "/home/dj/code/work/voltus";
     ANSIBLE_STDOUT_CALLBACK = "debug";
     VAULT_GITHUB_TOKEN = "$(cat /run/secrets/github_token)";
+    zlong_ignore_cmds = "git tig vim emacsclient e vim ssh psql";
   };
 
   # configure stylish-haskell
