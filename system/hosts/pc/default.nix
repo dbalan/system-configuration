@@ -13,6 +13,9 @@
 
   hardware.enableRedistributableFirmware = true;
 
+  # increase inotify limits for syncthing
+  boot.kernel.sysctl = { "fs.inotify.max_user_watches" = 204800; };
+
   networking.extraHosts =
     ''
     192.168.196.120 vault.ber.dbalan.in jellyfin.ber.dbalan.in home.ber.dbalan.in svc.ber.dbalan.in books.ber.dbalan.in
