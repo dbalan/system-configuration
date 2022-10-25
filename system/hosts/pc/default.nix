@@ -91,6 +91,51 @@
         "Hack"
       ];
     })
+    (iosevka.override {
+      privateBuildPlan = ''
+        [buildPlans.iosevka-custom]
+        family = "Iosevka Custom"
+        spacing = "normal"
+        serifs = "sans"
+        no-cv-ss = true
+        export-glyph-names = false
+
+        [buildPlans.iosevka-custom.variants]
+        inherits = "ss02"
+
+        [buildPlans.iosevka-custom.variants.design]
+        capital-d = "more-rounded-serifless"
+        capital-g = "toothless-corner-serifless-hooked"
+        capital-q = "straight"
+        f = "flat-hook"
+        j = "flat-hook-serifed"
+        l = "diagonal-tailed"
+        t = "flat-hook"
+        y = "straight-turn"
+        long-s = "flat-hook"
+        eszet = "longs-s-lig"
+        lower-lambda = "straight-turn"
+        cyrl-capital-ka = "straight-serifless"
+        cyrl-ka = "straight-serifless"
+        cyrl-capital-u = "straight-turn"
+        one = "base"
+        two = "straight-neck"
+        four = "closed"
+        six = "closed-contour"
+        eight = "two-circles"
+        nine = "closed-contour"
+        asterisk = "hex-low"
+        underscore = "low"
+        brace = "straight"
+        number-sign = "slanted"
+        ampersand = "upper-open"
+        percent = "rings-continuous-slash"
+        bar = "force-upright"
+        punctuation-dot = "square"
+        diacritic-dot = "square"
+    '';
+    set = "custom";
+    })
     fira-code
     fira
     source-code-pro
@@ -212,7 +257,7 @@
               Hostname photoprism.pvt.dbalan.in
              '';
            light.enable = true;
-           adb.enable = true;
+           adb.enable = false;
   };
 
 }
