@@ -65,6 +65,7 @@ let
     passage
     aws-sam-cli
     darktable
+    #shotman
   ];  
   commonPackages = with pkgs; [
     # (pkgs.callPackage ./pipet.nix {})

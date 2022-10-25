@@ -23,7 +23,7 @@ in
   home.homeDirectory = "/home/dj";
   # overlays we would need
   nixpkgs.overlays = [
-    (self: super: { discord = super.discord.overrideAttrs (_: rec { version = "0.0.20"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz"; }); })
+    (self: super: { discord = super.discord.overrideAttrs (_: rec { version = "0.0.21"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz"; }); })
   ];
 
   home.sessionVariables = {
