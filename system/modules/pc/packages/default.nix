@@ -153,6 +153,7 @@ let
     xdg-utils
     flameshot
     mdcat
+    ncdu
     pcmanfm
   ];
 in
