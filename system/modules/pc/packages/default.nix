@@ -66,6 +66,7 @@ let
     aws-sam-cli
     darktable
     #shotman
+    slack
   ];  
   commonPackages = with pkgs; [
     # (pkgs.callPackage ./pipet.nix {})
@@ -146,7 +147,6 @@ let
     wmname
     gopls
     haskellPackages.haskell-language-server
-    slack
     gh
     pinentry-gtk2
     ponymix

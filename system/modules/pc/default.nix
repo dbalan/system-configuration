@@ -46,7 +46,13 @@ in
 
   xdg.enable = true;
 
-  programs.command-not-found.enable = true;
+  programs.command-not-found.enable = false;
+
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.direnv = {
       enableZshIntegration = true;
       enable = true;
