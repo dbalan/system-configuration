@@ -45,6 +45,7 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
+    broadcom-bt-firmware
     chromium
     curl
     fd
@@ -175,6 +176,7 @@ css = 700
   hardware.nitrokey.enable = true;
   services.pcscd.enable = true;
 
+  hardware.bluetooth.enable = true;
   # opengl
   hardware.opengl.enable = true;
   # logitech
@@ -235,6 +237,8 @@ css = 700
       "github_token" = {} // defopt;
     };
 
+  # For testing threema multidevice
+  services.flatpak.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {

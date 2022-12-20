@@ -11,7 +11,7 @@
         "*" = { xkb_variant = "us"; xkb_layout = "us,de"; xkb_options = "ctrl:nocaps,grp:win_space_toggle"; tap = "enabled"; };
 	      "touchpad" = { tap  = "enabled"; click_method = "clickfinger"; dwt = "enabled"; scroll_method = "two_finger"; };
       };
-	    floating.criteria = [ { title = "Steam - Update News"; } { class = "Pavucontrol"; } ];
+	    floating.criteria = [ { title = "Steam - Update News"; } { class = "Pavucontrol"; } { app_id = "mpv"; }];
 
       startup = [
         { command = "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store --no-persist";

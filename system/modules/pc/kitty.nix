@@ -3,7 +3,7 @@
 {
     programs.kitty = {
      enable = true;
-     font.name = "Fira Code";
+     font.name = "Iosevka Custom Extended";
      extraConfig =
       ''
       font_size 10
