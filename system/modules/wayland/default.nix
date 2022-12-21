@@ -43,6 +43,10 @@
 
         "${modifier}+q" = "reload";
 
+        # Sticky floating, good for media
+        "${modifier}+Shift+f" = "floating toggle";
+        "${modifier}+Shift+s" = "sticky toggle";
+
         # Brightness
         "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 2%-";
         "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +2%";
