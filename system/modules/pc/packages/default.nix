@@ -119,7 +119,6 @@ let
     tree
     python39Full
     python39Packages.ipython
-    python39Packages.poetry
     python39Packages.qrcode
     python39Packages.virtualenv
     amazon-ecr-credential-helper

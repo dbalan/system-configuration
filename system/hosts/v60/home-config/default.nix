@@ -44,6 +44,21 @@
           }
         ];
       };
+      commo = {
+        outputs = [
+          {
+            criteria = "Unknown ASUS VG289 0x0000A74D";
+            transform = "normal";
+            position = "0,0";
+            scale = 1.0;
+          }
+          {
+            criteria = "eDP-1";
+            position = "3840,0";
+            scale = 1.1;
+          }
+        ];
+      };
     };
   };
 

@@ -133,4 +133,13 @@ in
 
   services.syncthing.enable = true;
 
+  services.recoll = {
+    enable = true;
+    settings = {
+      nocjk = true;
+      loglevel = 5;
+      topdirs = [ "~/Documents" ];
+    };
+    startAt = "hourly";
+  };
 }
