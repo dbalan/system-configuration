@@ -21,7 +21,6 @@ let
     breeze-qt5
     gwenview
     kaddressbook
-    kalarm
     kate
     kcalutils
     kdepim-addons
@@ -39,6 +38,7 @@ let
     konversation
     korganizer
     kpimtextedit
+    krusader
     libkdepim
     libksieve
     mailcommon
