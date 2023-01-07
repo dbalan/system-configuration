@@ -1,3 +1,4 @@
+{swaylock, ...}:
 {
   mainBar = {
     layer = "top";
@@ -95,7 +96,7 @@
         "activated"= "";
         "deactivated"= "";
       };
-      "on-click-right"= "swaylock -eFfki /home/dj/Pictures/green-chilli.png";
+      "on-click-right"= "${swaylock} -eFfki /home/dj/Pictures/green-chilli.png";
     };
 
     "tray"= {

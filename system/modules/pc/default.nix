@@ -142,4 +142,38 @@ in
     };
     startAt = "hourly";
   };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
+      "inode/directory" = [ "org.kde.krusader.desktop" ];
+      "text/html"       = [ "firefox.desktop" ];
+      "text/plain"      = [ "org.kde.kate.desktop" ];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
+      "x-scheme-handler/about" = [ "brave-browser.desktop" ];
+      "x-scheme-handler/unknown" = [ "brave-browser.desktop" ];
+      "x-scheme-handler/mailto" = [ "userapp-Thunderbird-VBQQO1.desktop" ];
+      "message/rfc822" = [ "userapp-Thunderbird-VBQQO1.desktop" ];
+      "x-scheme-handler/mid" = [ "userapp-Thunderbird-VBQQO1.desktop" ];
+      "x-scheme-handler/webcal" = [ "brave-browser.desktop" ];
+      "text/calendar" = [ "userapp-Thunderbird-IBAQO1.desktop" ];
+      "application/x-extension-ics" = [ "userapp-Thunderbird-IBAQO1.desktop" ];
+      "x-scheme-handler/webcals" = [ "userapp-Thunderbird-IBAQO1.desktop" ];
+      "x-scheme-handler/chrome" = [ "firefox.desktop" ];
+      "application/x-extension-htm" = [ "firefox.desktop" ];
+      "application/x-extension-html" = [ "firefox.desktop" ];
+      "application/x-extension-shtml" = [ "firefox.desktop" ];
+      "application/xhtml+xml" = [ "firefox.desktop" ];
+      "application/x-extension-xhtml" = [ "firefox.desktop" ];
+      "application/x-extension-xht" = [ "firefox.desktop" ];
+      "image/jpeg" = [ "feh.desktop" ];
+      "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ];
+      "x-scheme-handler/tg" = [ "userapp-Telegram Desktop-FLEEV1.desktop" ];
+      "x-scheme-handler/tootle" = [ "com.github.bleakgrey.tootle.desktop" ];
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = ["writer.desktop"];
+      "image/tiff" = [ "org.kde.gwenview.desktop" ];
+    };
+  };
 }

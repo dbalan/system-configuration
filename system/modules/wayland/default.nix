@@ -1,5 +1,7 @@
 {config, pkgs, lib, ...}:
 
+let waybarconf = import ./waybarconf.nix { swaylock = "${pkgs.swaylock}/bin/swaylock"; };
+in
 {
     wayland.windowManager.sway = {
     enable = true;
@@ -66,7 +68,7 @@
     systemd.target = "sway-session.target";
     systemd.enable = true;
     style = builtins.readFile ./waybar.css;
-    settings = import ./waybarconf.nix;
+    settings = waybarconf;
   };
 
   services.swayidle = {
