@@ -78,7 +78,7 @@ in
       nsp = "nix-shell -p";
       cat = "bat";
       scp = "rsync -Pv";
-      ls = "exa";
+      ls = "exa --icons";
       nrb = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild";
       tree = "exa --tree";
       ha-bookshelf = "hass-cli state toggle switch.bookshelf";
