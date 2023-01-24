@@ -5,6 +5,7 @@
 let
   unstable = import <unstable> {};
   threema-desktop = pkgs.callPackage ./threema-desktop.nix { };
+  roam-research = pkgs.callPackage ./roam-research.nix {  };
 
   kdepim = with pkgs; with plasma5Packages; [ # KDE Apps
     akonadi
@@ -67,7 +68,8 @@ let
     darktable
     #shotman
     slack
-  ];  
+    sublime-music
+  ];
   commonPackages = with pkgs; [
     # (pkgs.callPackage ./pipet.nix {})
     #(haskell.lib.justStaticExecutables (haskellPackages.callPackage ./idid.nix {}))
@@ -76,6 +78,7 @@ let
     silver-searcher
     simple-scan
     awscli2
+    ssm-session-manager-plugin
     bat
     beancount
     brave
@@ -124,12 +127,12 @@ let
     amazon-ecr-credential-helper
     #python-language-server
     restic
+    roam-research
     ripgrep
     rsync
     sops
     steam
     stylish-haskell
-    sublime-music
     tcpdump
     inetutils
     thunderbird
