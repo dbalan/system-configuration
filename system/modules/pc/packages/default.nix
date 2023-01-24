@@ -133,6 +133,8 @@ let
     sops
     steam
     stylish-haskell
+    sublime-music
+    ssm-session-manager-plugin
     tcpdump
     inetutils
     thunderbird
