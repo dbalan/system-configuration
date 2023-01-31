@@ -65,10 +65,8 @@ let
     _1password-gui
     passage
     aws-sam-cli
-    darktable
     #shotman
     slack
-    sublime-music
   ];
   commonPackages = with pkgs; [
     # (pkgs.callPackage ./pipet.nix {})
@@ -112,6 +110,7 @@ let
     libqalculate
     libsecret
     libnotify
+    logseq
     man-pages
     mpv
     msmtp
@@ -133,7 +132,6 @@ let
     sops
     steam
     stylish-haskell
-    sublime-music
     ssm-session-manager-plugin
     tcpdump
     inetutils

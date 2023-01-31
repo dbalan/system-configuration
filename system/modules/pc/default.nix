@@ -147,7 +147,7 @@ in
     enable = true;
     defaultApplications = {
       "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
-      "inode/directory" = [ "org.kde.krusader.desktop" ];
+      "inode/directory" = [ "pcmanfm.desktop" ];
       "text/html"       = [ "firefox.desktop" ];
       "text/plain"      = [ "org.kde.kate.desktop" ];
       "x-scheme-handler/http" = [ "firefox.desktop" ];
