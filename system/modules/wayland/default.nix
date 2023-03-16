@@ -21,8 +21,9 @@ in
       ];
 
       window.commands = [
-        { command = "move scratchpad"; criteria = { class = "Spotify"; }; }
+        { command = "floating enable, resize set 1500 900, move scratchpad"; criteria = { class = "Spotify"; }; }
         { command = "floating enable, sticky enable, resize set 757 426"; criteria = { app_id = "firefox"; title = "^Picture-in-Picture$"; }; }
+        { command = "move scratchpad"; criteria = { app_id = "Threema Tech Preview"; }; }
       ];
 
       bars = [];
