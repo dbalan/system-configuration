@@ -20,6 +20,11 @@ in
         }
       ];
 
+      window.commands = [
+        { command = "move scratchpad"; criteria = { class = "Spotify"; }; }
+        { command = "floating enable, sticky enable, resize set 757 426"; criteria = { app_id = "firefox"; title = "^Picture-in-Picture$"; }; }
+      ];
+
       bars = [];
 	    keybindings = let
 	      cfg = config.wayland.windowManager.sway.config;
