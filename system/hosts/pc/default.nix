@@ -25,6 +25,7 @@
   # Set your time zone.
   # use names from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time.timeZone = "Europe/Berlin";
+  # time.timeZone = "Asia/Kolkata";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config

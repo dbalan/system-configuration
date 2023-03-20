@@ -122,7 +122,7 @@ in
   programs.rofi = {
     enable = true;
     theme = "Monokai";
-    package = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
+    package = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji pkgs.wl-clipboard ]; };
   };
 
   programs.firefox = {

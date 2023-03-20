@@ -80,6 +80,7 @@ let
     bat
     beancount
     brave
+    bridge-utils
     calibre
     discord
     docker-compose
@@ -140,6 +141,7 @@ let
     threema-desktop
     unzip
     vulkan-tools
+    vscode
     xorg.xhost
     zeal
     zoom-us

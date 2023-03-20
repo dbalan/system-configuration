@@ -6,7 +6,7 @@
      font.name = "Iosevka Custom Extended";
      extraConfig =
       ''
-      font_size 14
+      font_size 12
       enable_audio_bell no
       # theme monokai
       background #403e41
