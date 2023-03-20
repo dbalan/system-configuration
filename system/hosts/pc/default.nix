@@ -212,7 +212,7 @@ css = 700
     joinNetworks = ["233ccaac2757a496" "632ea29085fa00a5"];
   };
 
-  services.avahi.enable = true;
+  services.avahi.enable = false;
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.brlaser ];
