@@ -85,6 +85,7 @@ let
     calibre
     discord
     docker-compose
+    darktable
     dolphin
     dunst
     evince
