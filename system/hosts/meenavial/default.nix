@@ -70,8 +70,16 @@
     #'';
   };
   
-  services.logind.lidSwitch = "suspend";
+  services.logind  = {
+    lidSwitch = "suspend";
+    extraConfig = ''
+     # don't shutdown on short power press
+     HandlePowerKey=ignore
+    '';
+  };
+
   hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   services.openvpn.servers = {
     #pia = { config = '' config /home/dj/Documents/keys/de_berlin-aes-128-cbc-udp-dns.ovpn ''; };

@@ -204,7 +204,9 @@ css = 700
   services.rpcbind.enable = false;
   services.emacs = {
     enable = true;
-    #package = pkgs.emacsUnstable;
+    package = ((emacsPackagesNgGen emacs).emacsWithPackages (epkgs: [
+      epkgs.emacs-libvterm
+    ]));
   };
 
   services.tailscale.enable = true;
@@ -217,7 +219,10 @@ css = 700
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.brlaser ];
-  services.upower.enable = true;
+
+  services.upower = {
+    enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;

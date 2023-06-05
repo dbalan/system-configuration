@@ -64,7 +64,7 @@ let
     spotify
     _1password-gui
     passage
-    aws-sam-cli
+    #aws-sam-cli
     #shotman
     slack
   ];
@@ -75,8 +75,8 @@ let
     amazon-ecr-credential-helper
     silver-searcher
     simple-scan
+    cmake
     awscli2
-    ssm-session-manager-plugin
     bat
     beancount
     brave
