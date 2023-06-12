@@ -6,6 +6,7 @@ let
   unstable = import <unstable> {};
   threema-desktop = pkgs.callPackage ./threema-desktop.nix { };
   roam-research = pkgs.callPackage ./roam-research.nix {  };
+  scmbreeze = pkgs.callPackage ./scmbreeze.nix {  };
 
   kdepim = with pkgs; with plasma5Packages; [ # KDE Apps
     akonadi
@@ -130,6 +131,7 @@ let
     roam-research
     ripgrep
     rsync
+    scmbreeze
     sops
     steam
     stylish-haskell

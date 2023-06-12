@@ -23,7 +23,6 @@
   boot.supportedFilesystems = [ "ntfs" ];
   boot.loader.grub = {
     enable = true;
-    version = 2;
     device = "nodev";
     efiSupport = true;
     enableCryptodisk = true;
@@ -90,6 +89,7 @@
   hardware.bluetooth.enable = true;
 
 
+  programs.zsh.enable = true;
   users.users.dj = {
      isNormalUser = true;
      extraGroups = [ "wheel" "network" "wireshark" "docker" "libvirtd" ];

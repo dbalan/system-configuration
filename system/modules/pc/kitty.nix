@@ -3,7 +3,7 @@
 {
     programs.kitty = {
      enable = true;
-     font.name = "Iosevka Custom Extended";
+     font.name = "Iosevka Extended";
      extraConfig =
       ''
       font_size 12
