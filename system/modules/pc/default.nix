@@ -87,9 +87,12 @@ in
       ha-off = "hass-cli --token $(cat /run/secrets/home-assistant-api) state turn_off switch.bookshelf switch.led_strip switch.media_center";
       headphone = "bluetoothctl connect 4C:87:5D:81:EB:2D";
       headphone-disc = "bluetoothctl disconnect 4C:87:5D:81:EB:2D";
-      infrissue = "gh issue create --label \"infra,priority-2\" --project \"Infrastructure Issues\" --web";
       review-pr = "gh pr list -S 'review:required review-requested:@me' -s open --web";
-      screenshot= "grimshot save area /home/dj/Pictures/screenshot-$(date +%Y-%m-%d-%H%M).png";
+      screenshot = "grimshot save area /home/dj/Pictures/screenshot-$(date +%Y-%m-%d-%H%M).png";
+      # open file
+      of = "rg $1 --line-number . | fzf --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}'";
+      #TODO convert to a babashka script
+      gof = "gh browse $(of | cut -d : -f 1)";
     };
     oh-my-zsh = {
       enable = true;
