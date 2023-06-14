@@ -110,6 +110,7 @@ let
     jq
     ldns
     libqalculate
+    libtool
     libsecret
     libnotify
     logseq

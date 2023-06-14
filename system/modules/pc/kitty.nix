@@ -14,6 +14,7 @@
 
       cursor #fcfcfa
       cursor_text_color #000000
+      cursor_shape beam
       selection_foreground #403e41
       selection_background #fcfcfa
 
