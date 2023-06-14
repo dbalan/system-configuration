@@ -108,6 +108,7 @@ let
     htop
     httpie
     imagemagick
+    ispell
     jq
     ldns
     libqalculate
@@ -118,6 +119,7 @@ let
     man-pages
     mpv
     msmtp
+    nixfmt
     w3m
     nload
     p7zip
@@ -136,6 +138,8 @@ let
     scmbreeze
     sops
     steam
+    shellcheck
+    shfmt
     stylish-haskell
     ssm-session-manager-plugin
     tcpdump

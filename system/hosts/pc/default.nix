@@ -80,6 +80,9 @@
     #jack.enable = true;
   };
 
+  # needed for sway.
+  security.polkit.enable = true;
+
   virtualisation =  {
       libvirtd.enable = true;
       docker.enable = true;

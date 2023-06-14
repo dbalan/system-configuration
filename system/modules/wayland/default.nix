@@ -39,8 +39,8 @@ in
         "${modifier}+Shift+w" = "move workspace to output left";
         "${modifier}+Shift+e" = "move workspace to output right";
 
-        "${modifier}+o" = "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons | ${pkgs.findutils}/bin/xargs swaymsg exec --";
-        "${modifier}+p" = "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+        "${modifier}+o" = "exec ${pkgs.fuzzel}/bin/fuzzel | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+        "${modifier}+p" = "exec ${pkgs.fuzzel}/bin/fuzzel | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
         "${modifier}+x" = "exec ${pkgs.emacs}/bin/emacsclient -c";
 
@@ -96,6 +96,7 @@ in
     wl-clipboard
     mako # notification daemon
     clipman
+    rofi
     playerctl
 	];
 }
