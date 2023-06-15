@@ -3,59 +3,29 @@
 # FIXME: Make a system specific pkg list.
 
 let
-  unstable = import <unstable> {};
+  unstable = import <unstable> { };
   threema-desktop = pkgs.callPackage ./threema-desktop.nix { };
-  roam-research = pkgs.callPackage ./roam-research.nix {  };
-  scmbreeze = pkgs.callPackage ./scmbreeze.nix {  };
+  roam-research = pkgs.callPackage ./roam-research.nix { };
+  scmbreeze = pkgs.callPackage ./scmbreeze.nix { };
 
-  kdepim = with pkgs; with plasma5Packages; [ # KDE Apps
-    akonadi
-    akonadi-calendar
-    akonadi-contacts
-    akonadi-import-wizard
-    akonadi-mime
-    akonadi-notes
-    akonadi-search
-    akonadiconsole
-    akregator
-    ark
-    breeze-icons
-    breeze-qt5
-    gwenview
-    kaddressbook
-    kate
-    kcalutils
-    kdepim-addons
-    kdepim-runtime
-    kdialog
-    kidentitymanagement
-    kldap
-    kmail
-    kmailtransport
-    kmbox
-    kmime
-    kmix
-    kontact
-    kontactinterface
-    konversation
-    korganizer
-    kpimtextedit
-    krusader
-    libkdepim
-    libksieve
-    mailcommon
-    messagelib
-    okular
-    oxygen
-    oxygen-icons5
-    oxygenfonts
-    pim-sieve-editor
-    pimcommon
-    redshift-plasma-applet
-    spectacle
-    digikam
-    # End of KDE Apps
-  ];
+  kdepim = with pkgs;
+    with plasma5Packages; [ # KDE Apps
+      ark
+      breeze-icons
+      breeze-qt5
+      gwenview
+      kdialog
+      okular
+      oxygen
+      oxygen-icons5
+      oxygenfonts
+      pim-sieve-editor
+      pimcommon
+      redshift-plasma-applet
+      spectacle
+      kidentitymanagement
+      # End of KDE Apps
+    ];
   unstablePackages = with unstable; [
     cabal-install
     ghc
@@ -79,7 +49,6 @@ let
     cmake
     awscli2
     bat
-    beancount
     brave
     bridge-utils
     calibre
@@ -135,7 +104,7 @@ let
     roam-research
     ripgrep
     rsync
-    scmbreeze
+    #scmbreeze
     sops
     steam
     shellcheck
@@ -146,7 +115,6 @@ let
     inetutils
     thunderbird
     tmux
-    threema-desktop
     unzip
     vulkan-tools
     vscode
@@ -163,13 +131,8 @@ let
     pinentry-gtk2
     ponymix
     xdg-utils
-    flameshot
     mdcat
     ncdu
     pcmanfm
   ];
-in
-{
-  home.packages = commonPackages ++ unstablePackages ++ kdepim;
-}
-
+in { home.packages = commonPackages ++ unstablePackages ++ kdepim; }

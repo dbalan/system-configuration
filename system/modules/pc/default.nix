@@ -3,16 +3,9 @@
 
 with lib;
 
-let
-  unstable = import <unstable> {};
-in
-{
-  imports = [
-    ./kitty.nix
-    ./dunst
-    ./packages
-    ./ssh
-  ];
+let unstable = import <unstable> { };
+in {
+  imports = [ ./kitty.nix ./dunst ./packages ./ssh ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -23,7 +16,13 @@ in
   home.homeDirectory = "/home/dj";
   # overlays we would need
   nixpkgs.overlays = [
-    (self: super: { discord = super.discord.overrideAttrs (_: rec { version = "0.0.21"; src = builtins.fetchTarball "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz"; }); })
+    (self: super: {
+      discord = super.discord.overrideAttrs (_: rec {
+        version = "0.0.21";
+        src = builtins.fetchTarball
+          "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
+      });
+    })
   ];
 
   home.sessionVariables = {
@@ -34,10 +33,12 @@ in
   };
 
   # configure stylish-haskell
-  home.file.".stylish-haskell.yml".source = ../../../common-data/stylish-haskell.yml;
+  home.file.".stylish-haskell.yml".source =
+    ../../../common-data/stylish-haskell.yml;
 
   # fixme arbtt
-  home.file.".arbtt/categorize.cfg".source = ../../../common-data/arbtt-config.cfg;
+  home.file.".arbtt/categorize.cfg".source =
+    ../../../common-data/arbtt-config.cfg;
 
   home.sessionPath = [ "$HOME/go/bin" ];
 
@@ -54,8 +55,8 @@ in
   };
 
   programs.direnv = {
-      enableZshIntegration = true;
-      enable = true;
+    enableZshIntegration = true;
+    enable = true;
   };
 
   programs.git = {
@@ -71,8 +72,8 @@ in
   programs.zsh = {
     enable = true;
     shellAliases = {
-      e = "emacsclient -t";
-      ec = "emacsclient -c";
+      e = "emacsclient -c -n";
+      et = "emacsclient -t";
       mirc = "mosh -p 61000 irc";
       ns = "nix-shell";
       nsp = "nix-shell -p";
@@ -82,17 +83,25 @@ in
       nrb = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild";
       tree = "exa --tree";
       ha-bookshelf = "hass-cli state toggle switch.bookshelf";
-      ha-tv = "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.media_center";
-      ha-led =  "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.led_strip";
-      ha-off = "hass-cli --token $(cat /run/secrets/home-assistant-api) state turn_off switch.bookshelf switch.led_strip switch.media_center";
+      ha-tv =
+        "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.media_center";
+      ha-led =
+        "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.led_strip";
+      ha-off =
+        "hass-cli --token $(cat /run/secrets/home-assistant-api) state turn_off switch.bookshelf switch.led_strip switch.media_center";
       headphone = "bluetoothctl connect 4C:87:5D:81:EB:2D";
       headphone-disc = "bluetoothctl disconnect 4C:87:5D:81:EB:2D";
-      review-pr = "gh pr list -S 'review:required review-requested:@me' -s open --web";
-      screenshot = "grimshot save area /home/dj/Pictures/screenshot-$(date +%Y-%m-%d-%H%M).png";
+      review-pr =
+        "gh pr list -S 'review:required review-requested:@me' -s open --web";
+      block-pr = "gh pr list --author=@me --web";
+      screenshot =
+        "grimshot save area /home/dj/Pictures/screenshot-$(date +%Y-%m-%d-%H%M).png";
       # open file
-      of = "rg $1 --line-number . | fzf --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}'";
+      of =
+        "rg $1 --line-number . | fzf --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}'";
       #TODO convert to a babashka script
       gof = "gh browse $(of | cut -d : -f 1)";
+
     };
     oh-my-zsh = {
       enable = true;
@@ -100,17 +109,15 @@ in
       theme = "agnoster";
     };
     plugins = [{
-       name = "zlong_alert";
-       src = pkgs.fetchFromGitHub {
-                 owner = "dbalan";
-                 repo = "zlong_alert.zsh";
-                 rev = "d4635c099e158bb134f266d1b6e36c726586bfbd";
-                 sha256 = "sha256-m0UJjSKtOC7LzQH9M2JmyVT5XkWMNvoZzrDW6LOvvFg=";
-               };
-      }
-    ];
+      name = "zlong_alert";
+      src = pkgs.fetchFromGitHub {
+        owner = "dbalan";
+        repo = "zlong_alert.zsh";
+        rev = "d4635c099e158bb134f266d1b6e36c726586bfbd";
+        sha256 = "sha256-m0UJjSKtOC7LzQH9M2JmyVT5XkWMNvoZzrDW6LOvvFg=";
+      };
+    }];
   };
-
 
   programs.fzf = {
     enable = true;
@@ -125,12 +132,11 @@ in
   programs.rofi = {
     enable = true;
     theme = "Monokai";
-    package = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji pkgs.wl-clipboard ]; };
+    package =
+      pkgs.rofi.override { plugins = [ pkgs.rofi-emoji pkgs.wl-clipboard ]; };
   };
 
-  programs.firefox = {
-    enable = true;
-  };
+  programs.firefox = { enable = true; };
 
   services.status-notifier-watcher.enable = true;
 
@@ -151,8 +157,8 @@ in
     defaultApplications = {
       "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
       "inode/directory" = [ "pcmanfm.desktop" ];
-      "text/html"       = [ "firefox.desktop" ];
-      "text/plain"      = [ "org.kde.kate.desktop" ];
+      "text/html" = [ "firefox.desktop" ];
+      "text/plain" = [ "org.kde.kate.desktop" ];
       "x-scheme-handler/http" = [ "firefox.desktop" ];
       "x-scheme-handler/https" = [ "firefox.desktop" ];
       "x-scheme-handler/about" = [ "brave-browser.desktop" ];
@@ -175,7 +181,8 @@ in
       "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ];
       "x-scheme-handler/tg" = [ "userapp-Telegram Desktop-FLEEV1.desktop" ];
       "x-scheme-handler/tootle" = [ "com.github.bleakgrey.tootle.desktop" ];
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = ["writer.desktop"];
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" =
+        [ "writer.desktop" ];
       "image/tiff" = [ "org.kde.gwenview.desktop" ];
     };
   };
