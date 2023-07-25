@@ -71,7 +71,8 @@ in {
         "${modifier}+Shift+Return" = "exec ${cfg.terminal}";
         "${modifier}+Shift+c" = "kill";
 
-        "${modifier}+Shift+v" = "exec ${pkgs.clipman}/bin/clipman pick -t rofi";
+        "${modifier}+Shift+v" = ''
+          exec ${pkgs.clipman}/bin/clipman pick --tool=CUSTOM --tool-args="${pkgs.fuzzel}/bin/fuzzel -d"'';
 
         "${modifier}+Shift+w" = "move workspace to output left";
         "${modifier}+Shift+e" = "move workspace to output right";

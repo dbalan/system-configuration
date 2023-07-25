@@ -4,28 +4,26 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.kernelPackages = pkgs.linuxPackages_5_10;
+  boot.initrd.availableKernelModules =
+    [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [];
-  boot.blacklistedKernelModules = [ "mt76x2u" ];
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/42e36b90-e5fe-4fe8-b1e3-dfc0185e2da9";
-      fsType = "ext4";
-    };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8EF6-B281";
-      fsType = "vfat";
-    };
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
+  boot.blacklistedKernelModules = [ "mt76x2u" ];
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/42e36b90-e5fe-4fe8-b1e3-dfc0185e2da9";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/8EF6-B281";
+    fsType = "vfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/2c814c2d-8ece-430c-a2e2-3d2c96687049"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/2c814c2d-8ece-430c-a2e2-3d2c96687049"; }];
 
 }

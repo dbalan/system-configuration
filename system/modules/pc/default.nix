@@ -71,6 +71,7 @@ in {
 
   programs.zsh = {
     enable = true;
+    enableAutosuggestions = true;
     shellAliases = {
       e = "emacsclient -c -n";
       et = "emacsclient -t";

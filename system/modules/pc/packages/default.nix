@@ -63,6 +63,7 @@ let
     fava
     file
     fzf
+    fluent-reader
     gcc
     gitAndTools.hub
     gnome.adwaita-icon-theme
