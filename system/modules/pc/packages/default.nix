@@ -51,6 +51,7 @@ let
     bat
     brave
     bridge-utils
+    blueberry
     calibre
     discord
     docker-compose
@@ -67,6 +68,7 @@ let
     gcc
     gitAndTools.hub
     gnome.adwaita-icon-theme
+    google-drive-ocamlfuse
     meld
     mullvad-vpn
     gnome.seahorse

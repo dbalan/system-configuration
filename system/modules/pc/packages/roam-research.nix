@@ -1,38 +1,8 @@
-{ stdenv,
-  lib,
-  fetchurl,
-  alsa-lib,
-  atk,
-  cairo,
-  cups,
-  dbus,
-  dpkg,
-  expat,
-  gdk-pixbuf,
-  glib,
-  gtk3,
-  libX11,
-  libXScrnSaver,
-  libXcomposite,
-  libXcursor,
-  libXdamage,
-  libXext,
-  libXfixes,
-  libXi,
-  libXrandr,
-  libXrender,
-  libXtst,
-  libdrm,
-  libpulseaudio,
-  libxcb,
-  libxkbcommon,
-  libxshmfence,
-  mesa,
-  nspr,
-  nss,
-  pango,
-  udev,
-}:
+{ stdenv, lib, fetchurl, alsa-lib, atk, cairo, cups, dbus, dpkg, expat
+, gdk-pixbuf, glib, gtk3, libX11, libXScrnSaver, libXcomposite, libXcursor
+, libXdamage, libXext, libXfixes, libXi, libXrandr, libXrender, libXtst, libdrm
+, libpulseaudio, libxcb, libxkbcommon, libxshmfence, mesa, nspr, nss, pango
+, udev, }:
 
 let
   libPath = lib.makeLibraryPath [
@@ -67,15 +37,15 @@ let
     libXtst
     libpulseaudio
     udev
- ];
-in
-stdenv.mkDerivation rec {
+  ];
+in stdenv.mkDerivation rec {
   pname = "roam-research";
-  version = "0.0.15";
+  version = "0.0.18";
 
   src = fetchurl {
-    url = "https://roam-electron-deploy.s3.us-east-2.amazonaws.com/${pname}_${version}_amd64.deb";
-    sha256 = "sha256-bcZuAsYaqbxTywxDuoALBzzr/0z6fEwttOfNlLD1a+w=";
+    url =
+      "https://roam-electron-deploy.s3.us-east-2.amazonaws.com/${pname}_${version}_amd64.deb";
+    sha256 = "";
   };
 
   nativeBuildInputs = [ dpkg ];
@@ -102,9 +72,9 @@ stdenv.mkDerivation rec {
   dontPatchELF = true;
   meta = with lib; {
     description = "A note-taking tool for networked thought.";
-    homepage    = "https://roamresearch.com/";
+    homepage = "https://roamresearch.com/";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    license     = licenses.unfree;
-    platforms   = [ "x86_64-linux" ];
+    license = licenses.unfree;
+    platforms = [ "x86_64-linux" ];
   };
 }

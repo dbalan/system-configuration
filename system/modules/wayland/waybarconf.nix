@@ -3,7 +3,7 @@
   mainBar = {
     layer = "top";
     position = "top";
-    height = 14;
+    height = 18;
     modules-left = ["sway/workspaces" "sway/mode"];
     modules-center = ["sway/window"];
     modules-right = ["temperature" "cpu" "memory" "network" "pulseaudio" "clock" "battery" "idle_inhibitor" "tray"];
@@ -100,7 +100,7 @@
     };
 
     "tray"= {
-      # "icon-size"= 21;
+      "icon-size"= 21;
       "spacing"= 10;
     };
   };
