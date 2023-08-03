@@ -45,7 +45,7 @@ in stdenv.mkDerivation rec {
   src = fetchurl {
     url =
       "https://roam-electron-deploy.s3.us-east-2.amazonaws.com/${pname}_${version}_amd64.deb";
-    sha256 = "";
+    sha256 = "sha256-veDWBFZbODsdaO1UdfuC4w6oGCkeVBe+fqKn5XVHKDQ=";
   };
 
   nativeBuildInputs = [ dpkg ];
