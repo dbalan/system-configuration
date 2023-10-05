@@ -29,9 +29,9 @@
     # Grub menu is painted really slowly on HiDPI, so we lower the
     # resolution. Unfortunately, scaling to 1280x720 (keeping aspect
     # ratio) doesn't seem to work, so we just pick another low one.
-    gfxmodeEfi = "1024x768"; 
+    gfxmodeEfi = "1024x768";
   };
- 
+
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.initrd.luks.devices = {
     root = {
@@ -40,24 +40,21 @@
       allowDiscards = true;
     };
   };
-  
-  boot.initrd.availableKernelModules = [
-    "aesni_intel"
-    "cryptd"
-  ];
-  
+
+  boot.initrd.availableKernelModules = [ "aesni_intel" "cryptd" ];
+
   # enable deep sleep
-  #boot.kernelParams = [ "mem_sleep_default=deep" ];
+  boot.kernelParams = [ "i915.enable_psr=0" "mem_sleep_default=deep" ];
   #boot.kernelPackages = pkgs.linuxPackages_5_19;
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
-  
+
   networking.hostName = "v60"; # Define your hostname.
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = false;  
+  networking.useDHCP = false;
   networking.networkmanager.enable = true;
 
   # Configure network proxy if necessary
@@ -88,25 +85,25 @@
 
   hardware.bluetooth.enable = true;
 
-
   programs.zsh.enable = true;
   users.users.dj = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" "network" "wireshark" "docker" "libvirtd" ];
-     description = "Dhananjay Balan";
-     shell = pkgs.zsh;
+    isNormalUser = true;
+    extraGroups = [ "wheel" "network" "wireshark" "docker" "libvirtd" ];
+    description = "Dhananjay Balan";
+    shell = pkgs.zsh;
   };
 
   home-manager.users.dj = ./home-config/default.nix;
-  
-  environment.systemPackages = with pkgs; [
-     mg # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  ];
+
+  environment.systemPackages = with pkgs;
+    [
+      mg # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    ];
 
   programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
-     pinentryFlavor = "gtk2";
+    enable = true;
+    enableSSHSupport = true;
+    pinentryFlavor = "gtk2";
   };
 
   # List services that you want to enable:
@@ -119,19 +116,18 @@
       mode = "0600";
       owner = config.users.users.dj.name;
       group = config.users.users.dj.group;
-    }; in
-    {
-      backup = {} // defopt;
-      "wireguard/ares_dbalan_in" = {} // defopt;
-      "retiolum/ed25519_key.priv" = {} // defopt;
-      "retiolum/rsa_key.priv" = {} // defopt;
     };
-
+  in {
+    backup = { } // defopt;
+    "wireguard/ares_dbalan_in" = { } // defopt;
+    "retiolum/ed25519_key.priv" = { } // defopt;
+    "retiolum/rsa_key.priv" = { } // defopt;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
 
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   environment.loginShellInit = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
@@ -143,7 +139,7 @@
 
   # Open ports in the firewall.
   networking.firewall = {
-    allowedTCPPorts = [ 44721 ];
+    allowedTCPPorts = [ 9090 ];
     allowPing = true;
   };
 
@@ -158,22 +154,22 @@
   # connect to my overlay
   networking.wireguard.interfaces = {
     wg0 = {
-       ips = ["192.168.40.2/24"];
-       privateKeyFile = config.sops.secrets."wireguard/ares_dbalan_in".path;
-       peers = [
-          {
-             publicKey = "a2cwNbB9hrcjWlLE+iSrywrcQfgX53Nlt/kuAokqChU=";
-             allowedIPs = [ "192.168.40.1/32"
-                            "192.168.40.0/24"
-                            "192.168.31.0/24"
-                            "10.11.11.0/24"
-                            "10.1.10.0/24"
-                            "10.2.10.0/24"];
-             endpoint = "ares.dbalan.in:51820";
-             persistentKeepalive = 25;
-          }
-       ];
-     };
+      ips = [ "192.168.40.2/24" ];
+      privateKeyFile = config.sops.secrets."wireguard/ares_dbalan_in".path;
+      peers = [{
+        publicKey = "a2cwNbB9hrcjWlLE+iSrywrcQfgX53Nlt/kuAokqChU=";
+        allowedIPs = [
+          "192.168.40.1/32"
+          "192.168.40.0/24"
+          "192.168.31.0/24"
+          "10.11.11.0/24"
+          "10.1.10.0/24"
+          "10.2.10.0/24"
+        ];
+        endpoint = "ares.dbalan.in:51820";
+        persistentKeepalive = 25;
+      }];
+    };
   };
 
   # backup - voltus device, data in voltus
@@ -183,10 +179,12 @@
       repository = "s3://s3.amazonaws.com/dbalan-backups/v60";
       passwordFile = config.sops.secrets.backup.path;
       paths = [ "/home/dj" ];
-      extraBackupArgs = [ "--exclude-file=/home/dj/code/private/system-configuration/common-data/v60.exclude" "--exclude-caches"];
+      extraBackupArgs = [
+        "--exclude-file=/home/dj/code/private/system-configuration/common-data/v60.exclude"
+        "--exclude-caches"
+      ];
     };
   };
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

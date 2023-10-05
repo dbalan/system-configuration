@@ -60,8 +60,6 @@ let
     dunst
     evince
     exa
-    easyeffects
-    fava
     file
     fzf
     fluent-reader
@@ -112,7 +110,6 @@ let
     steam
     shellcheck
     shfmt
-    stylish-haskell
     ssm-session-manager-plugin
     tcpdump
     inetutils
@@ -123,13 +120,10 @@ let
     vscode
     xorg.xhost
     zeal
-    zoom-us
     zathura
     libreoffice
     libimobiledevice
     wmname
-    gopls
-    haskellPackages.haskell-language-server
     gh
     pinentry-gtk2
     ponymix

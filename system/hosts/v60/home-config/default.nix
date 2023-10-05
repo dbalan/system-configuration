@@ -2,27 +2,26 @@
 
 {
 
-  require = [
-    ../../../modules/pc
-    ../../../modules/wayland
-  ];
+  require = [ ../../../modules/pc ../../../modules/wayland ];
 
   wayland.windowManager.sway.config.output = {
-    "eDP-1" = { bg = "~/Pictures/desk tile"; scale = "1.1"; };
+    "eDP-1" = {
+      bg = "~/Pictures/desk tile";
+      scale = "1.1";
+    };
     "DP-5" = { bg = "~/Pictures/desk tile"; };
     "DP-6" = { bg = "~/Pictures/desk tile"; };
+    "DP-4" = { bg = "~/Pictures/desk tile"; };
   };
 
   services.kanshi = {
     enable = true;
     profiles = {
       undocked = {
-        outputs = [
-	        {
-	          criteria = "eDP-1";
-            scale = 1.1;
-	        }
-	      ];
+        outputs = [{
+          criteria = "eDP-1";
+          scale = 1.1;
+        }];
       };
 
       docked = {
@@ -33,7 +32,8 @@
             position = "2560,0";
             scale = 1.0;
           }
-          { criteria = "eDP-1";
+          {
+            criteria = "eDP-1";
             status = "disable";
           }
           {
@@ -41,6 +41,23 @@
             position = "0,0";
             transform = "normal";
             scale = 1.0;
+          }
+        ];
+      };
+      travel = {
+        outputs = [
+          {
+            criteria = "DO NOT USE - RTK DR1602 Unknown";
+            transform = "normal";
+            position = "0,0";
+            scale = 1.0;
+          }
+          {
+            criteria = "eDP-1";
+            transform = "normal";
+            scale = 1.1;
+            position = "2560,0";
+
           }
         ];
       };
