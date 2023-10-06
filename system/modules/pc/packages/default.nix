@@ -59,7 +59,7 @@ let
     dolphin
     dunst
     evince
-    eza
+    unstable.eza
     file
     fzf
     fluent-reader
@@ -95,10 +95,6 @@ let
     p7zip
     pandoc
     tree
-    python39Full
-    python39Packages.ipython
-    python39Packages.qrcode
-    python39Packages.virtualenv
     amazon-ecr-credential-helper
     #python-language-server
     restic
