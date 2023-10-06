@@ -5,19 +5,15 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # ../../modules/retiolum/default.nix
-    ];
-
-  require = [
-    ../pc
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    # ../../modules/retiolum/default.nix
   ];
 
-  nixpkgs.config.allowUnFreePredicate = p: builtins.elem (builtins.getName p) [
-      "discord"
-  ];
+  require = [ ../pc ];
+
+  nixpkgs.config.allowUnFreePredicate = p:
+    builtins.elem (builtins.getName p) [ "discord" ];
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];

@@ -47,7 +47,7 @@
       travel = {
         outputs = [
           {
-            criteria = "DO NOT USE - RTK DR1602 Unknown";
+            criteria = "DO NOT USE - RTK DR1602 demoset-1";
             transform = "normal";
             position = "0,0";
             scale = 1.0;
