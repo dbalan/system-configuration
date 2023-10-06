@@ -59,7 +59,7 @@ let
     dolphin
     dunst
     evince
-    exa
+    eza
     file
     fzf
     fluent-reader

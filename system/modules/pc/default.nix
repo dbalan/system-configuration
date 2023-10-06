@@ -80,9 +80,9 @@ in {
       nsp = "nix-shell -p";
       cat = "bat";
       scp = "rsync -Pv";
-      ls = "exa --icons";
+      ls = "eza --icons";
       nrb = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild";
-      tree = "exa --tree";
+      tree = "eza --tree";
       ha-bookshelf = "hass-cli state toggle switch.bookshelf";
       ha-tv =
         "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.media_center";
