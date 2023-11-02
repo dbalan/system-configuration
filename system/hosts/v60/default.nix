@@ -41,6 +41,7 @@
 
   # enable deep sleep
   boot.kernelParams = [ "i915.enable_psr=0" "mem_sleep_default=deep" ];
+
   #boot.kernelPackages = pkgs.linuxPackages_5_19;
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];

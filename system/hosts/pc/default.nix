@@ -17,6 +17,9 @@
   # increase inotify limits for syncthing
   boot.kernel.sysctl = { "fs.inotify.max_user_watches" = 204800; };
 
+  # get systemd on boot (askpassword echo)
+  boot.initrd.systemd.enable = true;
+
   networking.extraHosts = ''
     192.168.196.120 vault.ber.dbalan.in jellyfin.ber.dbalan.in home.ber.dbalan.in svc.ber.dbalan.in books.ber.dbalan.in
     192.168.196.70 photoprism.pvt.dbalan.in

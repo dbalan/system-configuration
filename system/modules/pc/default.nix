@@ -64,6 +64,7 @@ in {
     userName = "Dhananjay Balan";
     userEmail = "mail@dbalan.in";
     extraConfig = {
+      github.user = "dbalan";
       init = { defaultBranch = "trunk"; };
       diff = { external = "${pkgs.difftastic}/bin/difft"; };
     };

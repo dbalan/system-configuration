@@ -13,6 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.supportedFilesystems = [ "ntfs" ];
+
   boot.initrd.luks.devices = {
     root = {
       device = "/dev/disk/by-uuid/465f5302-3abb-465c-8806-79747691e37e";
@@ -43,12 +44,15 @@
 
   security.pam.services.swaylock = { };
 
-  services.openssh.enable = true;
+  services.openssh.enable = false;
   environment.loginShellInit = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
       exec sway
     fi
   '';
+
+  # user space cachefiles for network mounts
+  services.cachefilesd.enable = true;
 
   # xbox controller
   hardware.xone.enable = true;
