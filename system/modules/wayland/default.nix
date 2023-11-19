@@ -125,6 +125,7 @@ in {
 
   services.swayidle = {
     enable = true;
+    extraArgs = [ "idlehint 30" ];
     events = [
       {
         event = "before-sleep";
@@ -136,7 +137,7 @@ in {
       }
     ];
     timeouts = [{
-      timeout = 300;
+      timeout = 120;
       command = "${pkgs.swaylock}/bin/swaylock -fF -i /home/dj/Pictures/lock";
     }];
   };
