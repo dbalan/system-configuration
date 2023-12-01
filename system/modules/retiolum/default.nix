@@ -9,8 +9,8 @@ let
 
   retiolum = pkgs.fetchgit {
     url = "https://github.com/krebs/retiolum.git";
-    rev = "231fb4c49fba27446fb89b4e189b2f501c969d55";
-    sha256 = "sha256-BPEmrPai+kIsXXJZstKhNUXIh/peQmg/xwBOYxViMRk=";
+    rev = "2bde49b654225c90172f02f534c7c7ebf053c317";
+    sha256 = "sha256-abalI3Msrx/Wk9B5wB9bTo1VB90PsBLchUZvHnU2CPA=";
   };
 
 in {
@@ -50,7 +50,8 @@ in {
       '';
     };
 
-    networking.extraHosts = builtins.readFile (toString "${retiolum}/etc.hosts");
+    networking.extraHosts =
+      builtins.readFile (toString "${retiolum}/etc.hosts");
 
     environment.systemPackages = [ pkgs.tinc_pre ];
 

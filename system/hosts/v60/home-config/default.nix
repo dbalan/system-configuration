@@ -64,7 +64,7 @@
       commo = {
         outputs = [
           {
-            criteria = "Unknown ASUS VG289 0x0000A74D";
+            criteria = "ASUSTek COMPUTER INC ASUS VG289 0x0000A74D";
             transform = "normal";
             position = "0,0";
             scale = 1.0;
