@@ -4,8 +4,6 @@
 
 let
   unstable = import <unstable> { };
-  threema-desktop = pkgs.callPackage ./threema-desktop.nix { };
-  scmbreeze = pkgs.callPackage ./scmbreeze.nix { };
 
   kdepim = with pkgs;
     with plasma5Packages; [ # KDE Apps
@@ -96,20 +94,21 @@ let
     p7zip
     pandoc
 <<<<<<< HEAD
+<<<<<<< HEAD
     tree
 =======
     lsd
+=======
+>>>>>>> dab4103 (New programs: lsd, wezterm)
     python39Full
     python39Packages.ipython
     python39Packages.qrcode
     python39Packages.virtualenv
 >>>>>>> 5731e68 (update system config)
     amazon-ecr-credential-helper
-    #python-language-server
     restic
     ripgrep
     rsync
-    #scmbreeze
     sops
     steam
     shellcheck

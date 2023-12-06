@@ -49,15 +49,14 @@
           {
             criteria = "DO NOT USE - RTK DR1602 demoset-1";
             transform = "normal";
-            position = "0,0";
             scale = 1.0;
+            position = "2256,0";
           }
           {
             criteria = "eDP-1";
             transform = "normal";
-            scale = 1.1;
-            position = "2560,0";
-
+            scale = 1.0;
+            position = "0,0";
           }
         ];
       };

@@ -29,7 +29,7 @@ in {
     VOLTUS = "/home/dj/code/work/voltus";
     VAULT_GITHUB_TOKEN = "$(gh auth token)";
     EDITOR = "emacsclient -t";
-    zlong_ignore_cmds = "git tig vim emacsclient e vim ssh psql";
+    zlong_ignore_cmds = "git tig vim emacsclient e vim ssh psql pgcli";
   };
 
   # configure stylish-haskell
@@ -83,7 +83,7 @@ in {
       scp = "rsync -Pv";
       ls = "lsd";
       nrb = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild";
-      tree = "lsd --tree";
+      tree = "eza --tree";
       ha-bookshelf = "hass-cli state toggle switch.bookshelf";
       ha-tv =
         "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.media_center";
@@ -121,6 +121,11 @@ in {
     }];
   };
 
+  programs.wezterm = {
+    enable = true;
+    extraConfig = builtins.readFile ./wezterm.lua;
+  };
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -137,6 +142,8 @@ in {
     package =
       pkgs.rofi.override { plugins = [ pkgs.rofi-emoji pkgs.wl-clipboard ]; };
   };
+
+  programs.lsd = { enable = true; };
 
   programs.firefox = { enable = true; };
 
