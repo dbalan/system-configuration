@@ -93,18 +93,7 @@ let
     nload
     p7zip
     pandoc
-<<<<<<< HEAD
-<<<<<<< HEAD
     tree
-=======
-    lsd
-=======
->>>>>>> dab4103 (New programs: lsd, wezterm)
-    python39Full
-    python39Packages.ipython
-    python39Packages.qrcode
-    python39Packages.virtualenv
->>>>>>> 5731e68 (update system config)
     amazon-ecr-credential-helper
     restic
     ripgrep
