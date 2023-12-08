@@ -81,7 +81,7 @@ in {
       nsp = "nix-shell -p";
       cat = "bat";
       scp = "rsync -Pv";
-      ls = "lsd";
+      ls = "eza --icons";
       nrb = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild";
       tree = "eza --tree";
       ha-bookshelf = "hass-cli state toggle switch.bookshelf";
@@ -142,8 +142,6 @@ in {
     package =
       pkgs.rofi.override { plugins = [ pkgs.rofi-emoji pkgs.wl-clipboard ]; };
   };
-
-  programs.lsd = { enable = true; };
 
   programs.firefox = { enable = true; };
 

@@ -8,7 +8,7 @@ in {
     enable = true;
     xwayland = true;
     config = {
-      terminal = "${pkgs.wezterm}/bin/wezterm";
+      terminal = "${pkgs.kitty}/bin/kitty";
       modifier = "Mod4";
       input = {
         "*" = {
