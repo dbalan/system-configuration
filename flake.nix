@@ -23,15 +23,14 @@
           specialArgs = attrs;
           pkgs = legacyPackages.x86_64-linux;
           modules = [
-            (import ./system/hosts/v60/default.nix)
+            (import ./system/hosts/v60/configuration.nix)
 
             sops-nix.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.dj =
-                ./system/hosts/v60/home-config/default.nix;
+              home-manager.users.dj = ./system/hosts/v60/home.nix;
             }
           ];
         };
