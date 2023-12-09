@@ -6,7 +6,7 @@
     ./hardware-configuration.nix
   ];
 
-  require = [ ../pc ];
+  require = [ ../../modules/common-host-config ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -56,8 +56,6 @@
 
   # xbox controller
   hardware.xone.enable = true;
-
-  home-manager.users.dj = ./home-config/default.nix;
 
   sops.secrets = let
     defopt = {

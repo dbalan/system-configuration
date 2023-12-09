@@ -1,14 +1,17 @@
 { config, pkgs, ... }:
 
 {
-  require = [
-    ../../../modules/pc
-    ../../../modules/wayland
-  ];
+  require = [ ../../modules/common-home-config ];
 
-  wayland.windowManager.sway.config.output =  {
-    "DP-1" = { bg = "~/Pictures/desk fill"; position = "0,0"; };
-    "DP-2" = { bg = "~/Pictures/desk fill"; position = "2560,0"; };
+  wayland.windowManager.sway.config.output = {
+    "DP-1" = {
+      bg = "~/Pictures/desk fill";
+      position = "0,0";
+    };
+    "DP-2" = {
+      bg = "~/Pictures/desk fill";
+      position = "2560,0";
+    };
     "HDMI-A-1" = { disable = ""; };
   };
 

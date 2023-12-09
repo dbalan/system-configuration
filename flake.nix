@@ -34,6 +34,22 @@
             }
           ];
         };
+
+        kimchi = nixpkgs.lib.nixosSystem {
+          specialArgs = attrs;
+          pkgs = legacyPackages.x86_64-linux;
+          modules = [
+            (import ./system/hosts/kimchi/configuration.nix)
+
+            sops-nix.nixosModules.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.dj = ./system/hosts/kimchi/home.nix;
+            }
+          ];
+        };
       };
     };
 }
