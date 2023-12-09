@@ -10,7 +10,7 @@
     ../../modules/retiolum/default.nix
   ];
 
-  require = [ ../pc ];
+  require = [ ../../modules/common-host-config ];
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
