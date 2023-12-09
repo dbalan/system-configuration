@@ -33,6 +33,7 @@ let
     evince
     eza
     file
+    feh
     foliate
     fzf
     gcc
