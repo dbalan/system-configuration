@@ -4,10 +4,11 @@ secrets:
 sources:
   - git@git.sr.ht:~dbalan/system-configuration
 tasks:
-  - setup: |
   - build: |
-      for host in "kimchi" "v60"
-      nixos-rebuild build --flake ".#{host}"
+      cd system-configuration
+      for host in "kimchi" "v60"; do
+        nixos-rebuild build --flake ".#${host}"
+      done
 triggers:
   - action: email
     condition: failure
