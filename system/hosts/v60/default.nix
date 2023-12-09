@@ -13,9 +13,6 @@
 
   require = [ ../pc ];
 
-  nixpkgs.config.allowUnFreePredicate = p:
-    builtins.elem (builtins.getName p) [ "discord" ];
-
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
   boot.loader.grub = {
@@ -89,8 +86,6 @@
     description = "Dhananjay Balan";
     shell = pkgs.zsh;
   };
-
-  home-manager.users.dj = ./home-config/default.nix;
 
   environment.systemPackages = with pkgs;
     [

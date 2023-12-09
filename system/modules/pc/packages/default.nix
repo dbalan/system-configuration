@@ -3,7 +3,6 @@
 # FIXME: Make a system specific pkg list.
 
 let
-  unstable = import <unstable> { };
 
   kdepim = with pkgs;
     with plasma5Packages; [ # KDE Apps
@@ -23,7 +22,7 @@ let
       kidentitymanagement
       # End of KDE Apps
     ];
-  unstablePackages = with unstable; [
+  unstablePackages = with pkgs; [
     roam-research
     cabal-install
     ghc
@@ -57,7 +56,7 @@ let
     dolphin
     dunst
     evince
-    unstable.eza
+    eza
     file
     fzf
     fluent-reader

@@ -2,13 +2,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    <home-manager/nixos>
-    "${(import ../../../nix/sources.nix).sops-nix}/modules/sops"
-  ];
-
-  nixpkgs.config.allowUnFreePredicate = p:
-    builtins.elem (builtins.getName p) [ "discord" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
