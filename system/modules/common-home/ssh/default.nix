@@ -3,17 +3,15 @@
 {
   programs.ssh = {
     enable = true;
-    extraConfig =
-      ''
+    extraConfig = ''
       Host 10.0.*.*
         Port 8658
         user ubuntu
 
       Host 172.30.*.*
-	      Port 8658
+        Port 8658
         user ubuntu
-
-     '';
+    '';
   };
 
 }

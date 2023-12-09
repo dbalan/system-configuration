@@ -1,0 +1,97 @@
+{ config, pkgs, ... }:
+
+let
+  kdepkgs = with pkgs;
+    with plasma5Packages; [ # KDE Apps
+      ark
+      breeze-icons
+      breeze-qt5
+      gwenview
+      kdialog
+      okular
+      oxygen
+      oxygen-icons5
+      oxygenfonts
+      # End of KDE Apps
+    ];
+  commonPackages = with pkgs; [
+    _1password-gui
+    amazon-ecr-credential-helper
+    awscli2
+    bat
+    blueberry
+    brave
+    bridge-utils
+    btop
+    cabal-install
+    calibre
+    cmake
+    darktable
+    discord
+    docker-compose
+    dunst
+    evince
+    eza
+    file
+    foliate
+    fzf
+    gcc
+    gh
+    ghc
+    ghcid
+    gitAndTools.hub
+    gnome.adwaita-icon-theme
+    gnome.seahorse
+    gnumake
+    go
+    godef
+    gopass
+    imagemagick
+    inetutils
+    ispell
+    jq
+    ldns
+    libimobiledevice
+    libnotify
+    libqalculate
+    libreoffice
+    libsecret
+    libtool
+    logseq
+    man-pages
+    mdcat
+    meld
+    mpv
+    mullvad-vpn
+    ncdu
+    nixfmt
+    p7zip
+    pcmanfm
+    pinentry-gtk2
+    ponymix
+    ripgrep
+    roam-research
+    rsync
+    shellcheck
+    shfmt
+    signal-desktop
+    silver-searcher
+    simple-scan
+    slack
+    sops
+    spotify
+    ssm-session-manager-plugin
+    steam
+    sublime-music
+    tcpdump
+    thunderbird
+    tmux
+    unzip
+    vscode
+    wmname
+    xdg-utils
+    xorg.xhost
+    zathura
+    zeal
+  ];
+in { home.packages = commonPackages ++ kdepkgs; }
