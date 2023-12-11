@@ -4,15 +4,10 @@ secrets:
 sources:
   - git@git.sr.ht:~dbalan/system-configuration
 tasks:
-  - setup: |
-      sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-      sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable
-      sudo nix-channel --update
-
   - build: |
-      for sys in "kimchi" "v60"; do
-         echo "(import /home/build/system-configuration/system).${sys}" | tee ${sys}.nix
-         sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild dry-build -I nixos-config=${sys}.nix
+      cd system-configuration
+      for host in "kimchi" "v60"; do
+        nixos-rebuild build --flake ".#${host}"
       done
 triggers:
   - action: email

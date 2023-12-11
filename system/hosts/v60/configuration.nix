@@ -8,13 +8,9 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/retiolum/default.nix
-
   ];
 
-  require = [ ../pc ];
-
-  nixpkgs.config.allowUnFreePredicate = p:
-    builtins.elem (builtins.getName p) [ "discord" ];
+  require = [ ../../modules/common-host-config ];
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
@@ -41,13 +37,8 @@
   boot.initrd.availableKernelModules = [ "aesni_intel" "cryptd" ];
 
   # enable deep sleep
-  boot.kernelParams = [ "i915.enable_psr=0" "mem_sleep_default=deep" ];
-<<<<<<< HEAD
-
-  #boot.kernelPackages = pkgs.linuxPackages_5_19;
-=======
+  # boot.kernelParams = [ "i915.enable_psr=0" "mem_sleep_default=deep" ];
   # boot.kernelPackages = pkgs.linuxPackages_latest;
->>>>>>> dab4103 (New programs: lsd, wezterm)
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
@@ -94,8 +85,6 @@
     description = "Dhananjay Balan";
     shell = pkgs.zsh;
   };
-
-  home-manager.users.dj = ./home-config/default.nix;
 
   environment.systemPackages = with pkgs;
     [

@@ -2,7 +2,7 @@
 
 {
 
-  require = [ ../../../modules/pc ../../../modules/wayland ];
+  require = [ ../../modules/common-home-config ];
 
   wayland.windowManager.sway.config.output = {
     "eDP-1" = {

@@ -3,9 +3,8 @@
 
 with lib;
 
-let unstable = import <unstable> { };
-in {
-  imports = [ ./kitty.nix ./dunst ./packages ./ssh ];
+{
+  imports = [ ./kitty.nix ./dunst ./packages ./ssh ./wayland ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -14,16 +13,6 @@ in {
   # paths it should manage.
   home.username = "dj";
   home.homeDirectory = "/home/dj";
-  # overlays we would need
-  nixpkgs.overlays = [
-    (self: super: {
-      discord = super.discord.overrideAttrs (_: rec {
-        version = "0.0.21";
-        src = builtins.fetchTarball
-          "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
-      });
-    })
-  ];
 
   home.sessionVariables = {
     VOLTUS = "/home/dj/code/work/voltus";
@@ -46,8 +35,6 @@ in {
   gtk.iconTheme.name = "Adwaita";
 
   xdg.enable = true;
-
-  programs.command-not-found.enable = false;
 
   programs.nix-index = {
     enable = true;
@@ -76,23 +63,10 @@ in {
     shellAliases = {
       e = "emacsclient -c -n";
       et = "emacsclient -t";
-      mirc = "mosh -p 61000 irc";
-      ns = "nix-shell";
-      nsp = "nix-shell -p";
       cat = "bat";
       scp = "rsync -Pv";
       ls = "eza --icons";
-      nrb = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild";
       tree = "eza --tree";
-      ha-bookshelf = "hass-cli state toggle switch.bookshelf";
-      ha-tv =
-        "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.media_center";
-      ha-led =
-        "hass-cli --token $(cat /run/secrets/home-assistant-api) state toggle switch.led_strip";
-      ha-off =
-        "hass-cli --token $(cat /run/secrets/home-assistant-api) state turn_off switch.bookshelf switch.led_strip switch.media_center";
-      headphone = "bluetoothctl connect 4C:87:5D:81:EB:2D";
-      headphone-disc = "bluetoothctl disconnect 4C:87:5D:81:EB:2D";
       review-pr =
         "gh pr list -S 'review:required review-requested:@me' -s open --web";
       block-pr = "gh pr list --author=@me --web";
