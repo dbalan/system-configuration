@@ -11,12 +11,20 @@
   outputs = { self, nixpkgs, sops-nix, home-manager, flake-utils, ... }@attrs:
 
     rec {
-      legacyPackages = nixpkgs.lib.genAttrs [ "x86_64-linux" "x86_64-darwin" ]
-        (system:
-          import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          });
+      platforms = [ "x86_64-linux" "x86_64-darwin" ];
+      legacyPackages = nixpkgs.lib.genAttrs platforms (system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          config.permittedInsecurePackages = [ "electron-25.9.0" ];
+        });
+
+      defaultPackage = nixpkgs.lib.genAttrs platforms (system:
+        let p = legacyPackages."${system}";
+        in p.writeScriptBin "run" ''
+          HOSTNAME=$(hostname)
+            sudo nixos-rebuild --flake ".#$HOSTNAME" $@
+        '');
 
       nixosConfigurations = {
         v60 = nixpkgs.lib.nixosSystem {

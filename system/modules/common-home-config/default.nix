@@ -119,7 +119,11 @@ with lib;
   };
 
   programs.firefox = { enable = true; };
-
+  programs.chromium = { enable = true; };
+  programs.gh = {
+    enable = true;
+    settings = { version = 1; };
+  };
   services.status-notifier-watcher.enable = true;
 
   services.syncthing.enable = true;

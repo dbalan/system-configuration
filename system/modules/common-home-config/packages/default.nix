@@ -37,7 +37,6 @@ let
     foliate
     fzf
     gcc
-    gh
     ghc
     ghcid
     gitAndTools.hub
