@@ -70,6 +70,7 @@ with lib;
       review-pr =
         "gh pr list -S 'review:required review-requested:@me' -s open --web";
       block-pr = "gh pr list --author=@me --web";
+      switch = "gh pr checkout $(gh pr list --author=@me | fzf | cut -f 1)";
       screenshot =
         "grimshot save area /home/dj/Pictures/screenshot-$(date +%Y-%m-%d-%H%M).png";
       # open file

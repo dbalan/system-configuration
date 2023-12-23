@@ -86,6 +86,7 @@ let
     sublime-music
     tcpdump
     thunderbird
+    tig
     tmux
     unzip
     vscode
@@ -95,4 +96,7 @@ let
     zathura
     zeal
   ];
-in { home.packages = commonPackages ++ kdepkgs; }
+in {
+  home.packages = commonPackages ++ kdepkgs;
+  programs.chromium.enable = true;
+}
