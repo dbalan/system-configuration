@@ -18,6 +18,7 @@ let
     _1password-gui
     amazon-ecr-credential-helper
     awscli2
+    android-studio
     bat
     blueberry
     brave
