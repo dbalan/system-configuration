@@ -154,6 +154,7 @@
 
   # For testing threema multidevice
   services.flatpak.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
@@ -190,7 +191,7 @@
        Hostname photoprism.pvt.dbalan.in
     '';
     light.enable = true;
-    adb.enable = false;
+    adb.enable = true;
   };
 
 }
