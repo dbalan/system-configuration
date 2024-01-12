@@ -13,10 +13,8 @@
   # get systemd on boot (askpassword echo)
   boot.initrd.systemd.enable = true;
 
-  networking.extraHosts = ''
-    192.168.196.120 vault.ber.dbalan.in jellyfin.ber.dbalan.in home.ber.dbalan.in svc.ber.dbalan.in books.ber.dbalan.in
-    192.168.196.70 photoprism.pvt.dbalan.in
-  '' + builtins.readFile ../../../common-data/blocked.hosts;
+  networking.extraHosts = ""
+    + builtins.readFile ../../../common-data/blocked.hosts;
 
   # Set your time zone.
   # use names from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -161,8 +159,9 @@
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      pinentryFlavor = "gtk2";
+      pinentryFlavor = "gnome3";
     };
+
     wireshark.enable = true;
     slock.enable = true;
     dconf.enable = true;

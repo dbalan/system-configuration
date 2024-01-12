@@ -91,12 +91,6 @@
       mg # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     ];
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryFlavor = "gtk2";
-  };
-
   # List services that you want to enable:
 
   # setup secrets

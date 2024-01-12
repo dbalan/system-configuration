@@ -32,6 +32,11 @@ with lib;
   home.sessionPath = [ "$HOME/go/bin" ];
 
   gtk.enable = true;
+  gtk.theme = {
+    name = "Numix Dark";
+    package = pkgs.numix-gtk-theme;
+  };
+
   gtk.iconTheme.name = "Adwaita";
 
   xdg.enable = true;
