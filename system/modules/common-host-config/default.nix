@@ -148,6 +148,7 @@
   in {
     "home-assistant-api" = { } // defopt;
     "github_token" = { } // defopt;
+    "fastmail" = { } // defopt;
   };
 
   # For testing threema multidevice

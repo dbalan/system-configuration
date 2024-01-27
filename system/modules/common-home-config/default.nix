@@ -4,7 +4,7 @@
 with lib;
 
 {
-  imports = [ ./kitty.nix ./dunst ./packages ./ssh ./wayland ];
+  imports = [ ./kitty.nix ./dunst ./packages ./ssh ./wayland ./aerc.nix ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
