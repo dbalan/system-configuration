@@ -12,7 +12,11 @@
 
   # Gigabyte boards don't play nice with suspend resume.
   services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
+    # Disable wakeup from all pci devices
+    # ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
+
+    # Was GPU all along.
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x1022", ATTR{device}=="0x149c", ATTR{power/wakeup}="disabled"
   '';
 
   boot.kernelModules = [ "kvm-amd" ];
