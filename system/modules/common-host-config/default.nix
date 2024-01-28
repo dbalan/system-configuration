@@ -2,7 +2,7 @@
 
 {
 
-  imports = [ ./fonts.nix ];
+  imports = [ ./fonts.nix ./keyboards.nix ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   hardware.enableRedistributableFirmware = true;
@@ -92,13 +92,6 @@
     enable = true;
     brscan4.enable = true;
   };
-
-  # Rescue from HHKB
-  services.udev.extraRules = ''
-    ACTION=="remove", GOTO="hhkb_power_end"
-    SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="Topre Corporation HHKB Professional", TAG-="power-switch"
-    LABEL="hhkb_power_end"
-  '';
 
   # update manager for fw
   services.fwupd.enable = true;

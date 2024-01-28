@@ -95,6 +95,7 @@ let
     xorg.xhost
     zathura
     zeal
+    qmk
   ];
 in {
   home.packages = commonPackages ++ kdepkgs;
