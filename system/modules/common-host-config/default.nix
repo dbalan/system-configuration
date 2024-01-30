@@ -51,7 +51,14 @@
 
   # Enable sound.
   sound.enable = false;
-  xdg.portal.wlr.enable = true;
+  xdg.portal = {
+    # don't know what this does
+    config.common.default = "*";
+    enable = true;
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
   # rtkit is optional but recommended
   security.rtkit.enable = true;
   services.pipewire = {

@@ -16,6 +16,7 @@ let
     ];
   commonPackages = with pkgs; [
     _1password-gui
+    gh
     amazon-ecr-credential-helper
     awscli2
     android-studio
