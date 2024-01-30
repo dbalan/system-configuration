@@ -1,7 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  hardware.keyboard.qmk.enable = true;
   services.udev.extraRules = ''
+    # Rescue from HHKB
+    ACTION=="remove", GOTO="hhkb_power_end"
+    SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="Topre Corporation HHKB Professional", TAG-="power-switch"
+    LABEL="hhkb_power_end"
+
     ## This file sets up a few things for selected Kaleidoscope-powered keyboards
     ## - We first symlink the device to a more friendly name, based on the product
     ##   name.
@@ -13,7 +19,7 @@
     ## For more information about the access part, see the following resources:
     ##  - https://github.com/systemd/systemd/issues/4288
     ##  - https://www.freedesktop.org/software/systemd/man/sd-login.html
-    
+
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2302", SYMLINK+="Atreus2", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"

@@ -10,8 +10,19 @@
     [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
 
+  # Gigabyte boards don't play nice with suspend resume.
+  services.udev.extraRules = ''
+    # Disable wakeup from all pci devices
+    # ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
+
+    # Was GPU all along.
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x1022", ATTR{device}=="0x149c", ATTR{power/wakeup}="disabled"
+  '';
+
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  # Remove the mediatek wifi driver from loading, since XBOX controllers have
+  # the same chipset and we want to load those drivers
   boot.blacklistedKernelModules = [ "mt76x2u" ];
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/42e36b90-e5fe-4fe8-b1e3-dfc0185e2da9";
