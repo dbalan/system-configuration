@@ -163,9 +163,9 @@
     };
 
     wireshark.enable = true;
-    slock.enable = true;
     dconf.enable = true;
     wireshark.package = pkgs.wireshark;
+    yubikey-touch-detector.enable = true;
     ssh.extraConfig = ''
       PubkeyAcceptedKeyTypes +ssh-rsa
       Host irc
