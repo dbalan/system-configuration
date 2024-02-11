@@ -97,9 +97,9 @@ in {
 
         # Brightness
         "XF86MonBrightnessDown" =
-          "exec ${pkgs.brightnessctl}/bin/brightnessctl set 2%-";
+          "exec ${pkgs.brightnessctl}/bin/brightnessctl set 100-";
         "XF86MonBrightnessUp" =
-          "exec ${pkgs.brightnessctl}/bin/brightnessctl set +2%";
+          "exec ${pkgs.brightnessctl}/bin/brightnessctl set +100";
 
         # Volume
         "XF86AudioRaiseVolume" =

@@ -6,7 +6,7 @@
 
   wayland.windowManager.sway.config.output = {
     "eDP-1" = {
-      bg = "~/Pictures/desk tile";
+      bg = "~/Pictures/desk fill";
       scale = "1.1";
     };
     "DP-5" = { bg = "~/Pictures/desk tile"; };
