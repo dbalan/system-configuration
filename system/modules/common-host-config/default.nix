@@ -168,27 +168,13 @@
     wireshark.package = pkgs.wireshark;
     yubikey-touch-detector.enable = true;
     ssh.extraConfig = ''
-      PubkeyAcceptedKeyTypes +ssh-rsa
-      Host irc
-       Hostname ares.dbalan.in
-       User root
        Port 2022
       Host www
        Hostname 10.1.10.30
        User root
        Port 22
        ProxyJump dj@ares.dbalan.in
-      Host builder
-       Hostname ares.dbalan.in
-       User root
-       Port 3022
-      Host oldphotoprism
-       Hostname 10.2.10.50
-       User dj
-       Port 22
-       ProxyJump dj@ares.dbalan.in
-      Host photoprism
-       Hostname photoprism.pvt.dbalan.in
+
     '';
     light.enable = true;
     adb.enable = true;
