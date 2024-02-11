@@ -92,7 +92,7 @@
   systemd.targets.hybrid-sleep.enable = true;
   services.logind.extraConfig = ''
     IdleAction=hybrid-sleep
-    IdleActionSec=300
+    IdleActionSec=10
   '';
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
