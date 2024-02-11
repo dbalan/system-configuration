@@ -167,15 +167,6 @@
     dconf.enable = true;
     wireshark.package = pkgs.wireshark;
     yubikey-touch-detector.enable = true;
-    ssh.extraConfig = ''
-       Port 2022
-      Host www
-       Hostname 10.1.10.30
-       User root
-       Port 22
-       ProxyJump dj@ares.dbalan.in
-
-    '';
     light.enable = true;
     adb.enable = true;
   };
