@@ -13,6 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.supportedFilesystems = [ "ntfs" ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   boot.initrd.luks.devices = {
     root = {

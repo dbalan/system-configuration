@@ -5,10 +5,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
-
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, sops-nix, home-manager, flake-utils, ... }@attrs:
+  outputs = { self, nixpkgs, sops-nix, home-manager, flake-utils, nixos-hardware
+    , ... }@attrs:
 
     rec {
       platforms = [ "x86_64-linux" "x86_64-darwin" ];
@@ -40,6 +41,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.dj = ./system/hosts/v60/home.nix;
             }
+            nixos-hardware.nixosModules.framework-11th-gen-intel
           ];
         };
 

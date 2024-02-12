@@ -36,10 +36,6 @@
 
   boot.initrd.availableKernelModules = [ "aesni_intel" "cryptd" ];
 
-  # enable deep sleep
-  # boot.kernelParams = [ "i915.enable_psr=0" "mem_sleep_default=deep" ];
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
   networking.hostName = "v60"; # Define your hostname.
@@ -56,26 +52,8 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
 
   services.fprintd.enable = false;
-  # Enable the Plasma 5 Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
   hardware.bluetooth.enable = true;
 
   programs.zsh.enable = true;
@@ -179,6 +157,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }
-
