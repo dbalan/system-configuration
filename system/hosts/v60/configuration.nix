@@ -8,6 +8,7 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/retiolum/default.nix
+    ../../modules/fingerprint
   ];
 
   require = [ ../../modules/common-host-config ];
@@ -53,7 +54,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.fprintd.enable = false;
   hardware.bluetooth.enable = true;
 
   programs.zsh.enable = true;

@@ -6,10 +6,18 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # nonflake inputs
+    pam-fprint-grosshack-src = {
+      type = "gitlab";
+      owner = "mishakmak";
+      repo = "pam-fprint-grosshack";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, sops-nix, home-manager, flake-utils, nixos-hardware
-    , ... }@attrs:
+    , pam-fprint-grosshack-src, ... }@attrs:
 
     rec {
       platforms = [ "x86_64-linux" "x86_64-darwin" ];
