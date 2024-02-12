@@ -23,11 +23,6 @@
       all-outputs = true;
       format = "{name}: {icon}";
       format-icons = {
-        "1" = "";
-        "2" = "";
-        "3" = "";
-        "7" = "";
-        "9" = "";
         "urgent" = "";
         "focused" = "";
         "default" = "";
@@ -43,7 +38,7 @@
     "memory" = { "format" = "💾 {used:0.1f}G"; };
 
     "network" = {
-      "family" = "ipv4";
+      "family" = "ipv6";
       "format-wifi" =
         "<span color='#589df6'></span> <span color='gray'>{essid}</span> {frequency} <span color='#589df6'>{signaldBm} dB</span> <span color='#589df6'>⇵</span> {bandwidthUpBits}/{bandwidthDownBits}";
       "format-ethernet" = "{ifname}: {ipaddr}/{cidr} 🔗";
