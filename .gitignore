@@ -31,5 +31,6 @@ common-data/ares.dbalan.in-privkey
 
 *~
 result
+.direnv
 
 common-data/home-assistant.key

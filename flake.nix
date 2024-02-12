@@ -28,12 +28,15 @@
           config.permittedInsecurePackages = [ "electron-25.9.0" ];
         });
 
-      defaultPackage = nixpkgs.lib.genAttrs platforms (system:
-        let p = legacyPackages."${system}";
-        in p.writeScriptBin "run" ''
-          HOSTNAME=$(hostname)
-            sudo nixos-rebuild --flake ".#$HOSTNAME" $@
-        '');
+      devShells = nixpkgs.lib.genAttrs platforms (system: {
+        default = let
+          p = legacyPackages.${system};
+          deployScript = p.writeShellScriptBin "nrb" ''
+            HOSTNAME=$(hostname)
+                sudo nixos-rebuild --flake ".#$HOSTNAME" $@
+          '';
+        in p.mkShell { packages = [ deployScript ]; };
+      });
 
       nixosConfigurations = {
         v60 = nixpkgs.lib.nixosSystem {
