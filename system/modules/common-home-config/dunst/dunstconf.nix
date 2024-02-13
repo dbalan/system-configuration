@@ -1,6 +1,6 @@
 {
   global = {
-    font = "IBM Plex Mono 12";
+    font = "Noto Sans";
     # Allow a small subset of html markup:
     #   <b>bold</b>
     #   <i>italic</i>
@@ -22,17 +22,21 @@
     #   %I  iconname (without its path)
     #   %p  progress value if set ([  0%] to [100%]) or nothing
     # Markup is allowed
-    format = "<b>%s</b>\n%b";
+    format = ''
+      %a
+      <b>%s</b>
+      %b
+    '';
 
     # Sort messages by urgency.
-    sort = "no";
+    sort = "yes";
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = "yes";
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = "center";
+    alignment = "left";
 
     # The frequency with wich text that is longer than the notification
     # window allows bounces back and forth.
@@ -43,7 +47,7 @@
     # Show age of message if message is older than show_age_threshold
     # seconds.
     # Set to -1 to disable.
-    show_age_threshold = -1;
+    show_age_threshold = 5;
 
     # Split notifications into multiple lines if they don't fit into
     # geometry.
@@ -54,8 +58,7 @@
 
     # Hide duplicate's count and stack them
     stack_duplicates = "yes";
-    hide_duplicate_count = "yes";
-
+    glode_duplicate_count = "yes";
 
     # The geometry of the window:
     #   [{width}]x{height}[+/-{x}+/-{y}]
@@ -100,7 +103,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = "none";
+    follow = "mouse";
 
     # Should a notification popped up from history be sticky or timeout
     # as if it would normally do.
@@ -145,39 +148,33 @@
     # dmenu = "/usr/bin/dmenu -p dunst";
 
     # Browser for opening urls in context menu.
-    browser = "brave -new-tab";
+    browser = "firefox";
 
     # Align icons left/right/off
-    icon_position = "off";
+    icon_position = "left";
     max_icon_size = 80;
 
     # Paths to default icons.
     # icon_path = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/;
 
-    frame_width = 3;
-    frame_color = "#8EC07C";
+    frame_color = "#8AADF4";
   };
-  urgency_low ={
+  urgency_low = {
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    frame_color = "#3B7C87";
-    foreground = "#3B7C87";
-    background = "#191311";
-    #background = "#2B313C"
-    timeout = 4;
+    background = "#24273A";
+    foreground = "#CAD3F5";
+    timeout = 10;
   };
   urgency_normal = {
-    frame_color = "#5B8234";
-    foreground = "#5B8234";
-    background = "#191311";
-    #background = "#2B313C"
-    timeout = 6;
+    background = "#24273A";
+    foreground = "#CAD3F5";
+    timeout = 10;
   };
   urgency_critical = {
-    frame_color = "#B7472A";
-    foreground = "#B7472A";
-    background = "#191311";
-    #background = "#2B313C"
-    timeout = 8;
+    background = "#24273A";
+    foreground = "#CAD3F5";
+    frame_color = "#F5A97F";
+    timeout = 15;
   };
 }
