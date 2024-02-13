@@ -103,11 +103,10 @@ in {
 
         # Volume
         "XF86AudioRaiseVolume" =
-          "exec ${pkgs.pavucontrol}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
+          "exec ${pkgs.ponymix}/bin/ponymix -N -t sink increase 5";
         "XF86AudioLowerVolume" =
-          "exec ${pkgs.pavucontrol}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
-        "XF86AudioMute" =
-          "exec ${pkgs.pavucontrol}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          "exec ${pkgs.ponymix}/bin/ponymix -N -t sink decrease 5";
+        "XF86AudioMute" = "exec toggleVolume";
         "XF86AudioPlay" =
           "exec ${pkgs.playerctl}/bin/playerctl -p spotify\\,%any play-pause";
 
@@ -152,5 +151,25 @@ in {
     playerctl
     gnome.gnome-keyring
     gcr
+    (pkgs.writeShellScriptBin "toggleVolume" ''
+      #!/bin/bash
+
+      # Arbitrary but unique message tag
+      msgTag="changeVolume"
+
+      ponymix -t sink toggle
+
+      # Query amixer for the current volume and whether or not the speaker is muted
+      volume="$(ponymix -t sink get-volume)"
+      mute="$(ponymix -t sink is-muted || echo not-muted)"
+      if [[ $volume == 0 || "$mute" == "" ]]; then
+          # Show the sound muted notification
+          dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume muted"
+      else
+          # Show the volume notification
+          dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$msgTag \
+          -h int:value:"$volume" "Volume: $volume %"
+      fi
+    '')
   ];
 }

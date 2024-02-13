@@ -1,4 +1,4 @@
-{
+{ icons, ... }: {
   global = {
     font = "Noto Sans";
     # Allow a small subset of html markup:
@@ -155,7 +155,8 @@
     max_icon_size = 80;
 
     # Paths to default icons.
-    # icon_path = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/;
+    icon_path =
+      "${icons}/share/icons/Paper/16x16/mimetypes/:${icons}/share/icons/Paper/48x48/status/:${icons}/share/icons/Paper/16x16/devices/:${icons}/share/icons/Paper/48x48/notifications/:${icons}/share/icon/emblems/";
 
     frame_color = "#8AADF4";
   };
