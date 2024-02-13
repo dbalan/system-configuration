@@ -18,7 +18,8 @@ with lib;
     VOLTUS = "/home/dj/code/work/voltus";
     VAULT_GITHUB_TOKEN = "$(gh auth token)";
     EDITOR = "emacsclient -t";
-    zlong_ignore_cmds = "git tig vim emacsclient e vim ssh psql pgcli";
+    zlong_ignore_cmds =
+      "git tig vim emacsclient e vim ssh psql pgcli nix-shell";
   };
 
   # configure stylish-haskell

@@ -79,12 +79,12 @@
 
     "battery" = {
       "states" = {
-        # "good"= 95;
+        "good" = 95;
         "format" = "<span color='#e88939'>{icon}</span> {capacity}% ({time})";
         "warning" = 20;
         "critical" = 10;
       };
-      "format-charging" = "<span color='#e88939'> </span> {capacity}%";
+      "format-charging" = "<span color='#e88939'>󰂄 </span> {capacity}%";
       "format-plugged" =
         "<span color='#e88939'>{icon} </span> {capacity}% ({time})";
       #"format-good"= ""; // An empty format will hide the module
