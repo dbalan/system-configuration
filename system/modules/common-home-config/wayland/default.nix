@@ -3,6 +3,14 @@
 let
   waybarconf =
     import ./waybarconf.nix { swaylock = "${pkgs.swaylock}/bin/swaylock"; };
+  switch = pkgs.stdenv.mkDerivation {
+    name = "switchWindow";
+    propagatedBuildInputs = [ pkgs.python3 ];
+    dontUnpack = true;
+    installPhase =
+      "install -Dm755 ${./switch_windows.py} $out/bin/switch-windows";
+  };
+
 in {
   wayland.windowManager.sway = {
     enable = true;
@@ -67,27 +75,29 @@ in {
       keybindings = let
         cfg = config.wayland.windowManager.sway.config;
         modifier = cfg.modifier;
+        myFuzzel = ''
+          ${pkgs.fuzzel}/bin/fuzzel -b 282828f0 -t ebdbb2ff -D auto -f "Noto Sans:size=30"'';
       in lib.mkOptionDefault {
         "${modifier}+Shift+Return" = "exec ${cfg.terminal}";
         "${modifier}+Shift+c" = "kill";
 
         "${modifier}+Shift+v" = ''
-          exec ${pkgs.clipman}/bin/clipman pick --tool=CUSTOM --tool-args="${pkgs.fuzzel}/bin/fuzzel -d"'';
+          exec ${pkgs.clipman}/bin/clipman pick --tool=CUSTOM --tool-args="${pkgs.fuzzel}/bin/fuzzel -b 282828f0 -t ebdbb2ff -D auto -f 'Iosevka Extended:size=20' -d"'';
 
         "${modifier}+Shift+w" = "move workspace to output left";
         "${modifier}+Shift+e" = "move workspace to output right";
 
         "${modifier}+o" =
-          "exec ${pkgs.fuzzel}/bin/fuzzel | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+          "exec ${myFuzzel} | ${pkgs.findutils}/bin/xargs swaymsg exec --";
         "${modifier}+p" =
-          "exec ${pkgs.fuzzel}/bin/fuzzel | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+          "exec ${myFuzzel} | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
         "${modifier}+x" = "exec ${pkgs.emacs}/bin/emacsclient -c";
 
         "${modifier}+space" = "focus mode_toggle";
 
         "${modifier}+Tab" = "focus next | focus prev";
-        "${modifier}+Shift+g" = "exec rofi -show window";
+        "${modifier}+Shift+g" = "exec switch-windows";
 
         "${modifier}+q" = "reload";
 
@@ -171,5 +181,7 @@ in {
           -h int:value:"$volume" "Volume: $volume %"
       fi
     '')
+    switch
+    fuzzel
   ];
 }
