@@ -31,10 +31,7 @@
 
     "sway/mode" = { "format" = "{}"; };
 
-    "cpu" = {
-      "format" = "🏭 {usage}%";
-      "tooltip" = false;
-    };
+    "cpu" = { "format" = "🏭 {usage}%"; };
     "memory" = { "format" = "💾 {used:0.1f}G"; };
 
     "network" = {
@@ -80,15 +77,15 @@
     "battery" = {
       "states" = {
         "good" = 95;
-        "format" = "<span color='#e88939'>{icon}</span> {capacity}% ({time})";
         "warning" = 20;
-        "critical" = 10;
+        "critical" = 15;
       };
-      "format-charging" = "<span color='#e88939'>󰂄 </span> {capacity}%";
-      "format-plugged" =
-        "<span color='#e88939'>{icon} </span> {capacity}% ({time})";
-      #"format-good"= ""; // An empty format will hide the module
-      #"format-full"= "";
+      "format" = "{capacity}% {icon}";
+      "format-charging" = "{capacity}% ";
+      "format-plugged" = "{capacity}% ";
+      "format-alt" = "{time} {icon}";
+      # "format-good": "", // An empty format will hide the module
+      # "format-full": "",
       "format-icons" = [ "" "" "" "" "" ];
     };
 
