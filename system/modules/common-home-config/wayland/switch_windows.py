@@ -53,7 +53,11 @@ def extract_nodes_iterative(workspace):
 def parse_windows(windows):
     parsed_windows = []
     for window in windows:
-        parsed_windows.append(window.get('name'))
+        app_id = window.get('app_id')
+        name = window.get('name')
+        # sometimes app_id is None
+        selector = f"{app_id}: {name}" if app_id else name
+        parsed_windows.append(selector)
     return parsed_windows
 
 # Returns a newline seperated UFT-8 encoded string of all windows for wofi
