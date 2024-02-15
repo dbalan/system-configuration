@@ -19,7 +19,7 @@ with lib;
     VAULT_GITHUB_TOKEN = "$(gh auth token)";
     EDITOR = "emacsclient -t";
     zlong_ignore_cmds =
-      "cat bat git tig vim emacsclient e vim ssh psql pgcli nix-shell";
+      "cat bat less git tig vim emacsclient e vim ssh psql pgcli nix-shell";
   };
 
   # configure stylish-haskell
