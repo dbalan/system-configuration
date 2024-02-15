@@ -71,7 +71,7 @@ with lib;
       et = "emacsclient -t";
       cat = "bat";
       scp = "rsync -Pv";
-      ls = "eza --icons";
+      ls = "eza --icons=always";
       tree = "eza --tree";
       review-pr =
         "gh pr list -S 'review:required review-requested:@me' -s open --web";
