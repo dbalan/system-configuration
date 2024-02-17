@@ -69,6 +69,11 @@ in {
           command = "move scratchpad";
           criteria = { app_id = "Threema Tech Preview"; };
         }
+        {
+          # inhibit idle on fullscreen firefox for media player
+          command = "inhibit_idle fullscreen";
+          criteria = { app_id = "firefox"; };
+        }
       ];
 
       bars = [ ];
