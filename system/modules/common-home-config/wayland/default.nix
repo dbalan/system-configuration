@@ -11,6 +11,39 @@ let
       "install -Dm755 ${./switch_windows.py} $out/bin/switch-windows";
   };
 
+  brightnessNotify = pkgs.writeShellScriptBin "toggleBrightness" ''
+    #!${pkgs.runtimeShell}
+    # Arbitrary but unique message tag
+    msgTag="changeBrightness"
+
+    # Query amixer for the current volume and whether or not the speaker is muted
+    #
+    bn=$(echo "scale=4; $(${pkgs.brightnessctl}/bin/brightnessctl get) / $(${pkgs.brightnessctl}/bin/brightnessctl m)* 100"  | ${pkgs.bc}/bin/bc)
+    dunstify -a "brightness" -u low -i notification-display-brightness -h string:x-dunst-stack-tag:$msgTag \
+        -h int:value:"$bn" "Brightness: $bn %"
+  '';
+
+  muteNotify = pkgs.writeShellScriptBin "toggleVolume" ''
+    #!/bin/bash
+
+    # Arbitrary but unique message tag
+    msgTag="changeVolume"
+
+    ponymix -t sink toggle
+
+    # Query amixer for the current volume and whether or not the speaker is muted
+    volume="$(ponymix -t sink get-volume)"
+    mute="$(ponymix -t sink is-muted || echo not-muted)"
+    if [[ $volume == 0 || "$mute" == "" ]]; then
+        # Show the sound muted notification
+        dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume muted"
+    else
+        # Show the volume notification
+        dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$msgTag \
+        -h int:value:"$volume" "Volume: $volume %"
+    fi
+  '';
+
 in {
   wayland.windowManager.sway = {
     enable = true;
@@ -112,9 +145,9 @@ in {
 
         # Brightness
         "XF86MonBrightnessDown" =
-          "exec ${pkgs.brightnessctl}/bin/brightnessctl set 100-";
+          "exec ${pkgs.brightnessctl}/bin/brightnessctl set 100- && toggleBrightness";
         "XF86MonBrightnessUp" =
-          "exec ${pkgs.brightnessctl}/bin/brightnessctl set +100";
+          "exec ${pkgs.brightnessctl}/bin/brightnessctl set +100 && toggleBrightness";
 
         # Volume
         "XF86AudioRaiseVolume" =
@@ -139,7 +172,7 @@ in {
 
   services.swayidle = {
     enable = true;
-    extraArgs = [ "idlehint 30" ];
+    extraArgs = [ "idlehint 300" ];
     events = [
       {
         event = "before-sleep";
@@ -166,26 +199,8 @@ in {
     playerctl
     gnome.gnome-keyring
     gcr
-    (pkgs.writeShellScriptBin "toggleVolume" ''
-      #!/bin/bash
-
-      # Arbitrary but unique message tag
-      msgTag="changeVolume"
-
-      ponymix -t sink toggle
-
-      # Query amixer for the current volume and whether or not the speaker is muted
-      volume="$(ponymix -t sink get-volume)"
-      mute="$(ponymix -t sink is-muted || echo not-muted)"
-      if [[ $volume == 0 || "$mute" == "" ]]; then
-          # Show the sound muted notification
-          dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume muted"
-      else
-          # Show the volume notification
-          dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$msgTag \
-          -h int:value:"$volume" "Volume: $volume %"
-      fi
-    '')
+    muteNotify
+    brightnessNotify
     switch
     fuzzel
   ];
