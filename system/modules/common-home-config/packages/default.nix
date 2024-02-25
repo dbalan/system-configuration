@@ -19,7 +19,6 @@ let
     gh
     amazon-ecr-credential-helper
     awscli2
-    android-studio
     bat
     blueberry
     brave
